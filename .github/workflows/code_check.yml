@@ -1,0 +1,45 @@
+name: Code check
+
+on:
+  push:
+  pull_request:
+    branches:
+      - master
+
+env:
+  NODE_VERSION: 22.17.0
+  AWS_BUCKET_URL: fake-bucket.s3.amazonaws.com
+  AWS_ACCESS_KEY_ID: fake-key-id
+  AWS_SECRET_ACCESS_KEY: fake-secret-access-key
+  AWS_BUCKET_NAME: fake-bucket
+
+jobs:
+  code_check:
+    name: Code lint check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Eslint
+        run: npm run lint
+
+      - name: Stylelint
+        run: npm run lint:style
+
+      - name: Typescript
+        run: npm run tsc
+
+      - name: Create Database
+        run: node initdb.js
+
+      - name: Build
+        run: npm run build
