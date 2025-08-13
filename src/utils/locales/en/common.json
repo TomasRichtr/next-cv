@@ -1,0 +1,12 @@
+{
+  "seoTitle": "next.js Boilerplate",
+  "seoDescription": "version of next.js is 15",
+  "notFound": {
+    "title": "Not found",
+    "description": "Requested page doesn't exist, or required permissions are missing."
+  },
+  "error": {
+    "title": "Oops!",
+    "description": "Something went wrong!"
+  }
+}

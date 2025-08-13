@@ -38,8 +38,7 @@ yarn-error.log*
 next-env.d.ts
 .aider*
 .idea
-.env
-.env.local
-.env.production
+.env*
+!.env.example
 meals.db
 --system-message*
