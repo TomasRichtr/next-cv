@@ -30,15 +30,13 @@ const Loader = ({
           .
         </span>
       </div>
-      {
-        text && (
-          <p
-            className={classes.text}
-          >
-            {text}
-          </p>
-        )
-      }
+      {text && (
+        <p
+          className={classes.text}
+        >
+          {text}
+        </p>
+      )}
     </div>
   );
 };

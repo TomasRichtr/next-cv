@@ -8,5 +8,8 @@
   "error": {
     "title": "Oops!",
     "description": "Something went wrong!"
+  },
+  "navigation": {
+    "home": "Home"
   }
 }

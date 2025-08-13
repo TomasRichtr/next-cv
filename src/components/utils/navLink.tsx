@@ -8,7 +8,7 @@ import {
   ReactNode,
 } from "react";
 
-import classes from "../../../../food-menu/src/components/layout/mainHeader/mainHeader.module.css";
+import classes from "./navLink.module.css";
 
 interface NavLinkProps {
   href: string;

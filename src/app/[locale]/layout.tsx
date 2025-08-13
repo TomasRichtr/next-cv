@@ -50,10 +50,16 @@ export default async function RootLayout({
           locale={locale}
           resources={resources}
         >
-          <Header />
-          <main>
-            {children}
-          </main>
+          <div
+            className="min-h-screen bg-background"
+          >
+            <Header />
+            <main
+              className="h-full py-10 flex flex-col gap-6 items-center justify-center"
+            >
+              {children}
+            </main>
+          </div>
         </TranslationsProvider>
       </body>
     </html>

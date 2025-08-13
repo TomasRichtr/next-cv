@@ -1,24 +1,14 @@
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 1000;
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-[1000];
 }
 
 .loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    @apply flex justify-center items-center gap-2 mb-6;
 }
 
 .dot {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #b89b84;
+    @apply text-5xl font-bold text-secondary-400;
+
     animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -35,12 +25,9 @@
 }
 
 .text {
-    font-size: 1.2rem;
-    color: #b89b84;
-    font-weight: 500;
+    @apply text-xl font-medium m-0 tracking-wide text-secondary-400;
+
     animation: text-pulse 2s ease-in-out infinite;
-    margin: 0;
-    letter-spacing: 0.5px;
 }
 
 @keyframes pulse {
