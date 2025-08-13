@@ -30,9 +30,9 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function RootLayout({
+const RootLayout = async ({
   children, params,
-}: {children: ReactNode} & LocaleParam) {
+}: {children: ReactNode} & LocaleParam) => {
   const {
     locale,
   } = await params;
@@ -64,4 +64,6 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
