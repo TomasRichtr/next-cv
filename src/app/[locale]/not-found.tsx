@@ -3,8 +3,6 @@ import {
 } from "@/constants/locales";
 import initTranslations from "@/utils/locales/i18n";
 
-import classes from "./not-found.module.css";
-
 const NotFound = async ({
   locale,
 }: { locale: string }) => {
@@ -16,12 +14,16 @@ const NotFound = async ({
 
   return (
     <main
-      className={classes.notFound}
+      className="mt-20 text-center"
     >
-      <h1>
+      <h1
+        className="text-8xl m-0 font-black uppercase bg-cover bg-center font-montserrat bg-gradient-to-r from-error to-warning bg-clip-text text-transparent"
+      >
         {t("notFound.title")}
       </h1>
-      <p>
+      <p
+        className="text-2xl font-medium text-secondary-300"
+      >
         {t("notFound.description")}
       </p>
     </main>

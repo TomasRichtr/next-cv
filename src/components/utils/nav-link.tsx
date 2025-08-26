@@ -12,8 +12,6 @@ import {
   LOCALES,
 } from "@/constants/locales";
 
-import classes from "./nav-link.module.css";
-
 interface NavLinkProps {
   href: string;
   children: ReactNode;
@@ -38,7 +36,9 @@ const NavLink = ({
 
   return (
     <Link
-      className={isActive ? `${classes.link} ${classes.active}` : classes.link}
+      className={`inline-block px-3 py-2 text-secondary-700 no-underline transition-colors duration-150 hover:text-primary-600 hover:underline ${
+        isActive ? "text-primary-700 font-medium underline" : ""
+      }`}
       href={href}
     >
       {children}

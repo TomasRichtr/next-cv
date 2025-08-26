@@ -1,4 +1,3 @@
-import classes from "./loader.module.css";
 
 interface LoaderProps {
   text?: string;
@@ -12,11 +11,11 @@ const Loader = ({
 }: LoaderProps) => {
   return (
     <div
-      className={classes.container}
+      className="flex flex-col justify-center items-center gap-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-[1000]"
     >
       <div>
         <div
-          className={classes.circle}
+          className="border-4 border-secondary-200 border-t-secondary-400 rounded-full animate-spin"
           style={{
             width: `${size}px`,
             height: `${size}px`,
@@ -25,7 +24,7 @@ const Loader = ({
       </div>
       {text && (
         <p
-          className={classes.text}
+          className="text-xl font-medium m-0 tracking-wide text-secondary-400 animate-pulse"
         >
           {text}
         </p>
