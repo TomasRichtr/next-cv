@@ -174,5 +174,5 @@ export const auth = async (
 
 export const logout = async () => {
   await destroyAuthSession();
-  redirect("/");
+  redirect(ROUTE.HOME);
 };

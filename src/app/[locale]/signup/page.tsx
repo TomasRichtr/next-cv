@@ -1,20 +1,13 @@
-import {
-  redirect,
-} from "next/navigation";
-
 import AuthForm from "@/components/forms/auth-form";
-import {
-  ROUTE,
-} from "@/constants/route";
 import {
   LoginMode,
 } from "@/types/user";
+import {
+  Shield, usePageProtection,
+} from "@/utils/composables/usePageProtection";
 
 const SignUpPage = async () => {
-  const allowRegistration = process.env.ALLOW_USERS_REGISTRATION === "true";
-  if (!allowRegistration) {
-    return redirect(ROUTE.HOME);
-  }
+  await usePageProtection([Shield.SIGN_UP]);
 
   return (
     <AuthForm

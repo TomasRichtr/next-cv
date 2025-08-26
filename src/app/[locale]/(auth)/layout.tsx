@@ -1,29 +1,18 @@
 import {
-  redirect,
-} from "next/navigation";
-import {
   ReactNode,
 } from "react";
 
 import {
-  verifyAuthSession,
-} from "@/backend/db/auth";
-import {
-  ROUTE,
-} from "@/constants/route";
+  Shield,
+  usePageProtection,
+} from "@/utils/composables/usePageProtection";
 
 const AuthLayout = async ({
   children,
 }: {
     children: ReactNode;
 }) => {
-  const {
-    user,
-  } = await verifyAuthSession();
-
-  if (!user) {
-    return redirect(ROUTE.HOME);
-  }
+  await usePageProtection([Shield.AUTH]);
 
   return (
     <>
