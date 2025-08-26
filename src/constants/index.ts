@@ -1,1 +1,1 @@
-export const APP_NAME = "next-boilerplate";
+export const APP_NAME = "next-cv";
