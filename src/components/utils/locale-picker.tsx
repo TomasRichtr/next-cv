@@ -48,14 +48,16 @@ const LocalePicker = () => {
       onChange={handleLocaleChange}
       value={currentLocale}
     >
-      {values(LOCALES).map((locale) => (
-        <option
-          key={locale}
-          value={locale}
-        >
-          {locale}
-        </option>
-      ))}
+      {values(LOCALES).map((locale) => {
+        return (
+          <option
+            key={locale}
+            value={locale}
+          >
+            {locale}
+          </option>
+        );
+      })}
     </select>
   );
 };

@@ -2,33 +2,26 @@ import classes from "./loader.module.css";
 
 interface LoaderProps {
   text?: string;
+  withMargin?: boolean;
+  size?: number;
 }
 
 const Loader = ({
   text,
+  size = 48,
 }: LoaderProps) => {
   return (
     <div
       className={classes.container}
     >
-      <div
-        className={classes.loader}
-      >
-        <span
-          className={classes.dot}
-        >
-          .
-        </span>
-        <span
-          className={classes.dot}
-        >
-          .
-        </span>
-        <span
-          className={classes.dot}
-        >
-          .
-        </span>
+      <div>
+        <div
+          className={classes.circle}
+          style={{
+            width: `${size}px`,
+            height: `${size}px`,
+          }}
+        />
       </div>
       {text && (
         <p

@@ -163,6 +163,14 @@ const eslintConfig = [
       "quotes": ["error", "double"],
       "no-multi-spaces": "error",
       "comma-dangle": ["error", "always-multiline"],
+      "max-len": ["error", {
+        "code": 120,
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true,
+      }],
     },
   },
 ];

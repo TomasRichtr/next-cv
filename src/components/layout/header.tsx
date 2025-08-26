@@ -1,5 +1,11 @@
-import LocalePicker from "@/components/utils/localePicker";
-import NavLink from "@/components/utils/navLink";
+import {
+  verifyAuthSession,
+} from "@/backend/db/auth";
+import {
+  LogoutForm,
+} from "@/components/forms/logout-form";
+import LocalePicker from "@/components/utils/locale-picker";
+import NavLink from "@/components/utils/nav-link";
 import {
   NAMESPACE,
 } from "@/constants/locales";
@@ -15,6 +21,11 @@ const Header = async ({
   const {
     t,
   } = await initTranslations(locale!, [NAMESPACE.COMMON]);
+
+  const {
+    user,
+  } = await verifyAuthSession();
+
   return (
     <header
       className="w-full bg-background border-b mx.auto px-6 py-6 flex justify-between"
@@ -25,8 +36,32 @@ const Header = async ({
         >
           {t("navigation.home")}
         </NavLink>
+
+        {!user && (
+        <NavLink
+          href={ROUTE.LOGIN}
+          activeFor={[ROUTE.SIGNUP, ROUTE.LOGIN]}
+        >
+          {t("navigation.login")}
+        </NavLink>
+        )}
+
+        {user && (
+        <NavLink
+          href={ROUTE.USER}
+        >
+          {t("navigation.user")}
+        </NavLink>
+        )}
       </nav>
-      <LocalePicker />
+
+
+      <div
+        className="flex gap-3 items-center"
+      >
+        <LocalePicker />
+        {user && <LogoutForm />}
+      </div>
     </header>
   );
 };

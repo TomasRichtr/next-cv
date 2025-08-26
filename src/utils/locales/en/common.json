@@ -10,6 +10,41 @@
     "description": "Something went wrong!"
   },
   "navigation": {
-    "home": "Home"
-  }
+    "home": "Home",
+    "login": "Login",
+    "user": "User"
+  },
+  "login": {
+    "actions": {
+      "logout": "Log out",
+      "signup": "Create an account",
+      "login": "Login",
+      "loginLink": "Login with existing account"
+    },
+    "labels": {
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    }
+  },
+  "validation": {
+    "email": {
+      "required": "Email is required",
+      "invalid": "Please provide a valid email address",
+      "exists": "Email already exists",
+      "notFound": "User with this email does not exist"
+    },
+    "password": {
+      "required": "Password is required",
+      "minLength": "Password must be at least 8 characters long",
+      "maxLength": "Password cannot exceed 128 characters",
+      "pattern": "Password must contain at least one lowercase letter, one uppercase letter, one uppercase letter, and one number",
+      "incorrect": "Provided password is incorrect"
+    },
+    "confirmPassword": {
+      "required": "Confirm password is required",
+      "match": "Passwords must match"
+    }
+  },
+  "loading": "Loading..."
 }

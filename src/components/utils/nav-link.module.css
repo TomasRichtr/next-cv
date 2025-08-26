@@ -1,0 +1,12 @@
+.link {
+    @apply inline-block px-3 py-2 text-secondary-700 no-underline transition-colors duration-150;
+}
+
+.link:hover {
+    @apply text-primary-600 underline;
+}
+
+.active {
+    @apply text-primary-700 font-medium underline;
+}
+

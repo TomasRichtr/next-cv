@@ -1,9 +1,6 @@
 import {
   NAMESPACE,
 } from "@/constants/locales";
-import {
-  LocaleParam,
-} from "@/types";
 import initTranslations from "@/utils/locales/i18n";
 
 import classes from "./not-found.module.css";

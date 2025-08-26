@@ -1,0 +1,103 @@
+"use client";
+
+import {
+  useActionState,
+} from "react";
+import {
+  useTranslation,
+} from "react-i18next";
+
+import {
+  auth,
+} from "@/backend/actions/user";
+import FormButton from "@/components/forms/form-button";
+import NavLink from "@/components/utils/nav-link";
+import {
+  ROUTE,
+} from "@/constants/route";
+import {
+  FormFields,
+  LoginMode,
+} from "@/types/user";
+
+import TextInput from "./text-input";
+
+export default function AuthForm({
+  mode,
+}: { mode: LoginMode }) {
+  const [formState, formAction] = useActionState(auth.bind(null, mode), undefined);
+
+  const {
+    t,
+  } = useTranslation();
+
+  return (
+    <form
+      id="auth-form"
+      className="flex flex-col gap-2 min-w-96"
+      action={formAction}
+    >
+      <TextInput
+        type="email"
+        name={FormFields.Email}
+        id={FormFields.Email}
+        label={t("login.labels.email")}
+        defaultValue={formState?.data.email}
+        error={formState?.field === "email" ? formState.message : undefined}
+      />
+      <TextInput
+        type="password"
+        name={FormFields.Password}
+        id={FormFields.Password}
+        label={t("login.labels.password")}
+        defaultValue={formState?.data.password}
+        error={formState?.field === "password" ? formState.message : undefined}
+      />
+      {mode === LoginMode.Signup && (
+      <TextInput
+        type="password"
+        name={FormFields.ConfirmPassword}
+        id={FormFields.ConfirmPassword}
+        label={t("login.labels.confirmPassword")}
+        defaultValue={formState?.data.confirmPassword}
+        error={formState?.field === "confirmPassword" ? formState.message : undefined}
+      />
+      )}
+      {
+        formState?.message && !formState?.field && (
+        <p
+          className="text-red-600"
+        >
+          {t(formState.message)}
+        </p>
+        )
+      }
+      <div
+        className="mt-6 flex items-center gap-3"
+      >
+        <FormButton
+          label={mode === LoginMode.Signup ? t("login.actions.signup") : t("login.actions.login")}
+        />
+        <div>
+          {mode === LoginMode.Login && (
+          <NavLink
+            href={ROUTE.SIGNUP}
+            activeFor={[]}
+          >
+            {t("login.actions.signup")}
+          </NavLink>
+          )}
+
+          {mode === LoginMode.Signup && (
+          <NavLink
+            href={ROUTE.LOGIN}
+            activeFor={[]}
+          >
+            {t("login.actions.loginLink")}
+          </NavLink>
+          )}
+        </div>
+      </div>
+    </form>
+  );
+}
