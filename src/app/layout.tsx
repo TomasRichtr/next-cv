@@ -3,6 +3,7 @@ import React, {
   ReactNode,
 } from "react";
 
+import FlyonuiScript from "@/components/flyonui-script";
 import Header from "@/components/layout/header";
 import TranslationsProvider from "@/components/translationsProvider";
 import {
@@ -12,6 +13,8 @@ import {
   LocaleParam,
 } from "@/types";
 import initTranslations from "@/utils/locales/i18n";
+
+
 
 export const generateMetadata = async ({
   params,
@@ -46,6 +49,7 @@ const RootLayout = async ({
       lang={locale}
     >
       <body>
+        <FlyonuiScript />
         <TranslationsProvider
           locale={locale}
           resources={resources}

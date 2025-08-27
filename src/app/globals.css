@@ -1,6 +1,12 @@
+@import url("flyonui/variants.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@plugin "flyonui";
+
+@source "./node_modules/flyonui/flyonui.js";
 
 * {
   @apply box-border;
