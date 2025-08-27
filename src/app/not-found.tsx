@@ -1,3 +1,6 @@
+import React from "react";
+
+import ErrorCard from "@/components/error-card";
 import {
   NAMESPACE,
 } from "@/constants/locales";
@@ -26,6 +29,7 @@ const NotFound = async ({
       >
         {t("notFound.description")}
       </p>
+      <ErrorCard />
     </main>
   );
 };

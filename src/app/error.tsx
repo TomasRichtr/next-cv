@@ -5,6 +5,8 @@ import {
   useTranslation,
 } from "react-i18next";
 
+import ErrorCard from "@/components/error-card";
+
 const Error = ({
   error,
 }: {error: Error}) => {
@@ -29,6 +31,8 @@ const Error = ({
         {error.message}
       </p>
       )}
+
+      <ErrorCard />
     </main>
   );
 };

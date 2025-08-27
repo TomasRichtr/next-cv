@@ -34,7 +34,6 @@ import {
   validateNew,
 } from "@/utils/validations/user";
 
-
 const extractFormData = (formData: FormData, fields: string[]) => {
   return fields.reduce((acc, field) => {
     acc[field] = formData.get(field) as string;

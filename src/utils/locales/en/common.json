@@ -46,5 +46,13 @@
       "match": "Passwords must match"
     }
   },
+  "quote": {
+    "errors": {
+      "httpError": "HTTP error! status: {{status}}, message: {{message}}",
+      "noQuote": "No quote received from API",
+      "fetchFailed": "Failed to fetch quote: {{message}}",
+      "unknownError": "Unknown error occurred while fetching quote"
+    }
+  },
   "loading": "Loading..."
 }
