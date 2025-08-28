@@ -14,8 +14,6 @@ import {
 } from "@/types";
 import initTranslations from "@/utils/locales/i18n";
 
-
-
 export const generateMetadata = async ({
   params,
 }: LocaleParam) => {

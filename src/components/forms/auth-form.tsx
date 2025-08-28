@@ -12,14 +12,15 @@ import {
 } from "@/backend/actions/user";
 import FormButton from "@/components/forms/form-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
-import Loader from "@/components/utils/loader";
 import NavLink from "@/components/utils/nav-link";
 import {
   ROUTE,
 } from "@/constants/route";
 import {
-  FormFields,
-  LoginMode,
+  Colors,
+} from "@/types/theme";
+import {
+  FormFields, LoginMode,
 } from "@/types/user";
 
 import TextInput from "./text-input";
@@ -98,6 +99,7 @@ export default function AuthForm({
         className="flex flex-col md:flex-row items-center gap-3 justify-between"
       >
         <FormButton
+          color={Colors.Primary}
           label={mode === LoginMode.Signup ? t("login.actions.signup") : t("login.actions.login")}
         />
         <div>

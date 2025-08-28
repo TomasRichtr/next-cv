@@ -4,7 +4,7 @@ import {
 } from "@/types/user";
 import {
   Shield, protectPage,
-} from "@/utils/composables/protectPage";
+} from "@/utils/protectPage";
 
 const SignUpPage = async () => {
   await protectPage([Shield.SIGN_UP]);

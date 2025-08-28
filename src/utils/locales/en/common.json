@@ -17,14 +17,24 @@
     "experience": "Experience",
     "skills": "Skills",
     "contact": "Contact",
-    "references": "References"
+    "references": "References",
+    "profile": "User profile"
+  },
+  "profile": {
+    "title": "User Profile",
+    "labels": {
+      "id": "ID",
+      "email": "Email",
+      "role": "Role"
+    }
   },
   "login": {
     "actions": {
       "logout": "Log out",
       "signup": "Create an account",
       "login": "Login",
-      "loginLink": "Login with existing account"
+      "loginLink": "Login with existing account",
+      "removeUser": "Remove user"
     },
     "labels": {
       "email": "Email",

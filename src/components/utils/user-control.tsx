@@ -9,6 +9,7 @@ import {
 import {
   logout,
 } from "@/backend/actions/user";
+import FormButton from "@/components/forms/form-button";
 import NavLink from "@/components/utils/nav-link";
 import {
   ROUTE,
@@ -42,7 +43,7 @@ export const UserControl = ({
           dataOverlay={dataOverlay}
         >
           <span
-            className="icon-[tabler--login] size-6 text-primary-content"
+            className="icon-[tabler--login] size-6 text-neutral"
           />
         </NavLink>
         <span
@@ -65,15 +66,15 @@ export const UserControl = ({
         <div
           className="tooltip [--placement:bottom]"
         >
-          <button
-            type="submit"
-            className="tooltip-toggle btn btn-soft"
+          <FormButton
             aria-label={t("login.actions.logout")}
+            style={Styles.Soft}
+            color={Colors.Primary}
           >
             <span
-              className="icon-[tabler--logout] size-6 text-primary-content"
+              className="icon-[tabler--logout] size-6 text-neutral"
             />
-          </button>
+          </FormButton>
           <span
             className="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible"
             role="tooltip"

@@ -10,6 +10,9 @@ import {
   UserControl,
 } from "@/components/utils/user-control";
 import {
+  APP_TITLE, APP_TITLE_SHORT,
+} from "@/constants";
+import {
   NAMESPACE,
 } from "@/constants/locales";
 import {
@@ -48,12 +51,12 @@ const Header = async ({
             <span
               className="hidden lg:inline"
             >
-              Tomas Richtr - CV
+              {APP_TITLE}
             </span>
             <span
               className="lg:hidden"
             >
-              TR
+              {APP_TITLE_SHORT}
             </span>
           </h5>
         </NavLink>

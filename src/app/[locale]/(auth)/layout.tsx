@@ -5,7 +5,7 @@ import {
 import {
   Shield,
   protectPage,
-} from "@/utils/composables/protectPage";
+} from "@/utils/protectPage";
 
 const AuthLayout = async ({
   children,

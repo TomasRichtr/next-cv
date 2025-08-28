@@ -17,7 +17,6 @@ body {
   @apply absolute top-0 h-screen w-screen bg-secondary/50;
 }
 
-
 h1 {
   @apply text-5xl font-bold;
 }

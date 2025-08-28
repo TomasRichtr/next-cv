@@ -14,3 +14,11 @@ export const createUser = (user: Omit<NewUser, "confirmPassword">) => {
 export const getUserByEmail = (email: string): User | undefined => {
   return db.prepare("SELECT * FROM users WHERE email = ?").get(email) as User | undefined;
 };
+
+export const getUserById = (id: string): User | undefined => {
+  return db.prepare("SELECT * FROM users WHERE id = ?").get(id) as User | undefined;
+};
+
+export const deleteUser = (id: string) => {
+  return db.prepare("DELETE FROM users WHERE id = ?").run(id);
+};

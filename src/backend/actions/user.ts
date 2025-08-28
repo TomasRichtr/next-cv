@@ -4,9 +4,6 @@ import {
   SqliteError,
 } from "better-sqlite3";
 import {
-  pick,
-} from "lodash";
-import {
   redirect,
 } from "next/navigation";
 
@@ -14,7 +11,7 @@ import {
   createAuthSession, destroyAuthSession,
 } from "@/backend/db/auth";
 import {
-  createUser, getUserByEmail,
+  createUser, deleteUser, getUserByEmail,
 } from "@/backend/db/user";
 import {
   ROUTE,
@@ -28,6 +25,7 @@ import {
   NewUser, User,
 } from "@/types/user";
 import {
+  hashUserPassword,
   verifyPassword,
 } from "@/utils/hash";
 import {
@@ -57,7 +55,7 @@ const handleAuthFlow = async (
   let redirectPath;
   try {
     await authAction();
-    redirectPath = ROUTE.USER;
+    redirectPath = ROUTE.PROFILE;
   } catch (err) {
     if (!(err instanceof Error) || !err.message) {
       throw err;
@@ -99,10 +97,11 @@ export const signUp = async (
   return handleAuthFlow(
     async () => {
       await validateNew(user);
-      const userId = createUser(
-          pick(
-            user, [FormFields.Email, FormFields.Password]) as { email: string; password: string },
-      );
+      const hashedPassword = hashUserPassword(user.password);
+      const userId = createUser({
+        email: user.email,
+        password: hashedPassword,
+      });
       await createAuthSession(String(userId));
     },
     userData,
@@ -128,7 +127,6 @@ export const login = async (
     } | undefined,
   formData: FormData,
 ) => {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
   const loginFields = [FormFields.Email, FormFields.Password];
   const userData = extractFormData(formData, loginFields);
   const user: Omit<User, "id"> = userData as unknown as Omit<User, "id">;
@@ -174,5 +172,11 @@ export const auth = async (
 
 export const logout = async () => {
   await destroyAuthSession();
+  redirect(ROUTE.HOME);
+};
+
+export const removeUser = async (userId: string) => {
+  await destroyAuthSession();
+  deleteUser(userId);
   redirect(ROUTE.HOME);
 };

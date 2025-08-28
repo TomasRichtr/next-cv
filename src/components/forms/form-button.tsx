@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  useEffect, useRef, useState,
+  ReactNode, useEffect, useRef, useState,
 } from "react";
 import {
   useFormStatus,
@@ -9,16 +9,24 @@ import {
 
 import Loader from "@/components/utils/loader";
 import {
-  Sizes,
+  Colors,
+  Sizes, Styles,
 } from "@/types/theme";
+import {
+  getBtnColor, getBtnStyle,
+} from "@/utils/theme";
 
 const FormButton = ({
   label,
-  variant = "primary",
+  children,
+  style,
+  color,
   type = "submit",
 }: {
-  label: string;
-  variant?: "primary" | "secondary" | "accent" | "info" | "success" | "warning" | "error";
+  label?: string;
+  children?: ReactNode;
+  style?: Styles;
+  color?: Colors;
   type?: "submit" | "button";
 }) => {
   const {
@@ -39,29 +47,15 @@ const FormButton = ({
   }, [pending, buttonSize]);
 
   const getButtonStyles = () => {
-    const baseStyles = "btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
-
-    switch (variant) {
-    case "primary":
-      return `${baseStyles} btn-primary`;
-    case "secondary":
-      return `${baseStyles} btn-secondary`;
-    case "accent":
-      return `${baseStyles} btn-accent`;
-    case "info":
-      return `${baseStyles} btn-info`;
-    case "success":
-      return `${baseStyles} btn-success`;
-    case "warning":
-      return `${baseStyles} btn-warning`;
-    case "error":
-      return `${baseStyles} btn-error`;
-    default:
-      return baseStyles;
+    let baseStyles = "tooltip-toggle btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
+    if (color) {
+      baseStyles = `${baseStyles} ${getBtnColor(color)}`;
     }
+    if (style) {
+      baseStyles = `${baseStyles} ${getBtnStyle(style)}`;
+    }
+    return baseStyles;
   };
-
-  const buttonType = type || (variant === "primary" ? "submit" : "button");
 
   const buttonStyle = buttonSize ? {
     width: `${buttonSize.width}px`,
@@ -74,13 +68,13 @@ const FormButton = ({
       disabled={pending}
       className={getButtonStyles()}
       style={buttonStyle}
-      type={buttonType}
+      type={type}
     >
       {pending ? (
         <Loader
           size={Sizes.LG}
         />
-      ) : label}
+      ) : (children || label)}
     </button>
   );
 };

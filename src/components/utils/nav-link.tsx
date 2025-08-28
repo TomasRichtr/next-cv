@@ -14,6 +14,9 @@ import {
 import {
   Colors, Styles,
 } from "@/types/theme";
+import {
+  getBtnColor, getBtnStyle,
+} from "@/utils/theme";
 
 interface NavLinkProps {
   href: string;
@@ -43,18 +46,30 @@ const NavLink = ({
     ? activeFor.includes(normalizedPath)
     : normalizedPath === href || (href !== "/" && normalizedPath.endsWith(href));
 
+  const getNavLinkStyles = () => {
+    let baseStyles = "no-underline flex items-center justify-center transition-colors duration-150 hover:text-primary hover:underline";
+
+    if (isActive) {
+      baseStyles = `${baseStyles} text-primary font-medium underline`;
+    } else {
+      baseStyles = `${baseStyles} text-secondary`;
+    }
+
+    if (style) {
+      baseStyles = `${baseStyles} btn ${getBtnStyle(style)}`;
+    }
+
+    if (color) {
+      baseStyles = `${baseStyles} ${getBtnColor(color)}`;
+    }
+
+    return baseStyles;
+  };
+
   return (
     <Link
       data-overlay={dataOverlay}
-      className={
-        `
-          btn-${color} no-underline flex items-center justify-center
-          transition-colors duration-150 hover:text-primary hover:underline 
-          ${isActive ? "text-primary font-medium underline" : "text-secondary"}
-          ${style ? `btn btn-${style}` : ""}
-          ${color ? `btn-${color}` : ""}
-        `
-      }
+      className={getNavLinkStyles()}
       href={href}
     >
       {children}

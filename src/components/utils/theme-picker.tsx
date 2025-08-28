@@ -12,7 +12,7 @@ import RadioButton from "@/components/forms/radio-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import {
   useLocalStorage,
-} from "@/utils/composables/useLocaleStorage";
+} from "@/utils/useLocaleStorage";
 
 const THEMES = {
   auto: "auto",
