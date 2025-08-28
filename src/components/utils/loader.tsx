@@ -1,27 +1,32 @@
+import {
+  useMemo,
+} from "react";
+
+import {
+  Sizes,
+} from "@/types/theme";
 
 interface LoaderProps {
   text?: string;
   withMargin?: boolean;
-  size?: number;
+  size?: Sizes;
 }
 
 const Loader = ({
   text,
-  size = 48,
+  size = Sizes.MD,
 }: LoaderProps) => {
+  const flyonUISize = useMemo(() => {
+    return `loading-${size}`;
+  }, [size]);
+
   return (
     <div
-      className="flex flex-col justify-center items-center gap-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-[1000]"
+      className="flex flex-col justify-center items-center gap-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-1000"
     >
-      <div>
-        <div
-          className="border-4 border-secondary-200 border-t-secondary-400 rounded-full animate-spin"
-          style={{
-            width: `${size}px`,
-            height: `${size}px`,
-          }}
-        />
-      </div>
+      <span
+        className={`loading loading-bars ${flyonUISize}`.trim()}
+      />
       {text && (
         <p
           className="text-xl font-medium m-0 tracking-wide text-secondary-400 animate-pulse"

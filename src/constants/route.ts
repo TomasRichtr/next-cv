@@ -3,4 +3,8 @@ export const ROUTE = Object.freeze({
   LOGIN: "/login",
   SIGNUP: "/signup",
   USER: "/user",
+  EXPERIENCE: "/experience",
+  SKILLS: "/skills",
+  CONTACT: "/contact",
+  REFERENCES: "/references",
 });

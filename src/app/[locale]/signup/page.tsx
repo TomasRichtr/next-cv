@@ -3,11 +3,11 @@ import {
   LoginMode,
 } from "@/types/user";
 import {
-  Shield, usePageProtection,
-} from "@/utils/composables/usePageProtection";
+  Shield, protectPage,
+} from "@/utils/composables/protectPage";
 
 const SignUpPage = async () => {
-  await usePageProtection([Shield.SIGN_UP]);
+  await protectPage([Shield.SIGN_UP]);
 
   return (
     <AuthForm

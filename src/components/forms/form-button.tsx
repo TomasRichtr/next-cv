@@ -1,13 +1,16 @@
 "use client";
 
 import {
-  useRef, useEffect, useState,
+  useEffect, useRef, useState,
 } from "react";
 import {
   useFormStatus,
 } from "react-dom";
 
 import Loader from "@/components/utils/loader";
+import {
+  Sizes,
+} from "@/types/theme";
 
 const FormButton = ({
   label,
@@ -15,7 +18,7 @@ const FormButton = ({
   type = "submit",
 }: {
   label: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "accent" | "info" | "success" | "warning" | "error";
   type?: "submit" | "button";
 }) => {
   const {
@@ -36,18 +39,28 @@ const FormButton = ({
   }, [pending, buttonSize]);
 
   const getButtonStyles = () => {
-    const baseStyles = "relative flex justify-center items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
+    const baseStyles = "btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
 
     switch (variant) {
     case "primary":
-      return `${baseStyles} bg-primary-500 hover:bg-primary-600 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`;
+      return `${baseStyles} btn-primary`;
     case "secondary":
+      return `${baseStyles} btn-secondary`;
+    case "accent":
+      return `${baseStyles} btn-accent`;
+    case "info":
+      return `${baseStyles} btn-info`;
+    case "success":
+      return `${baseStyles} btn-success`;
+    case "warning":
+      return `${baseStyles} btn-warning`;
+    case "error":
+      return `${baseStyles} btn-error`;
     default:
-      return `${baseStyles} bg-transparent hover:bg-secondary-50 text-secondary-700 border-2 border-secondary-300 hover:border-secondary-400`;
+      return baseStyles;
     }
   };
 
-  // Determine button type based on variant if not explicitly provided
   const buttonType = type || (variant === "primary" ? "submit" : "button");
 
   const buttonStyle = buttonSize ? {
@@ -65,7 +78,7 @@ const FormButton = ({
     >
       {pending ? (
         <Loader
-          size={24}
+          size={Sizes.LG}
         />
       ) : label}
     </button>

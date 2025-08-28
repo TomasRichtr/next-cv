@@ -20,7 +20,7 @@ const NotFound = async ({
       className="mt-20 text-center"
     >
       <h1
-        className="text-8xl m-0 font-black uppercase bg-cover bg-center font-montserrat bg-gradient-to-r from-error to-warning bg-clip-text text-transparent"
+        className="text-8xl m-0 font-black uppercase bg-cover bg-center font-montserrat bg-linear-to-r from-error to-warning bg-clip-text text-transparent"
       >
         {t("notFound.title")}
       </h1>

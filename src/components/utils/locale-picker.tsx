@@ -14,10 +14,11 @@ import {
   useTranslation,
 } from "react-i18next";
 
+import RadioButton from "@/components/forms/radio-button";
+import WithSkeleton from "@/components/layout/with-skeleton";
 import {
   LOCALES,
 } from "@/constants/locales";
-import i18nConfig from "@/utils/locales/i18n.config";
 
 const LocalePicker = () => {
   const {
@@ -28,37 +29,45 @@ const LocalePicker = () => {
   const router = useRouter();
   const currentPathname = usePathname();
 
-  const handleLocaleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleLocaleChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newLocale = e.target.value;
     if (currentLocale === newLocale) return;
 
-    if(
-      currentLocale === i18nConfig.defaultLocale &&
-        !i18nConfig.prefixDefault
-    ) {
-      router.push(`/${newLocale}${currentPathname}`);
-    } else {
-      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
-    }
+    await i18n.changeLanguage(newLocale);
+
+    const pathSegments = currentPathname.split("/").filter(Boolean);
+    const firstSegment = pathSegments[0];
+
+    const isFirstSegmentLocale = values(LOCALES).includes(firstSegment);
+    const pathWithoutLocale = isFirstSegmentLocale
+      ? `/${ pathSegments.slice(1).join("/")}`
+      : currentPathname;
+
+    const newPath = `/${newLocale}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
+    router.push(newPath);
     router.refresh();
   };
 
   return (
-    <select
-      onChange={handleLocaleChange}
-      value={currentLocale}
-    >
-      {values(LOCALES).map((locale) => {
-        return (
-          <option
-            key={locale}
-            value={locale}
-          >
-            {locale}
-          </option>
-        );
-      })}
-    </select>
+    <WithSkeleton>
+      <div
+        className="join drop-shadow"
+      >
+        {values(LOCALES).map((locale) => {
+          return (
+            <RadioButton
+              name="locale-picker"
+              key={locale}
+              selectedValue={currentLocale}
+              value={locale}
+              label={locale.toUpperCase()}
+              radioChangeHandler={handleLocaleChange}
+            />
+          );
+        })}
+      </div>
+    </WithSkeleton>
+
   );
 };
 

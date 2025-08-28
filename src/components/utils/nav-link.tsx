@@ -11,17 +11,26 @@ import {
 import {
   LOCALES,
 } from "@/constants/locales";
+import {
+  Colors, Styles,
+} from "@/types/theme";
 
 interface NavLinkProps {
   href: string;
   children: ReactNode;
   activeFor?: string[];
+  dataOverlay?: string;
+  color?: Colors;
+  style?: Styles
 }
 
 const NavLink = ({
   href,
   children,
   activeFor,
+  dataOverlay,
+  color,
+  style,
 }: NavLinkProps) => {
   const path = usePathname();
 
@@ -36,9 +45,16 @@ const NavLink = ({
 
   return (
     <Link
-      className={`inline-block px-3 py-2 text-secondary-700 no-underline transition-colors duration-150 hover:text-primary-600 hover:underline ${
-        isActive ? "text-primary-700 font-medium underline" : ""
-      }`}
+      data-overlay={dataOverlay}
+      className={
+        `
+          btn-${color} no-underline flex items-center justify-center
+          transition-colors duration-150 hover:text-primary hover:underline 
+          ${isActive ? "text-primary font-medium underline" : "text-secondary"}
+          ${style ? `btn btn-${style}` : ""}
+          ${color ? `btn-${color}` : ""}
+        `
+      }
       href={href}
     >
       {children}

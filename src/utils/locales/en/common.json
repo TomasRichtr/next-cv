@@ -10,9 +10,14 @@
     "description": "Something went wrong!"
   },
   "navigation": {
+    "menu": "Tomas Richtr - CV",
     "home": "Home",
     "login": "Login",
-    "user": "User"
+    "user": "User",
+    "experience": "Experience",
+    "skills": "Skills",
+    "contact": "Contact",
+    "references": "References"
   },
   "login": {
     "actions": {
@@ -52,6 +57,14 @@
       "noQuote": "No quote received from API",
       "fetchFailed": "Failed to fetch quote: {{message}}",
       "unknownError": "Unknown error occurred while fetching quote"
+    }
+  },
+  "password": {
+    "strength": {
+      "level": "Level:",
+      "levels": ["Empty", "Weak", "Medium", "Strong", "Very Strong", "Super Strong"],
+      "requirements": "Your password must contain:",
+      "description": "Password must be at least 8 characters with lowercase, uppercase, numbers, and special characters."
     }
   },
   "loading": "Loading..."

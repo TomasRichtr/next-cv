@@ -1,50 +1,67 @@
-// FlyonuiScript.tsx
 "use client";
 
-// Optional third-party libraries
-import $ from "jquery";
-import _ from "lodash";
+import {
+  isFunction,
+} from "lodash";
 import {
   usePathname,
 } from "next/navigation";
-import noUiSlider from "nouislider";
 import {
   useEffect,
 } from "react";
-import "datatables.net";
-import "dropzone/dist/dropzone-min.js";
-
-window.$ = $;
-window._ = _;
-window.jQuery = $;
-window.DataTable = $.fn.dataTable;
-window.noUiSlider = noUiSlider;
 
 async function loadFlyonUI() {
   return import("flyonui/flyonui");
 }
 
-export default function FlyonuiScript() {
+const FlyonuiScript = () => {
   const path = usePathname();
 
   useEffect(() => {
     const initFlyonUI = async () => {
-      await loadFlyonUI();
+      try {
+        await loadFlyonUI();
+      } catch (error) {
+        console.error("Failed to load FlyonUI:", error);
+      }
     };
 
     initFlyonUI();
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (
-        window.HSStaticMethods &&
-                typeof window.HSStaticMethods.autoInit === "function"
-      ) {
-        window.HSStaticMethods.autoInit();
+    const initComponents = async () => {
+      // Wait for DOM to be ready
+      if (document.readyState !== "loading") {
+        initComponentsNow();
+      } else {
+        document.addEventListener("DOMContentLoaded", initComponentsNow);
       }
-    }, 100);
+    };
+
+    const initComponentsNow = () => {
+      // Try multiple times with increasing delays to ensure components are initialized
+      const attempts = [0, 50, 100, 200, 500];
+
+      attempts.forEach((delay, index) => {
+        setTimeout(() => {
+          if (isFunction(window.HSStaticMethods?.autoInit)) {
+            try {
+              window.HSStaticMethods.autoInit();
+            } catch (error) {
+              console.error("FlyonUI autoInit failed:", error);
+            }
+          } else if (index === attempts.length - 1) {
+            console.warn("FlyonUI HSStaticMethods not available after multiple attempts");
+          }
+        }, delay);
+      });
+    };
+
+    initComponents();
   }, [path]);
 
   return null;
-}
+};
+
+export default FlyonuiScript;

@@ -11,6 +11,8 @@ import {
   auth,
 } from "@/backend/actions/user";
 import FormButton from "@/components/forms/form-button";
+import WithSkeleton from "@/components/layout/with-skeleton";
+import Loader from "@/components/utils/loader";
 import NavLink from "@/components/utils/nav-link";
 import {
   ROUTE,
@@ -34,35 +36,55 @@ export default function AuthForm({
   return (
     <form
       id="auth-form"
-      className="flex flex-col gap-2 min-w-96"
+      className="flex flex-col gap-8 w-full md:w-auto md:min-w-96"
       action={formAction}
     >
-      <TextInput
-        type="email"
-        name={FormFields.Email}
-        id={FormFields.Email}
-        label={t("login.labels.email")}
-        defaultValue={formState?.data.email}
-        error={formState?.field === "email" ? formState.message : undefined}
-      />
-      <TextInput
-        type="password"
-        name={FormFields.Password}
-        id={FormFields.Password}
-        label={t("login.labels.password")}
-        defaultValue={formState?.data.password}
-        error={formState?.field === "password" ? formState.message : undefined}
-      />
-      {mode === LoginMode.Signup && (
-      <TextInput
-        type="password"
-        name={FormFields.ConfirmPassword}
-        id={FormFields.ConfirmPassword}
-        label={t("login.labels.confirmPassword")}
-        defaultValue={formState?.data.confirmPassword}
-        error={formState?.field === "confirmPassword" ? formState.message : undefined}
-      />
-      )}
+      <WithSkeleton
+        heightClass="h-12"
+        widthClass="w-full"
+      >
+        <TextInput
+          type="email"
+          name={FormFields.Email}
+          id={FormFields.Email}
+          label={t("login.labels.email")}
+          defaultValue={formState?.data.email}
+          error={formState?.field === "email" ? formState.message : undefined}
+        />
+      </WithSkeleton>
+      <div
+        className="flex flex-col gap-6"
+      >
+        <WithSkeleton
+          heightClass={`${mode === LoginMode.Signup ? "h-20" : "h-12"}`}
+          widthClass={`${mode === LoginMode.Signup ? "w-full md:w-[578px]" : "w-full"}`}
+        >
+          <TextInput
+            type="password"
+            name={FormFields.Password}
+            id={FormFields.Password}
+            label={t("login.labels.password")}
+            defaultValue={formState?.data.password}
+            meterPassword={mode === LoginMode.Signup}
+            error={formState?.field === "password" ? formState.message : undefined}
+          />
+        </WithSkeleton>
+        {mode === LoginMode.Signup && (
+        <WithSkeleton
+          heightClass="h-12"
+          widthClass="w-full"
+        >
+          <TextInput
+            type="password"
+            name={FormFields.ConfirmPassword}
+            id={FormFields.ConfirmPassword}
+            label={t("login.labels.confirmPassword")}
+            defaultValue={formState?.data.confirmPassword}
+            error={formState?.field === "confirmPassword" ? formState.message : undefined}
+          />
+        </WithSkeleton>
+        )}
+      </div>
       {
         formState?.message && !formState?.field && (
         <p
@@ -73,7 +95,7 @@ export default function AuthForm({
         )
       }
       <div
-        className="mt-6 flex items-center gap-3"
+        className="flex flex-col md:flex-row items-center gap-3 justify-between"
       >
         <FormButton
           label={mode === LoginMode.Signup ? t("login.actions.signup") : t("login.actions.login")}

@@ -4,15 +4,15 @@ import {
 
 import {
   Shield,
-  usePageProtection,
-} from "@/utils/composables/usePageProtection";
+  protectPage,
+} from "@/utils/composables/protectPage";
 
 const AuthLayout = async ({
   children,
 }: {
     children: ReactNode;
 }) => {
-  await usePageProtection([Shield.AUTH]);
+  await protectPage([Shield.AUTH]);
 
   return (
     <>

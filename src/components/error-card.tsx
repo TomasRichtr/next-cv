@@ -1,11 +1,10 @@
 "use client";
 
 import {
-  isEmpty,
-  get,
+  get, isEmpty,
 } from "lodash";
 import {
-  useEffect, useState, useCallback,
+  useCallback, useEffect, useState,
 } from "react";
 import {
   useTranslation,
@@ -16,8 +15,11 @@ import {
   Quote,
 } from "@/types/error";
 import {
-  QuoteError, QuoteApiResponse, QUOTE_ERROR_KEYS,
+  QUOTE_ERROR_KEYS, QuoteApiResponse, QuoteError,
 } from "@/types/quote";
+import {
+  Sizes,
+} from "@/types/theme";
 import {
   createQuoteError, isQuoteError,
 } from "@/utils/quote-helpers";
@@ -107,7 +109,7 @@ const ErrorCard = () => {
   if (loading) {
     return (
       <Loader
-        size={32}
+        size={Sizes.XL}
       />
     );
   }

@@ -1,6 +1,9 @@
 import sql from "better-sqlite3";
 
 import {
+  UserRole,
+} from "@/types/user";
+import {
   hashUserPassword,
 } from "@/utils/hash";
 
@@ -10,7 +13,8 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
     email TEXT UNIQUE,
-    password TEXT
+    password TEXT,
+    role TEXT DEFAULT 'user'
   );
 `);
 
@@ -52,8 +56,8 @@ if (adminEmail && adminPassword) {
 
   if (!existingAdmin) {
     const hashedPassword = hashUserPassword(adminPassword);
-    db.prepare("INSERT INTO users (email, password) VALUES (?, ?)")
-      .run(adminEmail, hashedPassword);
+    db.prepare("INSERT INTO users (email, password, role) VALUES (?, ?, ?)")
+      .run(adminEmail, hashedPassword, UserRole.Admin);
   }
 }
 

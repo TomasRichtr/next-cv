@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import React, {
   ReactNode,
 } from "react";
@@ -57,9 +57,11 @@ const RootLayout = async ({
           <div
             className="min-h-screen bg-background"
           >
-            <Header />
+            <Header
+              locale={locale}
+            />
             <main
-              className="h-full py-10 flex flex-col gap-6 items-center justify-center"
+              className="h-full py-5 md:py-10 px-10 md:px-10 flex flex-col gap-6 items-center justify-center"
             >
               {children}
             </main>

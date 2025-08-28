@@ -11,14 +11,14 @@ export const validateNew = async (user: NewUser & { confirmPassword?: string }) 
     "any.required": "validation.email.required",
     "string.min": "validation.password.minLength",
     "string.max": "validation.password.maxLength",
-    "string.pattern.base": "validation.password.pattern",
+    "string.pattern.base": "password.strength.description",
     "any.only": "validation.confirmPassword.match",
   };
 
   try {
     await Joi.object({
       [FormFields.Email]: Joi.string().email().required(),
-      [FormFields.Password]: Joi.string().min(8).max(128).pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/).required(),
+      [FormFields.Password]: Joi.string().min(8).max(128).pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[&!@_])/).required(),
       [FormFields.ConfirmPassword]: Joi.string().valid(Joi.ref(FormFields.Password)).required(),
     }).validateAsync(user);
   } catch (error: unknown) {

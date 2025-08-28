@@ -14,7 +14,7 @@ export enum Shield {
     SIGN_UP = "signUp"
 }
 
-export const usePageProtection = async (shields: Shield[]) => {
+export const protectPage = async (shields: Shield[]) => {
   if (shields.includes(Shield.AUTH)) {
     const {
       user,

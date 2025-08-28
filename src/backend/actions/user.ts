@@ -128,6 +128,7 @@ export const login = async (
     } | undefined,
   formData: FormData,
 ) => {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const loginFields = [FormFields.Email, FormFields.Password];
   const userData = extractFormData(formData, loginFields);
   const user: Omit<User, "id"> = userData as unknown as Omit<User, "id">;
