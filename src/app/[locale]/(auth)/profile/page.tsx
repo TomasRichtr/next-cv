@@ -1,15 +1,8 @@
-
-
 import {
   verifyAuthSession,
 } from "@/backend/db/auth";
-import {
-  getUserById,
-} from "@/backend/db/user";
-import UserInfoCard from "@/components/utils/user-info-card";
-import {
-  NAMESPACE,
-} from "@/constants/locales";
+import PageWrapper from "@/components/layout/page-wrapper";
+import UserCard from "@/components/user/user-card";
 import {
   LocaleParam,
 } from "@/types";
@@ -22,7 +15,7 @@ const UserProfilePage = async ({
     user,
   } = await verifyAuthSession();
 
-  const dbUser = getUserById(user!.id)!;
+  if (!user) return;
 
   const {
     locale,
@@ -30,17 +23,21 @@ const UserProfilePage = async ({
 
   const {
     t,
-  } = await initTranslations(locale, [NAMESPACE.COMMON]);
+  } = await initTranslations(locale);
 
   return (
-    <div
-      className="flex justify-center p-6"
+    <PageWrapper
+      title={t("profile.title")}
     >
-      <UserInfoCard
-        user={dbUser}
-        t={t}
-      />
-    </div>
+      <div
+        className="w-full"
+      >
+        <UserCard
+          t={t}
+          userId={user.id}
+        />
+      </div>
+    </PageWrapper>
   );
 };
 

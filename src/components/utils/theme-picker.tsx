@@ -1,11 +1,9 @@
 "use client";
 
 import {
-  values,
-} from "lodash";
-import {
   ChangeEvent,
   useEffect,
+  useState,
 } from "react";
 
 import RadioButton from "@/components/forms/radio-button";
@@ -16,40 +14,79 @@ import {
 
 const THEMES = {
   auto: "auto",
-  light: "light",
-  dark: "dark",
+  manual: "manual",
 } as const;
 
 const ThemePicker = () => {
   const [currentTheme, setCurrentTheme] = useLocalStorage("theme", "auto");
+  const [manualTheme, setManualTheme] = useLocalStorage("manualTheme", "light");
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const updateSystemTheme = () => {
+      setSystemTheme(mediaQuery.matches ? "dark" : "light");
+    };
+
+    updateSystemTheme();
+
+    mediaQuery.addEventListener("change", updateSystemTheme);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateSystemTheme);
+    };
+  }, []);
 
   useEffect(() => {
     if (currentTheme === "auto") {
       document.documentElement.removeAttribute("data-theme");
     } else {
-      document.documentElement.setAttribute("data-theme", currentTheme);
+      document.documentElement.setAttribute("data-theme", manualTheme);
     }
-  }, [currentTheme]);
+  }, [currentTheme, manualTheme]);
 
   const handleThemeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newTheme = e.target.value;
     if (currentTheme === newTheme) return;
 
-    setCurrentTheme(newTheme);
-    if (newTheme === "auto") {
+    if (newTheme === THEMES.auto) {
+      setCurrentTheme(THEMES.auto);
       document.documentElement.removeAttribute("data-theme");
     } else {
-      document.documentElement.setAttribute("data-theme", newTheme);
+      setCurrentTheme(THEMES.manual);
+      document.documentElement.setAttribute("data-theme", manualTheme);
+    }
+  };
+
+  const handleManualToggle = () => {
+    if (currentTheme === THEMES.auto) {
+      const oppositeTheme = systemTheme === "dark" ? "light" : "dark";
+      setManualTheme(oppositeTheme);
+      setCurrentTheme(THEMES.manual);
+      document.documentElement.setAttribute("data-theme", oppositeTheme);
+    } else {
+      const newManualTheme = manualTheme === "light" ? "dark" : "light";
+      setManualTheme(newManualTheme);
+      document.documentElement.setAttribute("data-theme", newManualTheme);
     }
   };
 
   const getIcon = (theme: string) => {
-    if (theme === "auto") {
+    if (theme === THEMES.auto) {
       return "icon-[tabler--brightness-auto]";
-    } else if (theme === "dark") {
-      return "icon-[tabler--moon]";
     }
-    return "icon-[tabler--sun]";
+
+    const themeToShow = currentTheme === THEMES.auto
+      ? (systemTheme === "dark" ? "light" : "dark")
+      : manualTheme;
+
+    return themeToShow === "dark" ? "icon-[tabler--moon]" : "icon-[tabler--sun]";
+  };
+
+  const buildManualButtonClass = () => {
+    const baseClasses = "join-item btn btn-square w-14";
+    const activeClasses = currentTheme === THEMES.manual ? "btn-primary text-primary-content" : "btn-soft";
+    return `${activeClasses} ${baseClasses}`;
   };
 
   return (
@@ -59,22 +96,27 @@ const ThemePicker = () => {
       <div
         className="join drop-shadow"
       >
-        {values(THEMES).map((theme) => {
-          return (
-            <RadioButton
-              name="theme-picker"
-              key={theme}
-              selectedValue={currentTheme}
-              value={theme}
-              label={`${theme} theme`}
-              radioChangeHandler={handleThemeChange}
-            >
-              <span
-                className={`${getIcon(theme)} size-6`}
-              />
-            </RadioButton>
-          );
-        })}
+        <RadioButton
+          name="theme-picker"
+          selectedValue={currentTheme}
+          value={THEMES.auto}
+          label="auto theme"
+          radioChangeHandler={handleThemeChange}
+        >
+          <span
+            className={`${getIcon(THEMES.auto)} size-6`}
+          />
+        </RadioButton>
+        <button
+          className={buildManualButtonClass()}
+          onClick={handleManualToggle}
+          aria-label={`${manualTheme} theme`}
+          type="button"
+        >
+          <span
+            className={`${getIcon(THEMES.manual)} size-6`}
+          />
+        </button>
       </div>
     </WithSkeleton>
   );

@@ -1,35 +1,40 @@
 import Navigation from "@/components/layout/navigation";
+import {
+  UserControl,
+} from "@/components/user/user-control";
 import LocalePicker from "@/components/utils/locale-picker";
 import ThemePicker from "@/components/utils/theme-picker";
 import {
-  UserControl,
-} from "@/components/utils/user-control";
+  APP_TITLE,
+} from "@/constants";
 
 interface HeaderDrawerProps {
-  t: (key: string) => string;
-  user: {id: string} | null;
+  t: (key: string) => string
+  userId?: string;
 }
 
+const HEADER_DRAWER_ID = "mobile-drawer";
+
 const HeaderDrawer = ({
-  t, user,
+  t, userId,
 }: HeaderDrawerProps) => {
   return (
     <>
       <button
         type="button"
-        className="btn btn-text btn-circle md:hidden btn-lg"
+        className="btn btn-text btn-circle lg:hidden btn-lg"
         aria-haspopup="dialog"
         aria-expanded="false"
-        aria-controls="mobile-drawer"
-        data-overlay="#mobile-drawer"
+        aria-controls={HEADER_DRAWER_ID}
+        data-overlay={`#${HEADER_DRAWER_ID}`}
       >
         <span
-          className="icon-[tabler--menu-2] size-8 text-primary-content"
+          className="icon-[tabler--menu-2] size-8 text-primary"
         />
       </button>
 
       <div
-        id="mobile-drawer"
+        id={HEADER_DRAWER_ID}
         className="overlay overlay-open:translate-x-0 drawer drawer-end hidden"
         role="dialog"
         tabIndex={-1}
@@ -41,15 +46,15 @@ const HeaderDrawer = ({
             className="drawer-header"
           >
             <h5
-              className="drawer-title text-primary-content"
+              className="drawer-title text-primary"
             >
-              Tomas Richtr - CV
+              {APP_TITLE}
             </h5>
             <button
               type="button"
               className="btn btn-text btn-circle btn-sm absolute end-3 top-3"
               aria-label="Close"
-              data-overlay="#mobile-drawer"
+              data-overlay={`#${HEADER_DRAWER_ID}`}
             >
               <span
                 className="icon-[tabler--x] size-5"
@@ -60,22 +65,23 @@ const HeaderDrawer = ({
             className="drawer-body flex-1 overflow-y-auto"
           >
             <Navigation
+              dataOverlay={`#${HEADER_DRAWER_ID}`}
               t={t}
-              user={user}
-              dataOverlay="#mobile-drawer"
+              userId={userId}
             />
           </div>
           <div
             className="drawer-footer"
           >
             <div
-              className="flex justify-center gap-3 w-full"
+              className="flex justify-start gap-3 w-full"
             >
               <LocalePicker />
               <ThemePicker />
               <UserControl
-                dataOverlay="#mobile-drawer"
-                user={user}
+                t={t}
+                dataOverlay={`#${HEADER_DRAWER_ID}`}
+                userId={userId}
               />
             </div>
           </div>

@@ -22,6 +22,8 @@ export const protectPage = async (shields: Shield[]) => {
     if (!user) {
       return redirect(ROUTE.HOME);
     }
+
+    return user.id;
   }
 
   if (shields.includes(Shield.SIGN_UP)) {

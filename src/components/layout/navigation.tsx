@@ -4,8 +4,8 @@ import {
 } from "@/constants/route";
 
 interface NavigationProps {
-  t: (key: string) => string;
-  user: { id: string } | null;
+  t: (key: string) => string
+  userId?: string;
   dataOverlay?: string;
 }
 
@@ -16,12 +16,11 @@ const NAVIGATION_ITEMS = [
   ROUTE.REFERENCES,
 ];
 
-const Navigation = ({
-  t, dataOverlay, user,
+const Navigation = async ({
+  dataOverlay, t, userId,
 }: NavigationProps) => {
-
   const getNavItems = () => {
-    if (user) {
+    if (userId) {
       return [
         ...NAVIGATION_ITEMS,
         ROUTE.PROFILE,
@@ -32,7 +31,7 @@ const Navigation = ({
 
   return (
     <nav
-      className="flex flex-col md:flex-row flex-1 gap-4 md:gap-2 items-start text-lg"
+      className="flex flex-col lg:flex-row flex-1 gap-4 lg:gap-4 items-start text-lg"
     >
       {getNavItems().map((route) => {
         return (

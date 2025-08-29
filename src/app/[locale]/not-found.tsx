@@ -1,9 +1,6 @@
 import React from "react";
 
 import ErrorCard from "@/components/error-card";
-import {
-  NAMESPACE,
-} from "@/constants/locales";
 import initTranslations from "@/utils/locales/i18n";
 
 const NotFound = async ({
@@ -11,9 +8,7 @@ const NotFound = async ({
 }: { locale: string }) => {
   const {
     t,
-  } = await initTranslations(locale, [
-    NAMESPACE.COMMON,
-  ]);
+  } = await initTranslations(locale);
 
   return (
     <main

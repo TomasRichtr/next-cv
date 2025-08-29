@@ -3,41 +3,33 @@ import {
 } from "@/backend/db/auth";
 import HeaderDrawer from "@/components/layout/header-drawer";
 import Navigation from "@/components/layout/navigation";
+import {
+  UserControl,
+} from "@/components/user/user-control";
 import LocalePicker from "@/components/utils/locale-picker";
 import NavLink from "@/components/utils/nav-link";
 import ThemePicker from "@/components/utils/theme-picker";
 import {
-  UserControl,
-} from "@/components/utils/user-control";
-import {
   APP_TITLE, APP_TITLE_SHORT,
 } from "@/constants";
 import {
-  NAMESPACE,
-} from "@/constants/locales";
-import {
   ROUTE,
 } from "@/constants/route";
-import {
-  Colors, Styles,
-} from "@/types/theme";
-import initTranslations from "@/utils/locales/i18n";
+
+interface HeaderProps {
+  t: (key: string) => string
+}
 
 const Header = async ({
-  locale,
-}: {locale: string}) => {
-
-  const {
-    t,
-  } = await initTranslations(locale, [NAMESPACE.COMMON]);
-
+  t,
+}: HeaderProps) => {
   const {
     user,
   } = await verifyAuthSession();
 
   return (
     <header
-      className="w-full bg-background border-b mx-auto px-8 py-4 flex items-center justify-end md:justify-between"
+      className="w-full bg-background border-b mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
     >
       <div
         className="flex items-center w-full gap-4"
@@ -61,11 +53,11 @@ const Header = async ({
           </h5>
         </NavLink>
         <div
-          className="hidden md:block"
+          className="hidden lg:block"
         >
           <Navigation
             t={t}
-            user={user}
+            userId={user?.id}
           />
         </div>
       </div>
@@ -74,19 +66,20 @@ const Header = async ({
         className="flex gap-3 items-center"
       >
         <div
-          className="hidden md:flex gap-3 items-center"
+          className="hidden lg:flex gap-3 items-center"
         >
           <LocalePicker />
           <ThemePicker />
           <UserControl
-            user={user}
+            t={t}
+            userId={user?.id}
           />
         </div>
       </div>
 
       <HeaderDrawer
         t={t}
-        user={user}
+        userId={user?.id}
       />
     </header>
   );

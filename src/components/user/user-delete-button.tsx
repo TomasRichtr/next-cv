@@ -15,19 +15,26 @@ import {
   Colors,
 } from "@/types/theme";
 
-const UserDelete = ({
-  userId,
-}: {userId: string}) => {
-  const [_, formAction] = useActionState(removeUser.bind(null, userId), undefined);
+interface UserDeleteButtonProps {
+  userId: string,
+  id: string,
+}
 
+const UserDeleteButton = ({
+  userId, id,
+}: UserDeleteButtonProps) => {
   const {
     t,
   } = useTranslation();
+
+  const [_, formAction] = useActionState(removeUser.bind(null, userId), undefined);
 
   return (
     <form
       id="remove-user-form"
       action={formAction}
+      className="inline-block"
+      data-overlay={`#${id}`}
     >
       <FormButton
         label={t("login.actions.removeUser")}
@@ -37,4 +44,4 @@ const UserDelete = ({
   );
 };
 
-export default UserDelete;
+export default UserDeleteButton;

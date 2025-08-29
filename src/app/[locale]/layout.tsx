@@ -7,9 +7,6 @@ import FlyonuiScript from "@/components/flyonui-script";
 import Header from "@/components/layout/header";
 import TranslationsProvider from "@/components/translationsProvider";
 import {
-  NAMESPACE,
-} from "@/constants/locales";
-import {
   LocaleParam,
 } from "@/types";
 import initTranslations from "@/utils/locales/i18n";
@@ -23,7 +20,7 @@ export const generateMetadata = async ({
 
   const {
     t,
-  } = await initTranslations(locale, [NAMESPACE.COMMON]);
+  } = await initTranslations(locale);
 
   return {
     title: t("seoTitle"),
@@ -39,7 +36,7 @@ const RootLayout = async ({
   } = await params;
 
   const {
-    resources,
+    resources, t,
   } = await initTranslations(locale);
 
   return (
@@ -56,10 +53,10 @@ const RootLayout = async ({
             className="min-h-screen bg-background"
           >
             <Header
-              locale={locale}
+              t={t}
             />
             <main
-              className="h-full py-5 md:py-10 px-10 md:px-10 flex flex-col gap-6 items-center justify-center"
+              className="h-full px-4 md:px-6 py-4 md:py-6 flex flex-col gap-6 items-center justify-center max-w-5xl mx-auto"
             >
               {children}
             </main>

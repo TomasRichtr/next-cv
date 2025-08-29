@@ -2,9 +2,6 @@ import Image from "next/image";
 
 import nextJSImg from "@/assets/nextjs.webp";
 import {
-  NAMESPACE,
-} from "@/constants/locales";
-import {
   LocaleParam,
 } from "@/types";
 import initTranslations from "@/utils/locales/i18n";
@@ -18,7 +15,7 @@ const HomePage = async ({
 
   const {
     t,
-  } = await initTranslations(locale, [NAMESPACE.HOME]);
+  } = await initTranslations(locale);
 
   return (
     <>

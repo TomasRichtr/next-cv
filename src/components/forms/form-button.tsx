@@ -37,14 +37,16 @@ const FormButton = ({
   const [buttonSize, setButtonSize] = useState<{ width: number; height: number } | null>(null);
 
   useEffect(() => {
-    if (buttonRef.current && !pending && !buttonSize) {
+    if (buttonRef.current && !pending) {
       const rect = buttonRef.current.getBoundingClientRect();
-      setButtonSize({
-        width: rect.width,
-        height: rect.height,
-      });
+      if (rect.width > 0 && rect.height > 0 && !buttonSize) {
+        setButtonSize({
+          width: rect.width,
+          height: rect.height,
+        });
+      }
     }
-  }, [pending, buttonSize]);
+  }, [pending, buttonSize, label, children]);
 
   const getButtonStyles = () => {
     let baseStyles = "tooltip-toggle btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
@@ -57,7 +59,7 @@ const FormButton = ({
     return baseStyles;
   };
 
-  const buttonStyle = buttonSize ? {
+  const buttonStyle = buttonSize && pending ? {
     width: `${buttonSize.width}px`,
     height: `${buttonSize.height}px`,
   } : {};

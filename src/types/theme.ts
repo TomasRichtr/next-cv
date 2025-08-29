@@ -13,7 +13,8 @@ export enum Colors {
     Info = "info",
     Success = "success",
     Warning = "warning",
-    Error = "error"
+    Error = "error",
+    Neutral = "neutral",
 }
 
 export enum Styles {
