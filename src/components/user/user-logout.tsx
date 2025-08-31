@@ -8,7 +8,7 @@ import {
 
 import {
   logout,
-} from "@/backend/actions/user";
+} from "@/actions/user";
 import FormButton from "@/components/forms/form-button";
 import {
   Colors, Styles,

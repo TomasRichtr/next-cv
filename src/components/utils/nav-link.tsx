@@ -12,6 +12,9 @@ import {
   LOCALES,
 } from "@/constants/locales";
 import {
+  useAppSelector,
+} from "@/store/hooks";
+import {
   Colors, Styles,
 } from "@/types/theme";
 import {
@@ -36,6 +39,7 @@ const NavLink = ({
   style,
 }: NavLinkProps) => {
   const path = usePathname();
+  const hasUnsavedChanges = useAppSelector(state => state.reference.hasUnsavedChanges);
 
   const localePattern = new RegExp(`^/(${LOCALES.join("|")})`);
   const sanitizedPath = path.replace(localePattern, "");
@@ -47,12 +51,16 @@ const NavLink = ({
     : normalizedPath === href || (href !== "/" && normalizedPath.endsWith(href));
 
   const getNavLinkStyles = () => {
-    let baseStyles = "no-underline flex items-center justify-center transition-colors duration-150 hover:text-primary hover:underline";
+    let baseStyles = "no-underline flex items-center justify-center transition-colors duration-150";
+
+    if (hasUnsavedChanges) {
+      baseStyles = `${baseStyles} opacity-50 cursor-not-allowed`;
+    } else {
+      baseStyles = `${baseStyles} hover:text-primary hover:underline`;
+    }
 
     if (isActive) {
-      baseStyles = `${baseStyles} text-primary font-medium underline`;
-    } else {
-      baseStyles = `${baseStyles} text-secondary`;
+      baseStyles = `${baseStyles} font-medium underline`;
     }
 
     if (style) {
@@ -65,6 +73,18 @@ const NavLink = ({
 
     return baseStyles;
   };
+
+  if (hasUnsavedChanges) {
+    return (
+      <span
+        data-overlay={dataOverlay}
+        className={getNavLinkStyles()}
+        title="Please wait for your reference to be saved before navigating"
+      >
+        {children}
+      </span>
+    );
+  }
 
   return (
     <Link

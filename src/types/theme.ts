@@ -15,6 +15,7 @@ export enum Colors {
     Warning = "warning",
     Error = "error",
     Neutral = "neutral",
+    PrimaryContent = "primary-content",
 }
 
 export enum Styles {

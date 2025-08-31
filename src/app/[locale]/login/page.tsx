@@ -1,13 +1,33 @@
 import AuthForm from "@/components/forms/auth-form";
+import PageWrapper from "@/components/layout/page-wrapper";
+import initTranslations from "@/locales/i18n";
+import {
+  LocaleParam,
+} from "@/types";
 import {
   LoginMode,
 } from "@/types/user";
 
-const LoginPage = async () => {
+const LoginPage = async ({
+  params,
+}: LocaleParam) => {
+  const {
+    locale,
+  } = await params;
+
+  const {
+    t,
+  } = await initTranslations(locale);
+
   return (
-    <AuthForm
-      mode={LoginMode.Login}
-    />
+    <PageWrapper
+      title={t("login.title")}
+      description={t("login.description")}
+    >
+      <AuthForm
+        mode={LoginMode.Login}
+      />
+    </PageWrapper>
   );
 };
 

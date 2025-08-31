@@ -6,10 +6,11 @@ import React, {
 import FlyonuiScript from "@/components/flyonui-script";
 import Header from "@/components/layout/header";
 import TranslationsProvider from "@/components/translationsProvider";
+import initTranslations from "@/locales/i18n";
+import ReduxProvider from "@/store/providers";
 import {
   LocaleParam,
 } from "@/types";
-import initTranslations from "@/utils/locales/i18n";
 
 export const generateMetadata = async ({
   params,
@@ -45,23 +46,23 @@ const RootLayout = async ({
     >
       <body>
         <FlyonuiScript />
-        <TranslationsProvider
-          locale={locale}
-          resources={resources}
-        >
-          <div
-            className="min-h-screen bg-background"
+        <ReduxProvider>
+          <TranslationsProvider
+            locale={locale}
+            resources={resources}
           >
-            <Header
-              t={t}
-            />
-            <main
-              className="h-full px-4 md:px-6 py-4 md:py-6 flex flex-col gap-6 items-center justify-center max-w-5xl mx-auto"
+            <div
+              className="min-h-screen bg-background"
             >
-              {children}
-            </main>
-          </div>
-        </TranslationsProvider>
+              <Header
+                t={t}
+              />
+              <main>
+                {children}
+              </main>
+            </div>
+          </TranslationsProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

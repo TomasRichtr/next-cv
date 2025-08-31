@@ -1,0 +1,105 @@
+{
+  "title": "bla bla bla",
+  "description": "bla bla bla bla",
+  "seoTitle": "next.js Boilerplate",
+  "seoDescription": "version of next.js is 15",
+  "notFound": {
+    "title": "Not found",
+    "description": "Requested page doesn't exist, or required permissions are missing."
+  },
+  "error": {
+    "title": "Oops!",
+    "description": "Something went wrong!"
+  },
+  "navigation": {
+    "menu": "CV",
+    "home": "Home",
+    "login": "Login",
+    "user": "User",
+    "experience": "Experience",
+    "skills": "Skills",
+    "contact": "Contact",
+    "references": "References",
+    "profile": "User profile"
+  },
+  "profile": {
+    "title": "User Profile",
+    "labels": {
+      "id": "ID",
+      "email": "Email",
+      "role": "Role"
+    }
+  },
+  "login": {
+    "title": "Welcome Back",
+    "description": "Sign in to your account to leave a professional reference.",
+    "actions": {
+      "logout": "Log out",
+      "signup": "Create an account",
+      "login": "Login",
+      "loginLink": "Login with existing account",
+      "removeUser": "Remove user"
+    },
+    "labels": {
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    }
+  },
+  "signup": {
+    "title": "Leave a Reference",
+    "description": "Create an account to leave a professional reference and recommendation."
+  },
+  "validation": {
+    "email": {
+      "required": "Email is required",
+      "invalid": "Please provide a valid email address",
+      "exists": "Email already exists",
+      "notFound": "User with this email does not exist"
+    },
+    "password": {
+      "required": "Password is required",
+      "minLength": "Password must be at least 8 characters long",
+      "maxLength": "Password cannot exceed 128 characters",
+      "pattern": "Password must contain at least one lowercase letter, one uppercase letter, one uppercase letter, and one number",
+      "incorrect": "Provided password is incorrect"
+    },
+    "confirmPassword": {
+      "required": "Confirm password is required",
+      "match": "Passwords must match"
+    }
+  },
+  "quote": {
+    "errors": {
+      "httpError": "HTTP error! status: {{status}}, message: {{message}}",
+      "noQuote": "No quote received from API",
+      "fetchFailed": "Failed to fetch quote: {{message}}",
+      "unknownError": "Unknown error occurred while fetching quote"
+    }
+  },
+  "password": {
+    "strength": {
+      "level": "Level:",
+      "levels": ["Empty", "Weak", "Medium", "Strong", "Very Strong", "Super Strong"],
+      "requirements": "Your password must contain:",
+      "description": "Password must be at least 8 characters with lowercase, uppercase, numbers, and special characters."
+    }
+  },
+  "modal": {
+    "close": "Close",
+    "saveChanges": "Save changes",
+    "confirmDelete": "Are you sure you want to delete this user? This action cannot be undone."
+  },
+  "loading": "Loading...",
+  "home": {
+    "role": "Web / iOS / Android Developer",
+    "status": "Working on it...👷‍"
+  },
+  "references": {
+    "label": "Leave your reference",
+    "title": "Professional References",
+    "description": "Read what employers and colleagues have to say about my work and professional experience.",
+    "unsavedChangesWarning": "You have unsaved changes to your reference. Are you sure you want to leave?",
+    "unsavedChanges": "Unsaved changes"
+  }
+}

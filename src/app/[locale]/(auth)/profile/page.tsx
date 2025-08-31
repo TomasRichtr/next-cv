@@ -1,14 +1,15 @@
+import PageWrapper from "@/components/layout/page-wrapper";
+import ReferenceCard from "@/components/reference/reference-card";
+import UserCard from "@/components/user/user-card";
 import {
   verifyAuthSession,
-} from "@/backend/db/auth";
-import PageWrapper from "@/components/layout/page-wrapper";
-import UserCard from "@/components/user/user-card";
+} from "@/db/auth";
+import initTranslations from "@/locales/i18n";
 import {
   LocaleParam,
 } from "@/types";
-import initTranslations from "@/utils/locales/i18n";
 
-const UserProfilePage = async ({
+const ProfilePage = async ({
   params,
 }: LocaleParam) => {
   const {
@@ -34,11 +35,14 @@ const UserProfilePage = async ({
       >
         <UserCard
           t={t}
-          userId={user.id}
+          userId={+user.id}
+        />
+        <ReferenceCard
+          userId={+user.id}
         />
       </div>
     </PageWrapper>
   );
 };
 
-export default UserProfilePage;
+export default ProfilePage;

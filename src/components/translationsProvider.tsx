@@ -10,7 +10,7 @@ import {
   I18nextProvider,
 } from "react-i18next";
 
-import initTranslations from "@/utils/locales/i18n";
+import initTranslations from "@/locales/i18n";
 
 const TranslationsProvider = (
   {

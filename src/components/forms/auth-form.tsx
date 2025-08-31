@@ -9,7 +9,7 @@ import {
 
 import {
   auth,
-} from "@/backend/actions/user";
+} from "@/actions/user";
 import FormButton from "@/components/forms/form-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import NavLink from "@/components/utils/nav-link";
@@ -23,11 +23,11 @@ import {
   FormFields, LoginMode,
 } from "@/types/user";
 
-import TextInput from "./text-input";
+import TextInput from "./inputs/text-input";
 
-export default function AuthForm({
+const AuthForm = ({
   mode,
-}: { mode: LoginMode }) {
+}: { mode: LoginMode }) => {
   const [formState, formAction] = useActionState(auth.bind(null, mode), undefined);
 
   const {
@@ -124,4 +124,6 @@ export default function AuthForm({
       </div>
     </form>
   );
-}
+};
+
+export default AuthForm;

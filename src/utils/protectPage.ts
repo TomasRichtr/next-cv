@@ -3,11 +3,11 @@ import {
 } from "next/navigation";
 
 import {
-  verifyAuthSession,
-} from "@/backend/db/auth";
-import {
   ROUTE,
 } from "@/constants/route";
+import {
+  verifyAuthSession,
+} from "@/db/auth";
 
 export enum Shield {
     AUTH = "auth",

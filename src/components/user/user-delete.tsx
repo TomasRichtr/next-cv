@@ -3,7 +3,7 @@ import UserDeleteButton from "@/components/user/user-delete-button";
 
 interface UserDeleteProps {
     id: string,
-    userId: string,
+    userId: number,
     t: (key: string) => string,
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import ErrorCard from "@/components/error-card";
-import initTranslations from "@/utils/locales/i18n";
+import initTranslations from "@/locales/i18n";
 
 const NotFound = async ({
   locale,

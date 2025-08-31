@@ -1,6 +1,3 @@
-import {
-  verifyAuthSession,
-} from "@/backend/db/auth";
 import HeaderDrawer from "@/components/layout/header-drawer";
 import Navigation from "@/components/layout/navigation";
 import {
@@ -15,6 +12,9 @@ import {
 import {
   ROUTE,
 } from "@/constants/route";
+import {
+  verifyAuthSession,
+} from "@/db/auth";
 
 interface HeaderProps {
   t: (key: string) => string
@@ -29,7 +29,7 @@ const Header = async ({
 
   return (
     <header
-      className="w-full bg-background border-b mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
+      className="h-20 fixed z-30 bg-base-200 w-full border-b-4 border-base-300 mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
     >
       <div
         className="flex items-center w-full gap-4"
@@ -38,7 +38,7 @@ const Header = async ({
           href={ROUTE.HOME}
         >
           <h5
-            className="text-primary px-3.5"
+            className="px-3.5"
           >
             <span
               className="hidden lg:inline"

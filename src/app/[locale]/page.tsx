@@ -1,10 +1,17 @@
-import Image from "next/image";
-
-import nextJSImg from "@/assets/nextjs.webp";
+import myPhoto from "@/assets/my-photo.png";
+import CenteredAvatar from "@/components/layout/centered-avatar";
+import HeroBackground from "@/components/layout/hero-background";
+import HomeContent from "@/components/layout/home-content";
+import PageWrapper from "@/components/layout/page-wrapper";
+import initTranslations from "@/locales/i18n";
 import {
   LocaleParam,
 } from "@/types";
-import initTranslations from "@/utils/locales/i18n";
+import {
+  Colors,
+  Sizes,
+} from "@/types/theme";
+
 
 const HomePage = async ({
   params,
@@ -19,20 +26,25 @@ const HomePage = async ({
 
   return (
     <>
-      <h1
-        className="text-7xl"
-      >
-        {t("title")}
-      </h1>
-      <p
-        className="text-2xl"
-      >
-        {t("description")}
-      </p>
-      <Image
-        src={nextJSImg}
-        alt="dsds"
+      <HeroBackground />
+      <CenteredAvatar
+        image={myPhoto}
+        size={Sizes.XL}
+        backgroundColor={Colors.PrimaryContent}
+        offset={{
+          x: 0,
+          y: 15,
+        }}
       />
+      <PageWrapper>
+        <div
+          className="relative z-10 h-[50vh]"
+        />
+        <HomeContent
+          roleText={t("home.role")}
+          statusText={t("home.status")}
+        />
+      </PageWrapper>
     </>
   );
 };

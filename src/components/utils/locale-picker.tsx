@@ -40,7 +40,7 @@ const LocalePicker = () => {
 
     const isFirstSegmentLocale = values(LOCALES).includes(firstSegment);
     const pathWithoutLocale = isFirstSegmentLocale
-      ? `/${ pathSegments.slice(1).join("/")}`
+      ? `/${pathSegments.slice(1).join("/")}`
       : currentPathname;
 
     const newPath = `/${newLocale}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;

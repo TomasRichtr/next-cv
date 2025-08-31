@@ -2,10 +2,10 @@ import React from "react";
 
 import {
   getUserById,
-} from "@/backend/db/user";
+} from "@/db/dao/user";
 
 interface UserDetailsProps {
-    userId: string;
+    userId: number;
     t: (key: string) => string;
 }
 

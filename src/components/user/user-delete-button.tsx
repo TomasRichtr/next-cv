@@ -9,14 +9,14 @@ import {
 
 import {
   removeUser,
-} from "@/backend/actions/user";
+} from "@/actions/user";
 import FormButton from "@/components/forms/form-button";
 import {
   Colors,
 } from "@/types/theme";
 
 interface UserDeleteButtonProps {
-  userId: string,
+  userId: number,
   id: string,
 }
 

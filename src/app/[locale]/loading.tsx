@@ -1,5 +1,5 @@
 import Loader from "@/components/utils/loader";
-import initTranslations from "@/utils/locales/i18n";
+import initTranslations from "@/locales/i18n";
 
 const Loading = async ({
   locale,
