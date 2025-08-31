@@ -14,10 +14,14 @@ import {
 import {
   createReferencesTableMigration,
 } from "./003_create_references_table";
+import {
+  createMessagesTableMigration,
+} from "./004_create_messages_table";
 
 export const allMigrations: Migration[] = [
   createInitialTablesMigration,
   addUserRoleMigration,
   dropAppStateMigration,
   createReferencesTableMigration,
+  createMessagesTableMigration,
 ];

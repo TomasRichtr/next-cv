@@ -33,7 +33,9 @@ const TextInput = ({
   const inputType = isPasswordInput && showPassword ? "text" : type;
 
   return (
-    <div>
+    <div
+      className="relative"
+    >
       {isPasswordInput ? (
         <div
           className="input"

@@ -1,50 +1,136 @@
 {
+  "title": "bla bla bla",
+  "description": "bla bla bla bla",
   "seoTitle": "next.js Boilerplate",
-  "seoDescription": "verze next.js je 15",
+  "seoDescription": "version of next.js is 15",
   "notFound": {
     "title": "Nenalezeno",
-    "description": "Požadovaná stránka neexistuje nebo chybí potřebná oprávnění."
+    "description": "Požadovaná stránka neexistuje nebo chybí požadovaná oprávnění."
   },
   "error": {
     "title": "Ups!",
     "description": "Něco se pokazilo!"
   },
   "navigation": {
+    "menu": "Životopis",
     "home": "Domů",
     "login": "Přihlášení",
-    "user": "Uživatel"
+    "user": "Uživatel",
+    "experience": "Zkušenosti",
+    "skills": "Dovednosti",
+    "contact": "Kontakt",
+    "references": "Reference",
+    "profile": "Uživatelský profil"
+  },
+  "profile": {
+    "title": "Uživatelský profil",
+    "labels": {
+      "id": "ID",
+      "email": "Email",
+      "role": "Role"
+    }
   },
   "login": {
+    "title": "Vítejte zpět",
+    "description": "Přihlaste se ke svému účtu, abyste mohli zanechat profesionální reference.",
     "actions": {
       "logout": "Odhlásit se",
       "signup": "Vytvořit účet",
       "login": "Přihlásit se",
-      "loginLink": "Přihlásit se s existujícím účtem"
+      "loginLink": "Přihlásit se existujícím účtem",
+      "removeUser": "Odstranit uživatele"
     },
     "labels": {
-      "email": "E-mail",
+      "email": "Email",
       "password": "Heslo",
       "confirmPassword": "Potvrdit heslo"
     }
   },
+  "signup": {
+    "title": "Zanechat reference",
+    "description": "Vytvořte účet, abyste mohli zanechat profesionální reference a doporučení."
+  },
   "validation": {
     "email": {
-      "required": "E-mail je povinný",
-      "invalid": "Zadejte prosím platnou e-mailovou adresu",
-      "exists": "E-mail již existuje",
-      "notFound": "Uživatel s tímto e-mailem neexistuje"
+      "required": "Email je povinný",
+      "invalid": "Zadejte platnou emailovou adresu",
+      "exists": "Email již existuje",
+      "notFound": "Uživatel s tímto emailem neexistuje"
     },
     "password": {
       "required": "Heslo je povinné",
       "minLength": "Heslo musí mít alespoň 8 znaků",
       "maxLength": "Heslo nesmí překročit 128 znaků",
-      "pattern": "Heslo musí obsahovat alespoň jedno malé písmeno, jedno velké písmeno a jednu číslici",
+      "pattern": "Heslo musí obsahovat alespoň jedno malé písmeno, jedno velké písmeno, jedno velké písmeno a jedno číslo",
       "incorrect": "Zadané heslo je nesprávné"
     },
     "confirmPassword": {
       "required": "Potvrzení hesla je povinné",
       "match": "Hesla se musí shodovat"
+    },
+    "name": {
+      "required": "Jméno je povinné",
+      "minLength": "Jméno musí mít alespoň 2 znaky"
+    },
+    "message": {
+      "required": "Zpráva je povinná",
+      "minLength": "Zpráva musí mít alespoň 10 znaků"
+    },
+    "companyName": {
+      "maxLength": "Název společnosti nesmí překročit 100 znaků"
+    },
+    "phone": {
+      "invalid": "Telefonní číslo musí obsahovat pouze čísla, mezery (jednu mezi čísly) a volitelný úvodní +"
     }
   },
-  "loading": "Načítání..."
+  "quote": {
+    "errors": {
+      "httpError": "HTTP chyba! stav: {{status}}, zpráva: {{message}}",
+      "noQuote": "Žádná citace nebyla přijata z API",
+      "fetchFailed": "Nepodařilo se načíst citaci: {{message}}",
+      "unknownError": "Došlo k neznámé chybě při načítání citace"
+    }
+  },
+  "password": {
+    "strength": {
+      "level": "Úroveň:",
+      "levels": ["Prázdné", "Slabé", "Střední", "Silné", "Velmi silné", "Super silné"],
+      "requirements": "Vaše heslo musí obsahovat:",
+      "description": "Heslo musí mít alespoň 8 znaků s malými, velkými písmeny, čísly a speciálními znaky."
+    }
+  },
+  "modal": {
+    "close": "Zavřít",
+    "saveChanges": "Uložit změny",
+    "confirmDelete": "Jste si jisti, že chcete odstranit tohoto uživatele? Tato akce nelze vrátit zpět."
+  },
+  "loading": "Načítání...",
+  "home": {
+    "role": "Web / iOS / Android Vývojář",
+    "status": "Pracuji na tom...👷‍"
+  },
+  "references": {
+    "label": "Zanechte svou reference",
+    "title": "Profesionální reference",
+    "description": "Přečtěte si, co říkají zaměstnavatelé a kolegové o mé práci a profesionálních zkušenostech.",
+    "unsavedChangesWarning": "Máte neuložené změny ve své referenci. Jste si jisti, že chcete odejít?",
+    "unsavedChanges": "Neuložené změny"
+  },
+  "contact": {
+    "title": "Kontaktujte mě",
+    "description": "Máte projekt na mysli nebo chcete prodiskutovat příležitosti? Rád bych od vás slyšel."
+  },
+  "message": {
+    "labels": {
+      "name": "Jméno",
+      "email": "Email",
+      "companyName": "Název společnosti",
+      "phone": "Telefon",
+      "message": "Zpráva"
+    },
+    "actions": {
+      "submit": "Odeslat zprávu"
+    },
+    "success": "Zpráva byla úspěšně odeslána!"
+  }
 }

@@ -5,9 +5,6 @@ import {
 import {
   ReferenceWithUser,
 } from "@/types/reference";
-import {
-  User,
-} from "@/types/user";
 
 interface ReferenceItemProps {
   reference: ReferenceWithUser;
@@ -27,14 +24,13 @@ const ReferenceItem = ({
   } : {};
 
   const isOwnReference = userId === reference.user_id;
-  console.log(isOwnReference);
   const ringColor = isOwnReference ? "ring-success hover:shadow-success" : "ring-primary hover:shadow-primary";
 
   return (
     <Card
       className={`
         ring ${ringColor} shadow hover:shadow-lg
-        hover:scale-110 lg:hover:scale-200 hover:z-50 transition-all duration-300 animate-fade-in
+        hover:scale-110 md:hover:scale-150 xl:hover:scale-200 hover:z-50 transition-all duration-300 animate-fade-in
       `}
       style={style}
     >

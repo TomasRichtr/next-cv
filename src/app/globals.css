@@ -9,12 +9,18 @@
 
 @plugin "@iconify/tailwind4";
 
+@layer utilities {
+  .opacity-0 {
+    opacity: 0;
+  }
+}
+
 body {
   @apply relative flex min-h-screen flex-col antialiased;
 }
 
 .overlay-backdrop {
-  @apply absolute top-0 h-screen w-screen bg-secondary/50;
+  @apply fixed top-0 h-screen w-screen bg-secondary/50;
 }
 
 h1 {

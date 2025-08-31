@@ -2,14 +2,21 @@ import {
   ReactNode,
 } from "react";
 
+interface PageWrapperProps {
+  children: ReactNode;
+  title?: string;
+  description?: string;
+  className?: string;
+}
 const PageWrapper = ({
   children,
   title,
   description,
-}: {children: ReactNode, title?: string, description?: string}) => {
+  className,
+}: PageWrapperProps) => {
   return (
     <div
-      className="h-screen w-screen flex flex-col pt-28"
+      className={`h-screen w-screen flex flex-col pt-28 ${className}`}
     >
       <div
         className="px-4 md:px-6 pb-4 md:pb-6 h-full w-full flex flex-col items-center max-w-6xl mx-auto"

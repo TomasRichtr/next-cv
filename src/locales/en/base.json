@@ -67,6 +67,20 @@
     "confirmPassword": {
       "required": "Confirm password is required",
       "match": "Passwords must match"
+    },
+    "name": {
+      "required": "Name is required",
+      "minLength": "Name must be at least 2 characters long"
+    },
+    "message": {
+      "required": "Message is required",
+      "minLength": "Message must be at least 10 characters long"
+    },
+    "companyName": {
+      "maxLength": "Company name cannot exceed 100 characters"
+    },
+    "phone": {
+      "invalid": "Phone number must contain only numbers, spaces (single between numbers), and optional leading +"
     }
   },
   "quote": {
@@ -101,5 +115,25 @@
     "description": "Read what employers and colleagues have to say about my work and professional experience.",
     "unsavedChangesWarning": "You have unsaved changes to your reference. Are you sure you want to leave?",
     "unsavedChanges": "Unsaved changes"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Have a project in mind or want to discuss opportunities? I'd love to hear from you."
+  },
+  "message": {
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "companyName": "Company Name",
+      "phone": "Phone",
+      "message": "Message"
+    },
+    "actions": {
+      "submit": "Send Message"
+    },
+    "success": {
+      "title": "Success!",
+      "description": "Message sent successfully!"
+    }
   }
 }

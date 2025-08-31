@@ -5,7 +5,7 @@ import codeBackground from "@/assets/code-background.webp";
 const HeroBackground = () => {
   return (
     <div
-      className="fixed top-0 left-0 w-full h-[50vh] z-0"
+      className="fixed -z-10 top-0 left-0 w-full h-[50vh]"
     >
       <Image
         src={codeBackground}

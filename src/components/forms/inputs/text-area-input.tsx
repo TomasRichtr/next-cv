@@ -46,10 +46,10 @@ const TextAreaInput = ({
 
   return (
     <div
-      className={className}
+      className={`${className} relative`}
     >
       <div
-        className="textarea-floating relative h-full"
+        className="textarea-floating h-full"
       >
         <textarea
           name={name}
@@ -78,7 +78,7 @@ const TextAreaInput = ({
       </div>
       {error && (
         <span
-          className="helper-text ps-3 absolute -bottom-6 left-0"
+          className="helper-text ps-3 absolute -bottom-6 left-0 text-red-600"
         >
           {t(error)}
         </span>

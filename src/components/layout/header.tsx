@@ -29,7 +29,7 @@ const Header = async ({
 
   return (
     <header
-      className="h-20 fixed z-30 bg-base-200 w-full border-b-4 border-base-300 mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
+      className="bg-base-200 absolute w-full border-b-4 border-base-300 mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
     >
       <div
         className="flex items-center w-full gap-4"

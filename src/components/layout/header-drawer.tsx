@@ -35,7 +35,7 @@ const HeaderDrawer = ({
 
       <div
         id={HEADER_DRAWER_ID}
-        className="overlay overlay-open:translate-x-0 drawer drawer-end hidden"
+        className="overlay overlay-open:translate-x-0 drawer drawer-end fixed"
         role="dialog"
         tabIndex={-1}
       >
