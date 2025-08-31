@@ -1,5 +1,5 @@
-import HeaderDrawer from "@/components/layout/header-drawer";
-import Navigation from "@/components/layout/navigation";
+import HeaderDrawer from "@/components/header/header-drawer";
+import Navigation from "@/components/header/navigation";
 import {
   UserControl,
 } from "@/components/user/user-control";

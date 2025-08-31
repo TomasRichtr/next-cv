@@ -14,7 +14,7 @@ import {
   useTranslation,
 } from "react-i18next";
 
-import RadioButton from "@/components/forms/radio-button";
+import RadioButton from "@/components/forms/inputs/radio-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import {
   LOCALES,

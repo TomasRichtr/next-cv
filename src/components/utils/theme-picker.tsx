@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 
-import RadioButton from "@/components/forms/radio-button";
+import RadioButton from "@/components/forms/inputs/radio-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import {
   useLocalStorage,

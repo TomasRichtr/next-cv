@@ -23,7 +23,7 @@ import {
   FormFields, LoginMode,
 } from "@/types/user";
 
-import TextInput from "./inputs/text-input";
+import TextInput from "../forms/inputs/text-input";
 
 const AuthForm = ({
   mode,

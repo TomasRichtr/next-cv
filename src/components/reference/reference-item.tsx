@@ -1,10 +1,10 @@
 import Card from "@/components/utils/card";
 import {
-  formatDate,
-} from "@/components/utils/datetime";
-import {
   ReferenceWithUser,
 } from "@/types/reference";
+import {
+  formatDate,
+} from "@/utils/datetime";
 
 interface ReferenceItemProps {
   reference: ReferenceWithUser;

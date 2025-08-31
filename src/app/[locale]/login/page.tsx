@@ -1,4 +1,4 @@
-import AuthForm from "@/components/forms/auth-form";
+import AuthForm from "@/components/auth/auth-form";
 import PageWrapper from "@/components/layout/page-wrapper";
 import initTranslations from "@/locales/i18n";
 import {

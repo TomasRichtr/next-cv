@@ -5,7 +5,7 @@ import {
   useTranslation,
 } from "react-i18next";
 
-import ErrorCard from "@/components/error-card";
+import ErrorCard from "@/components/utils/error-card";
 
 const Error = ({
   error,

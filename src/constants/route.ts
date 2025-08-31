@@ -7,4 +7,5 @@ export const ROUTE = Object.freeze({
   CONTACT: "/contact",
   REFERENCES: "/references",
   PROFILE: "/profile",
+  ABOUT: "/about",
 });

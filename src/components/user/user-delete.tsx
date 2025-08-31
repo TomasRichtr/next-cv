@@ -1,5 +1,5 @@
-import Modal from "@/components/layout/modal";
 import UserDeleteButton from "@/components/user/user-delete-button";
+import Modal from "@/components/utils/modal";
 
 interface UserDeleteProps {
     id: string,

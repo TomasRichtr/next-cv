@@ -3,9 +3,9 @@ import React, {
   ReactNode,
 } from "react";
 
-import FlyonuiScript from "@/components/flyonui-script";
-import Header from "@/components/layout/header";
-import TranslationsProvider from "@/components/translationsProvider";
+import Header from "@/components/header/header";
+import FlyonuiScript from "@/components/providers/flyonui-script";
+import TranslationsProvider from "@/components/providers/translationsProvider";
 import initTranslations from "@/locales/i18n";
 import ReduxProvider from "@/store/providers";
 import {

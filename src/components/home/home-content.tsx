@@ -14,11 +14,11 @@ const HomeContent = ({
       <h2>
         {roleText}
       </h2>
-      <h5
-        className="mt-4"
+      <p
+        className="text-secondary mt-2"
       >
         {statusText}
-      </h5>
+      </p>
     </div>
   );
 };

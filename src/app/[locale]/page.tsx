@@ -1,7 +1,7 @@
 import myPhoto from "@/assets/my-photo.png";
-import CenteredAvatar from "@/components/layout/centered-avatar";
+import CenteredAvatar from "@/components/home/centered-avatar";
+import HomeContent from "@/components/home/home-content";
 import HeroBackground from "@/components/layout/hero-background";
-import HomeContent from "@/components/layout/home-content";
 import PageWrapper from "@/components/layout/page-wrapper";
 import initTranslations from "@/locales/i18n";
 import {

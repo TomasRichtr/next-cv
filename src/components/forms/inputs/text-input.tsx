@@ -49,7 +49,7 @@ const TextInput = ({
               id={id}
               defaultValue={defaultValue || ""}
               placeholder={label}
-              className={`${error ? "is-invalid" : ""}`.trim()}
+              className={`input ${error ? "is-invalid" : ""}`.trim()}
             />
             <label
               className="input-floating-label ms-0 rounded-t-xl"

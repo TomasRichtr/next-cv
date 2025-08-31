@@ -10,6 +10,7 @@ interface NavigationProps {
 }
 
 const NAVIGATION_ITEMS = [
+  ROUTE.ABOUT,
   ROUTE.EXPERIENCE,
   ROUTE.SKILLS,
   ROUTE.CONTACT,

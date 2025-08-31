@@ -1,4 +1,4 @@
-import Navigation from "@/components/layout/navigation";
+import Navigation from "@/components/header/navigation";
 import {
   UserControl,
 } from "@/components/user/user-control";

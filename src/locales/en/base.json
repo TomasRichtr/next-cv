@@ -20,7 +20,8 @@
     "skills": "Skills",
     "contact": "Contact",
     "references": "References",
-    "profile": "User profile"
+    "profile": "User profile",
+    "about": "About Me"
   },
   "profile": {
     "title": "User Profile",

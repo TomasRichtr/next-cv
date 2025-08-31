@@ -1,6 +1,6 @@
 import React from "react";
 
-import ErrorCard from "@/components/error-card";
+import ErrorCard from "@/components/utils/error-card";
 import initTranslations from "@/locales/i18n";
 
 const NotFound = async ({
