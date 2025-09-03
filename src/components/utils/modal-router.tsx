@@ -35,13 +35,6 @@ const ModalRouter = ({
 
       if (!rootRoute) return;
       const overlay = document.querySelector<HTMLElement>(`#${modalId}-backdrop`);
-
-      if (overlay) {
-        overlay.onclick = () => {
-          router.push(rootRoute);
-        };
-      }
-
       const closeButtons = document.querySelectorAll<HTMLButtonElement>(".close-overlay");
       closeButtons.forEach((button) => {
         button.onclick = () => {

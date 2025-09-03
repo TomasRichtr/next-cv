@@ -33,7 +33,7 @@ export const Modal = ({
   return (
     <div
       id={id}
-      className="overlay modal overlay-open:opacity-100 overlay-open:duration-300"
+      className="overlay modal overlay-open:opacity-100 overlay-open:duration-300 [--overlay-backdrop:static]"
       role="dialog"
       tabIndex={-1}
     >

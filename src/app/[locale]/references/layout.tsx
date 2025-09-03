@@ -2,14 +2,9 @@ import {
   ReactNode,
 } from "react";
 
-import {
-  AsyncParams,
-} from "@/types";
-
 interface ReferenceLayoutProps {
     children: ReactNode;
     modal: ReactNode;
-    params: AsyncParams<{ id: string, locale: string[] }>
 }
 
 const ReferencesLayout = async ({
