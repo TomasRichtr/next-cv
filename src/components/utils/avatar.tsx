@@ -7,6 +7,34 @@ import {
   Sizes,
 } from "@/types/theme";
 
+const sizeClasses: Partial<Record<Sizes, string>> = {
+  [Sizes.XS]: "size-8 border-2",
+  [Sizes.SM]: "size-12 border-4",
+  [Sizes.MD]: "size-16 border-4",
+  [Sizes.LG]: "size-22 md:size-44 border-6",
+  [Sizes.XL]: "size-32 md:size-56 border-6",
+};
+
+const iconSizeClasses: Partial<Record<Sizes, string>> = {
+  [Sizes.XS]: "size-4",
+  [Sizes.SM]: "size-6",
+  [Sizes.MD]: "size-8",
+  [Sizes.LG]: "size-16 md:size-38",
+  [Sizes.XL]: "size-24 md:size-48",
+};
+
+const backgroundClasses: Partial<Record<Colors, string>> = {
+  [Colors.Primary]: "bg-primary text-primary-content",
+  [Colors.Secondary]: "bg-secondary text-secondary-content",
+  [Colors.Accent]: "bg-accent text-accent-content",
+  [Colors.Info]: "bg-info text-info-content",
+  [Colors.Success]: "bg-success text-success-content",
+  [Colors.Warning]: "bg-warning text-warning-content",
+  [Colors.Error]: "bg-error text-error-content",
+  [Colors.Neutral]: "bg-neutral text-neutral-content",
+  [Colors.PrimaryContent]: "bg-primary-content text-primary",
+};
+
 const Avatar = ({
   image,
   size = Sizes.LG,
@@ -21,70 +49,16 @@ const Avatar = ({
   backgroundColor?: Colors;
   offset?: { x: number; y: number };
 }) => {
-  const getSizeClasses = () => {
-    switch (size) {
-    case Sizes.XS:
-      return "size-8 border-2";
-    case Sizes.SM:
-      return "size-12 border-4";
-    case Sizes.MD:
-      return "size-16 border-4";
-    case Sizes.LG:
-      return "size-22 md:size-44 border-6";
-    case Sizes.XL:
-      return "size-32 md:size-56 border-6";
-    default:
-      return "size-22 md:size-44 border-14";
-    }
-  };
+  const sizeClass = sizeClasses[size] ?? "size-22 md:size-44 border-14";
+  const iconSizeClass = iconSizeClasses[size] ?? "size-16 md:size-38";
+  const backgroundClass = backgroundClasses[backgroundColor] ?? "bg-neutral text-neutral-content";
 
-  const getIconSizeClasses = () => {
-    switch (size) {
-    case Sizes.XS:
-      return "size-4";
-    case Sizes.SM:
-      return "size-6";
-    case Sizes.MD:
-      return "size-8";
-    case Sizes.LG:
-      return "size-16 md:size-38";
-    case Sizes.XL:
-      return "size-24 md:size-48";
-    default:
-      return "size-16 md:size-38";
-    }
-  };
-
-  const getBackgroundClasses = () => {
-    switch (backgroundColor) {
-    case Colors.Primary:
-      return "bg-primary text-primary-content";
-    case Colors.Secondary:
-      return "bg-secondary text-secondary-content";
-    case Colors.Accent:
-      return "bg-accent text-accent-content";
-    case Colors.Info:
-      return "bg-info text-info-content";
-    case Colors.Success:
-      return "bg-success text-success-content";
-    case Colors.Warning:
-      return "bg-warning text-warning-content";
-    case Colors.Error:
-      return "bg-error text-error-content";
-    case Colors.Neutral:
-      return "bg-neutral text-neutral-content";
-    case Colors.PrimaryContent:
-      return "bg-primary-content text-primary";
-    default:
-      return "bg-neutral text-neutral-content";
-    }
-  };
   return (
     <div
       className="avatar avatar-placeholder"
     >
       <div
-        className={`${getBackgroundClasses()} ${getSizeClasses()} rounded-full border-base-300`}
+        className={`${backgroundClass} ${sizeClass} rounded-full border-base-content`}
       >
         {image && (
           <Image
@@ -98,7 +72,7 @@ const Avatar = ({
         )}
         {!image && (
           <span
-            className={`icon-[tabler--user] ${getIconSizeClasses()}`}
+            className={`icon-[tabler--user] ${iconSizeClass}`}
             style={{
               transform: `translate(${offset.x}px, ${offset.y}px)`,
             }}

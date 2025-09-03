@@ -9,7 +9,7 @@ const HomeContent = ({
 }: HomeContentProps) => {
   return (
     <div
-      className="mt-10 text-center"
+      className="text-center h-[50vh] absolute bottom-0 flex flex-col justify-center items-center"
     >
       <h2>
         {roleText}

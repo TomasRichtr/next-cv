@@ -18,7 +18,7 @@ const RadioButton = ({
     return (
       <input
         key={value}
-        className={`${selectedValue === value ? "bg-primary text-primary-content" : ""} join-item btn btn-soft w-14`}
+        className={`${selectedValue === value ? "bg-primary text-primary-content" : "text-primary"} join-item btn btn-soft w-14`}
         type="radio"
         name={name}
         value={value}
@@ -31,7 +31,7 @@ const RadioButton = ({
 
   const buildButtonClass = () => {
     let className = "join-item btn btn-soft w-14 flex items-center justify-center";
-    className = `${className} ${selectedValue === value ? "bg-primary text-primary-content" : ""}`;
+    className = `${className} ${selectedValue === value ? "bg-primary text-primary-content" : "text-primary"}`;
     return className;
   };
 

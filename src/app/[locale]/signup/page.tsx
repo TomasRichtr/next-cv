@@ -1,8 +1,9 @@
 import AuthForm from "@/components/auth/auth-form";
 import PageWrapper from "@/components/layout/page-wrapper";
+import Card from "@/components/utils/card";
 import initTranslations from "@/locales/i18n";
 import {
-  LocaleParam,
+  AsyncParams,
 } from "@/types";
 import {
   LoginMode,
@@ -13,7 +14,7 @@ import {
 
 const SignUpPage = async ({
   params,
-}: LocaleParam) => {
+}: AsyncParams) => {
   await protectPage([Shield.SIGN_UP]);
 
   const {
@@ -28,10 +29,13 @@ const SignUpPage = async ({
     <PageWrapper
       title={t("signup.title")}
       description={t("signup.description")}
+      className="pt-30"
     >
-      <AuthForm
-        mode={LoginMode.Signup}
-      />
+      <Card>
+        <AuthForm
+          mode={LoginMode.Signup}
+        />
+      </Card>
     </PageWrapper>
   );
 };

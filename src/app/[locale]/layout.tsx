@@ -3,18 +3,22 @@ import React, {
   ReactNode,
 } from "react";
 
-import Header from "@/components/header/header";
+import HeaderDrawer from "@/components/header/header-drawer";
+import MainHeader from "@/components/header/main-header";
 import FlyonuiScript from "@/components/providers/flyonui-script";
 import TranslationsProvider from "@/components/providers/translationsProvider";
+import {
+  verifyAuthSession,
+} from "@/db/auth";
 import initTranslations from "@/locales/i18n";
 import ReduxProvider from "@/store/providers";
 import {
-  LocaleParam,
+  AsyncParams,
 } from "@/types";
 
 export const generateMetadata = async ({
   params,
-}: LocaleParam) => {
+}: AsyncParams) => {
   const {
     locale,
   } = await params;
@@ -31,7 +35,7 @@ export const generateMetadata = async ({
 
 const RootLayout = async ({
   children, params,
-}: {children: ReactNode} & LocaleParam) => {
+}: {children: ReactNode} & AsyncParams) => {
   const {
     locale,
   } = await params;
@@ -39,6 +43,10 @@ const RootLayout = async ({
   const {
     resources, t,
   } = await initTranslations(locale);
+
+  const {
+    user,
+  } = await verifyAuthSession();
 
   return (
     <html
@@ -51,13 +59,20 @@ const RootLayout = async ({
             locale={locale}
             resources={resources}
           >
+            <HeaderDrawer
+              t={t}
+              userId={user?.id}
+            />
             <div
-              className="min-h-screen bg-background"
+              className="min-h-screen"
             >
-              <Header
+              <MainHeader
                 t={t}
+                userId={user?.id}
               />
-              <main>
+              <main
+                className="relative"
+              >
                 {children}
               </main>
             </div>

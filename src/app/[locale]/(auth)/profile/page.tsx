@@ -6,12 +6,12 @@ import {
 } from "@/db/auth";
 import initTranslations from "@/locales/i18n";
 import {
-  LocaleParam,
+  AsyncParams,
 } from "@/types";
 
 const ProfilePage = async ({
   params,
-}: LocaleParam) => {
+}: AsyncParams) => {
   const {
     user,
   } = await verifyAuthSession();

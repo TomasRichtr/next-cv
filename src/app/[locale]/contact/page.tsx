@@ -1,5 +1,6 @@
 import MessageForm from "@/components/forms/message-form";
 import PageWrapper from "@/components/layout/page-wrapper";
+import Card from "@/components/utils/card";
 import {
   verifyAuthSession,
 } from "@/db/auth";
@@ -8,12 +9,12 @@ import {
 } from "@/db/dao/user";
 import initTranslations from "@/locales/i18n";
 import {
-  LocaleParam,
+  AsyncParams,
 } from "@/types";
 
 const ContactPage = async ({
   params,
-}: LocaleParam) => {
+}: AsyncParams) => {
   const {
     locale,
   } = await params;
@@ -27,7 +28,6 @@ const ContactPage = async ({
   } = await verifyAuthSession();
 
   let userEmail;
-
   if (user) {
     const dbUser = getUserById(+user.id);
     userEmail = dbUser?.email;
@@ -37,12 +37,14 @@ const ContactPage = async ({
     <PageWrapper
       title={t("contact.title")}
       description={t("contact.description")}
-      className="flex min-w-screen items-center justify-center"
+      className="pt-30"
     >
-      <MessageForm
-        userEmail={userEmail}
-        userId={user ? +user.id : undefined}
-      />
+      <Card>
+        <MessageForm
+          userEmail={userEmail}
+          userId={user ? +user.id : undefined}
+        />
+      </Card>
     </PageWrapper>
   );
 };

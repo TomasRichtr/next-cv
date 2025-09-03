@@ -7,6 +7,79 @@
   themes: light --default, dark --prefersdark;
 }
 
+@plugin "flyonui/theme" {
+  name: "abyss";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+
+  --color-base-100: oklch(20% 0.08 209deg);
+  --color-base-200: oklch(15% 0.08 209deg);
+  --color-base-300: oklch(10% 0.08 209deg);
+  --color-base-content: oklch(90% 0.076 70.697deg);
+  --color-primary: oklch(92% 0.2653 125deg);
+  --color-primary-content: oklch(50% 0.2653 125deg);
+  --color-secondary: oklch(83.27% 0.0764 298.3deg);
+  --color-secondary-content: oklch(43.27% 0.0764 298.3deg);
+  --color-accent: oklch(43% 0 0deg);
+  --color-accent-content: oklch(98% 0 0deg);
+  --color-neutral: oklch(30% 0.08 209deg);
+  --color-neutral-content: oklch(90% 0.076 70.697deg);
+  --color-info: oklch(74% 0.16 232.661deg);
+  --color-info-content: oklch(29% 0.066 243.157deg);
+  --color-success: oklch(79% 0.209 151.711deg);
+  --color-success-content: oklch(26% 0.065 152.934deg);
+  --color-warning: oklch(84.8% 0.1962 84.62deg);
+  --color-warning-content: oklch(44.8% 0.1962 84.62deg);
+  --color-error: oklch(65% 0.1985 24.22deg);
+  --color-error-content: oklch(27% 0.1985 24.22deg);
+  --radius-selector: 2rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+
+@plugin "flyonui/theme" {
+  name: "bumblebee";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+
+  --color-base-100: oklch(100% 0 0deg);
+  --color-base-200: oklch(97% 0 0deg);
+  --color-base-300: oklch(92% 0 0deg);
+  --color-base-content: oklch(20% 0 0deg);
+  --color-primary: oklch(85% 0.199 91.936deg);
+  --color-primary-content: oklch(42% 0.095 57.708deg);
+  --color-secondary: oklch(75% 0.183 55.934deg);
+  --color-secondary-content: oklch(40% 0.123 38.172deg);
+  --color-accent: oklch(0% 0 0deg);
+  --color-accent-content: oklch(100% 0 0deg);
+  --color-neutral: oklch(37% 0.01 67.558deg);
+  --color-neutral-content: oklch(92% 0.003 48.717deg);
+  --color-info: oklch(74% 0.16 232.661deg);
+  --color-info-content: oklch(39% 0.09 240.876deg);
+  --color-success: oklch(76% 0.177 163.223deg);
+  --color-success-content: oklch(37% 0.077 168.94deg);
+  --color-warning: oklch(82% 0.189 84.429deg);
+  --color-warning-content: oklch(41% 0.112 45.904deg);
+  --color-error: oklch(70% 0.191 22.216deg);
+  --color-error-content: oklch(39% 0.141 25.723deg);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
 @plugin "@iconify/tailwind4";
 
 @layer utilities {

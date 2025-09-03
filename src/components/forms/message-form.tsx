@@ -16,6 +16,7 @@ import {
 import {
   submitMessage,
 } from "@/actions/message";
+import Form from "@/components/forms/form";
 import FormButton from "@/components/forms/form-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import Notification from "@/components/utils/notification";
@@ -74,11 +75,11 @@ const MessageForm = ({
           onClose={handleNotificationClose}
         />
       )}
-      <form
+      <Form
         id="message-form"
-        className="flex flex-col gap-8 w-full max-w-3xl"
-        action={formAction}
+        formAction={formAction}
       >
+
         <WithSkeleton
           heightClass="h-12"
           widthClass="w-full"
@@ -166,7 +167,7 @@ const MessageForm = ({
             label={t("message.actions.submit")}
           />
         </div>
-      </form>
+      </Form>
     </>
   );
 };

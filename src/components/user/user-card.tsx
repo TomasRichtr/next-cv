@@ -12,7 +12,9 @@ const UserCard = async ({
   t, userId,
 }: UserCardProps) => {
   return (
-    <Card>
+    <Card
+      className="max-w-3xl! items-start! justify-start!"
+    >
       <Avatar />
       <div
         className="flex flex-col justify-end md:justify-start items-end gap-4"

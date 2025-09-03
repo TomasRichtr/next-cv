@@ -15,7 +15,7 @@ const ReferenceCard = ({
 
   return (
     <Card
-      className="mt-10"
+      className="mt-10 max-w-3xl"
     >
       <ReferenceForm
         className="w-full"

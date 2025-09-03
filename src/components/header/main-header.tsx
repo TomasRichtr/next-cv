@@ -1,4 +1,3 @@
-import HeaderDrawer from "@/components/header/header-drawer";
 import Navigation from "@/components/header/navigation";
 import {
   UserControl,
@@ -13,23 +12,20 @@ import {
   ROUTE,
 } from "@/constants/route";
 import {
-  verifyAuthSession,
-} from "@/db/auth";
+  HEADER_DRAWER_ID,
+} from "@/constants/theme";
 
 interface HeaderProps {
   t: (key: string) => string
+  userId?: string;
 }
 
-const Header = async ({
-  t,
+const MainHeader = async ({
+  t, userId,
 }: HeaderProps) => {
-  const {
-    user,
-  } = await verifyAuthSession();
-
   return (
     <header
-      className="bg-base-200 absolute w-full border-b-4 border-base-300 mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
+      className="w-full z-10 fixed bg-base-200 border-b-4 border-base-content mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
     >
       <div
         className="flex items-center w-full gap-4"
@@ -41,12 +37,12 @@ const Header = async ({
             className="px-3.5"
           >
             <span
-              className="hidden lg:inline"
+              className="hidden xl:inline truncate"
             >
               {APP_TITLE}
             </span>
             <span
-              className="lg:hidden"
+              className="xl:hidden"
             >
               {APP_TITLE_SHORT}
             </span>
@@ -57,7 +53,7 @@ const Header = async ({
         >
           <Navigation
             t={t}
-            userId={user?.id}
+            userId={userId}
           />
         </div>
       </div>
@@ -72,17 +68,25 @@ const Header = async ({
           <ThemePicker />
           <UserControl
             t={t}
-            userId={user?.id}
+            userId={userId}
           />
         </div>
       </div>
 
-      <HeaderDrawer
-        t={t}
-        userId={user?.id}
-      />
+      <button
+        type="button"
+        className="btn btn-text btn-circle lg:hidden btn-lg"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls={HEADER_DRAWER_ID}
+        data-overlay={`#${HEADER_DRAWER_ID}`}
+      >
+        <span
+          className="icon-[tabler--menu-2] size-8 text-primary"
+        />
+      </button>
     </header>
   );
 };
 
-export default Header;
+export default MainHeader;

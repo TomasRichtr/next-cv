@@ -1,10 +1,13 @@
 import {
+  NextRequest,
+} from "next/server";
+import {
   i18nRouter,
 } from "next-i18n-router";
 
 import i18nConfig from "@/locales/i18n.config";
 
-export const middleware = (request: never) => {
+export const middleware = (request: NextRequest) => {
   return i18nRouter(request, i18nConfig);
 };
 

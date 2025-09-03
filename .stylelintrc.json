@@ -2,7 +2,7 @@
   "extends": ["stylelint-config-standard"],
   "rules": {
     "property-no-unknown": [true, {
-      "ignoreProperties": ["stopColor", "stopOpacity"]
+      "ignoreProperties": ["stopColor", "stopOpacity", "name"]
     }],
     "at-rule-no-unknown": [true, {
       "ignoreAtRules": [

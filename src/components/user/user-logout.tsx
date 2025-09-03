@@ -35,7 +35,7 @@ const UserLogout = () => {
           color={Colors.Secondary}
         >
           <span
-            className="icon-[tabler--logout] size-6 text-neutral"
+            className="icon-[tabler--logout] size-6 text-primary"
           />
         </FormButton>
         <span

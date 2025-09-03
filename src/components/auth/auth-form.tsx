@@ -10,6 +10,7 @@ import {
 import {
   auth,
 } from "@/actions/user";
+import Form from "@/components/forms/form";
 import FormButton from "@/components/forms/form-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import NavLink from "@/components/utils/nav-link";
@@ -35,10 +36,9 @@ const AuthForm = ({
   } = useTranslation();
 
   return (
-    <form
+    <Form
       id="auth-form"
-      className="flex flex-col gap-8 w-full md:w-auto md:min-w-96"
-      action={formAction}
+      formAction={formAction}
     >
       <WithSkeleton
         heightClass="h-12"
@@ -122,7 +122,7 @@ const AuthForm = ({
           )}
         </div>
       </div>
-    </form>
+    </Form>
   );
 };
 

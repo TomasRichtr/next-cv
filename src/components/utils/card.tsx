@@ -8,7 +8,6 @@ import {
 interface CardProps {
   children: ReactNode;
   className?: string;
-  shadow?: boolean;
   background?: string;
   style?: Properties<string | number>;
 }
@@ -16,19 +15,16 @@ interface CardProps {
 const Card = ({
   children,
   className = "",
-  shadow = true,
-  background = "bg-base-200",
   style = {},
 }: CardProps) => {
-  const shadowClass = shadow ? "shadow-accent" : "";
 
   return (
     <div
-      className={`card w-full ${shadowClass} ${background} ${className}`.trim()}
+      className={`card w-full max-w-xl bg-gradient-to-r from-base-200/35 to-secondary-content/35 backdrop-blur-md shadow-lg ${className}`.trim()}
       style={style}
     >
       <div
-        className="card-body card-side flex gap-4 lg:gap-12 justify-between"
+        className="card-body w-full items-center justify-center card-side flex gap-4 lg:gap-12"
       >
         {children}
       </div>

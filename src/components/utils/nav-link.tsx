@@ -27,7 +27,8 @@ interface NavLinkProps {
   activeFor?: string[];
   dataOverlay?: string;
   color?: Colors;
-  style?: Styles
+  style?: Styles;
+  className?: string;
 }
 
 const NavLink = ({
@@ -37,6 +38,7 @@ const NavLink = ({
   dataOverlay,
   color,
   style,
+  className,
 }: NavLinkProps) => {
   const path = usePathname();
   const hasUnsavedChanges = useAppSelector(state => state.reference.hasUnsavedChanges);
@@ -51,7 +53,11 @@ const NavLink = ({
     : normalizedPath === href || (href !== "/" && normalizedPath.endsWith(href));
 
   const getNavLinkStyles = () => {
-    let baseStyles = "no-underline flex items-center justify-center transition-colors duration-150";
+    let baseStyles = "no-underline rounded-lg flex items-center justify-center transition-colors duration-150";
+
+    if (className) {
+      baseStyles = `${baseStyles} ${className}`;
+    }
 
     if (hasUnsavedChanges) {
       baseStyles = `${baseStyles} opacity-50 cursor-not-allowed`;

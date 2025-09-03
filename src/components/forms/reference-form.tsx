@@ -16,6 +16,7 @@ import {
 import {
   processReference,
 } from "@/actions/reference";
+import Form from "@/components/forms/form";
 import TextAreaInput from "@/components/forms/inputs/text-area-input";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import {
@@ -50,13 +51,11 @@ const ReferenceForm = ({
     t,
   } = useTranslation();
 
-  // Warn user before leaving page with unsaved changes
   useBeforeUnload(
     hasUnsavedChanges,
     t("references.unsavedChangesWarning"),
   );
 
-  // Initialize Redux state with current reference content
   useEffect(() => {
     const initialContent = reference?.reference || "";
     dispatch(setSavedContent(initialContent));
@@ -68,7 +67,6 @@ const ReferenceForm = ({
         const formData = new FormData(formRef.current);
         startTransition(() => {
           formAction(formData);
-          // Mark content as saved after successful submission
           dispatch(setSavedContent(content));
         });
       }
@@ -82,11 +80,11 @@ const ReferenceForm = ({
   };
 
   return (
-    <form
-      ref={formRef}
+    <Form
       id="reference-form"
+      ref={formRef}
       className={className}
-      action={formAction}
+      formAction={formAction}
     >
       <WithSkeleton
         heightClass="h-44"
@@ -100,7 +98,7 @@ const ReferenceForm = ({
           showUnsavedIndicator={hasUnsavedChanges}
         />
       </WithSkeleton>
-    </form>
+    </Form>
   );
 };
 

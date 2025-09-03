@@ -8,7 +8,7 @@ import {
 
 interface ModalProps {
   id: string;
-  title: string;
+  title?: string;
   children: ReactNode;
   footer?: ReactNode;
   size?: Sizes.SM | Sizes.MD | Sizes.LG | Sizes.XL;
@@ -33,7 +33,7 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <div
       id={id}
-      className="overlay modal overlay-open:opacity-100 overlay-open:duration-300 hidden"
+      className="overlay modal overlay-open:opacity-100 overlay-open:duration-300"
       role="dialog"
       tabIndex={-1}
     >
@@ -46,11 +46,14 @@ export const Modal: React.FC<ModalProps> = ({
           <div
             className="modal-header"
           >
+            {title && (
             <h3
               className="modal-title"
             >
               {title}
             </h3>
+            )}
+
             <button
               type="button"
               className="btn btn-text btn-circle btn-sm absolute end-3 top-3"

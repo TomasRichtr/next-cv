@@ -18,7 +18,7 @@ interface CenteredAvatarProps {
 const CenteredAvatar = ({
   image,
   size = Sizes.XL,
-  backgroundColor = Colors.PrimaryContent,
+  backgroundColor = Colors.Secondary,
   offset = {
     x: 0,
     y: 15,
@@ -26,11 +26,8 @@ const CenteredAvatar = ({
 }: CenteredAvatarProps) => {
   return (
     <div
-      className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none"
+      className="absolute inset-0 flex items-center justify-center pointer-events-none"
     >
-      <div
-        className="border-t-4 border-base-300 bottom-0 w-full"
-      />
       <div
         className="absolute"
       >

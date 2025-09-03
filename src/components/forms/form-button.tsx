@@ -49,7 +49,7 @@ const FormButton = ({
   }, [pending, buttonSize, label, children]);
 
   const getButtonStyles = () => {
-    let baseStyles = "tooltip-toggle btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
+    let baseStyles = "rounded-lg tooltip-toggle btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";
     if (color) {
       baseStyles = `${baseStyles} ${getBtnColor(color)}`;
     }

@@ -1,11 +1,21 @@
 import Image from "next/image";
+import {
+  ReactNode,
+} from "react";
 
 import codeBackground from "@/assets/code-background.webp";
 
-const HeroBackground = () => {
+interface HeroBackgroundProps {
+  className?: string;
+  children?: ReactNode
+}
+
+const HeroBackground = ({
+  className = "", children,
+}: HeroBackgroundProps) => {
   return (
     <div
-      className="fixed -z-10 top-0 left-0 w-full h-[50vh]"
+      className={`absolute top-0 w-full ${className}`}
     >
       <Image
         src={codeBackground}
@@ -14,9 +24,7 @@ const HeroBackground = () => {
         className="object-cover blur-xs"
         priority
       />
-      <div
-        className="absolute inset-0 bg-black/30"
-      />
+      {children}
     </div>
   );
 };

@@ -29,7 +29,7 @@ export const UserControl = async ({
           dataOverlay={dataOverlay}
         >
           <span
-            className="icon-[tabler--login] size-6 text-neutral"
+            className="icon-[tabler--login] size-6 text-primary"
           />
         </NavLink>
         <span

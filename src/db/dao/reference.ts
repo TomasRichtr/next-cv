@@ -21,6 +21,23 @@ export const getReferenceByUserId = (userId: number): ReferenceWithUser | null =
   return db.prepare(query).get(userId) as ReferenceWithUser | null;
 };
 
+export const getReferenceById = (id: number): ReferenceWithUser | null => {
+  const query = `
+    SELECT 
+      r.id,
+      r.reference,
+      r.user_id,
+      r.date,
+      r.display,
+      u.email
+    FROM [references] r
+    JOIN users u ON r.user_id = u.id
+    WHERE r.id = ?
+  `;
+
+  return db.prepare(query).get(id) as ReferenceWithUser | null;
+};
+
 export const getReferencesWithUsers = (): ReferenceWithUser[] => {
   const query = `
     SELECT 
@@ -39,7 +56,7 @@ export const getReferencesWithUsers = (): ReferenceWithUser[] => {
   return db.prepare(query).all() as ReferenceWithUser[];
 };
 
-export const createOrUpdateReference = (reference: string, userId: number, display: number = 0): number => {
+export const createOrUpdateReference = (reference: string, userId: number, display: number = 1): number => {
   const query = `
     INSERT INTO [references] (reference, user_id, date, display)
     VALUES (?, ?, CURRENT_TIMESTAMP, ?)

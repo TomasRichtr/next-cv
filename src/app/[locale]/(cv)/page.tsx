@@ -5,7 +5,7 @@ import HeroBackground from "@/components/layout/hero-background";
 import PageWrapper from "@/components/layout/page-wrapper";
 import initTranslations from "@/locales/i18n";
 import {
-  LocaleParam,
+  AsyncParams,
 } from "@/types";
 import {
   Colors,
@@ -15,7 +15,7 @@ import {
 
 const HomePage = async ({
   params,
-}: LocaleParam) => {
+}: AsyncParams) => {
   const {
     locale,
   } = await params;
@@ -25,27 +25,29 @@ const HomePage = async ({
   } = await initTranslations(locale);
 
   return (
-    <>
-      <HeroBackground />
+    <PageWrapper
+      className="relative"
+    >
+      <HeroBackground
+        className="h-[50vh]"
+      >
+        <div
+          className="absolute bottom-0 border-t-4 border-base-content w-full"
+        />
+      </HeroBackground>
       <CenteredAvatar
         image={myPhoto}
         size={Sizes.XL}
-        backgroundColor={Colors.PrimaryContent}
         offset={{
           x: 0,
           y: 15,
         }}
       />
-      <PageWrapper>
-        <div
-          className="relative z-10 h-[50vh]"
-        />
-        <HomeContent
-          roleText={t("home.role")}
-          statusText={t("home.status")}
-        />
-      </PageWrapper>
-    </>
+      <HomeContent
+        roleText={t("home.role")}
+        statusText={t("home.status")}
+      />
+    </PageWrapper>
   );
 };
 

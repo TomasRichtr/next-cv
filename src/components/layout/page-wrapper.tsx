@@ -12,45 +12,47 @@ const PageWrapper = ({
   children,
   title,
   description,
-  className,
+  className = "",
 }: PageWrapperProps) => {
   return (
-    <div
-      className={`h-screen w-screen flex flex-col pt-28 ${className}`}
-    >
+    <>
       <div
-        className="px-4 md:px-6 pb-4 md:pb-6 h-full w-full flex flex-col items-center max-w-6xl mx-auto"
+        className={`min-h-screen w-screen mx-auto items-center justify-start flex flex-col ${className}`}
       >
-        {(title || description) && (
         <div
-          className="w-full mb-10 text-center"
+          className="px-4 md:px-6 pb-4 md:pb-6 h-full w-full flex flex-col items-center max-w-6xl mx-auto"
         >
-          {title && (
-            <>
-              <h2
-                className="hidden lg:inline-block"
-              >
-                {title}
-              </h2>
-              <h3
-                className="inline-block lg:hidden"
-              >
-                {title}
-              </h3>
-            </>
-          )}
-          {description && (
-            <p
-              className="text-secondary mt-2"
+          {(title || description) && (
+            <div
+              className="w-full mb-10 text-center"
             >
-              {description}
-            </p>
+              {title && (
+              <>
+                <h2
+                  className="hidden lg:inline-block text-primary"
+                >
+                  {title}
+                </h2>
+                <h3
+                  className="inline-block lg:hidden text-primary"
+                >
+                  {title}
+                </h3>
+              </>
+              )}
+              {description && (
+              <p
+                className="text-secondary mt-2"
+              >
+                {description}
+              </p>
+              )}
+            </div>
           )}
+          {children}
         </div>
-        )}
-        {children}
       </div>
-    </div>
+    </>
   );
 };
 

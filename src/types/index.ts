@@ -1,5 +1,3 @@
-export interface LocaleParam {
-    params: Promise<{
-        locale: string;
-    }>;
+export interface AsyncParams<T = { locale: string; }> {
+    params: Promise<T>;
 }
