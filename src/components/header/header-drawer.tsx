@@ -39,12 +39,12 @@ const HeaderDrawer = ({
           </h5>
           <button
             type="button"
-            className="btn btn-text btn-circle btn-sm absolute end-3 top-3"
+            className="btn btn-text px-0!"
             aria-label="Close"
             data-overlay={`#${HEADER_DRAWER_ID}`}
           >
             <span
-              className="icon-[tabler--x] size-5"
+              className="icon-[tabler--x] size-8 text-primary"
             />
           </button>
         </div>

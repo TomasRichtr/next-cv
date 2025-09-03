@@ -1,4 +1,3 @@
-import UserDelete from "@/components/user/user-delete";
 import UserDetails from "@/components/user/user-details";
 import Avatar from "@/components/utils/avatar";
 import Card from "@/components/utils/card";
@@ -6,42 +5,42 @@ import Card from "@/components/utils/card";
 interface UserCardProps {
   t: (key: string) => string;
   userId: number;
+  modalId: string
 }
 
 const UserCard = async ({
-  t, userId,
+  t, userId, modalId,
 }: UserCardProps) => {
   return (
     <Card
-      className="max-w-3xl! items-start! justify-start!"
+      className="items-start! justify-start!"
     >
-      <Avatar />
       <div
-        className="flex flex-col justify-end md:justify-start items-end gap-4"
+        className="flex gap-4 w-full"
       >
-        <UserDetails
-          userId={userId}
-          t={t}
-        />
+        <Avatar />
         <div
-          className="card-actions flex-grow justify-end items-end flex md:hidden"
+          className="flex flex-col items-start justify-start grow w-full gap-4"
         >
-          <UserDelete
-            id="user-delete-phone"
-            t={t}
+          <UserDetails
             userId={userId}
+            t={t}
           />
+          <div
+            className="flex items-end w-full grow  justify-end"
+          >
+            <button
+              type="button"
+              className="btn btn-error md:btn-lg"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls={modalId}
+              data-overlay={`#${modalId}`}
+            >
+              {t("login.actions.removeUser")}
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div
-        className="card-actions flex-grow justify-end items-end hidden md:flex"
-      >
-        <UserDelete
-          id="user-delete-desktop"
-          t={t}
-          userId={userId}
-        />
       </div>
     </Card>
   );

@@ -24,27 +24,31 @@ const UserDetails = async ({
 
   return (
     <div
-      className="grid grid-cols-5 h-fit"
+      className="flex w-full"
     >
-      {userDetails.map((detail) => {
-        return (
-          <React.Fragment
-            key={detail.label}
-          >
-            <label
-              className="font-semibold col-span-2 md:text-xl"
+      <div
+        className="grid grid-cols-5 h-fit"
+      >
+        {userDetails.map((detail) => {
+          return (
+            <React.Fragment
+              key={detail.label}
             >
-              {detail.label}
-              :
-            </label>
-            <span
-              className="col-span-3 md:text-xl"
-            >
-              {detail.value}
-            </span>
-          </React.Fragment>
-        );
-      })}
+              <label
+                className="font-semibold col-span-2 md:text-xl"
+              >
+                {detail.label}
+                :
+              </label>
+              <span
+                className="col-span-3 md:text-xl"
+              >
+                {detail.value}
+              </span>
+            </React.Fragment>
+          );
+        })}
+      </div>
     </div>
   );
 };

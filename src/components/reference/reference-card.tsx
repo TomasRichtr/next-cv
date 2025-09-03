@@ -15,10 +15,9 @@ const ReferenceCard = ({
 
   return (
     <Card
-      className="mt-10 max-w-3xl"
+      className="mt-10"
     >
       <ReferenceForm
-        className="w-full"
         userId={userId}
         reference={reference}
       />

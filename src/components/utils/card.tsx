@@ -20,14 +20,10 @@ const Card = ({
 
   return (
     <div
-      className={`card w-full max-w-xl bg-gradient-to-r from-base-200/35 to-secondary-content/35 backdrop-blur-md shadow-lg ${className}`.trim()}
+      className={`card w-full p-4 max-w-xl bg-gradient-to-r from-base-200/35 to-secondary-content/35 backdrop-blur-md shadow-lg ${className}`.trim()}
       style={style}
     >
-      <div
-        className="card-body w-full items-center justify-center card-side flex gap-4 lg:gap-12"
-      >
-        {children}
-      </div>
+      {children}
     </div>
   );
 };

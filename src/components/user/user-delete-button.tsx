@@ -17,11 +17,11 @@ import {
 
 interface UserDeleteButtonProps {
   userId: number,
-  id: string,
+    modalId: string,
 }
 
 const UserDeleteButton = ({
-  userId, id,
+  userId, modalId,
 }: UserDeleteButtonProps) => {
   const {
     t,
@@ -34,7 +34,7 @@ const UserDeleteButton = ({
       id="remove-user-form"
       action={formAction}
       className="inline-block"
-      data-overlay={`#${id}`}
+      data-overlay={`#${modalId}`}
     >
       <FormButton
         label={t("login.actions.removeUser")}

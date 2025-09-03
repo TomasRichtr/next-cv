@@ -38,7 +38,7 @@ export const Modal: React.FC<ModalProps> = ({
       tabIndex={-1}
     >
       <div
-        className={`modal-dialog overlay-open:mt-12 overlay-open:duration-300 transition-all ease-out ${sizeClasses[size]}`}
+        className={`modal-dialog overlay-open:mt-12 overlay-open:duration-300 overlay-open:block transition-all ease-out ${sizeClasses[size]}`}
       >
         <div
           className="modal-content"
