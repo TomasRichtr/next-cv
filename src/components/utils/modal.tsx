@@ -15,14 +15,14 @@ interface ModalProps {
   t: (key: string) => string;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal = ({
   id,
   title,
   children,
   footer,
   size = Sizes.MD,
   t,
-}) => {
+}: ModalProps) => {
   const sizeClasses = {
     [Sizes.SM]: "max-w-sm",
     [Sizes.MD]: "max-w-md",
@@ -38,7 +38,7 @@ export const Modal: React.FC<ModalProps> = ({
       tabIndex={-1}
     >
       <div
-        className={`modal-dialog overlay-open:mt-12 overlay-open:duration-300 overlay-open:block transition-all ease-out ${sizeClasses[size]}`}
+        className={`modal-dialog overlay-open:mt-12 overlay-open:duration-300 hidden overlay-open:block transition-all ease-out ${sizeClasses[size]}`}
       >
         <div
           className="modal-content"
@@ -56,7 +56,7 @@ export const Modal: React.FC<ModalProps> = ({
 
             <button
               type="button"
-              className="btn btn-text btn-circle btn-sm absolute end-3 top-3"
+              className="btn btn-text btn-circle btn-sm absolute end-3 top-3 close-overlay"
               aria-label={t ? t("modal.close") : "Close"}
               data-overlay={`#${id}`}
             >

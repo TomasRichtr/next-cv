@@ -67,7 +67,7 @@ const ReferencesModal = async ({
         footer={(
           <button
             type="button"
-            className="btn btn-soft btn-secondary"
+            className="btn btn-soft btn-secondary close-overlay"
             data-overlay={`#${modalId}`}
           >
             {t("modal.close")}

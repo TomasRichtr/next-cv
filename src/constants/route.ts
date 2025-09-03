@@ -6,7 +6,7 @@ export const ROUTE = Object.freeze({
   SKILLS: "/skills",
   CONTACT: "/contact",
   REFERENCES: "/references",
-  REFERENCE_DETAIL: (id: number) => `/references/${id}`,
+  REFERENCE_DETAIL: (id: number | string) => `/references/${id}`,
   PROFILE: "/profile",
   ABOUT: "/about",
 });

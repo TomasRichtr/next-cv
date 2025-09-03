@@ -7,6 +7,10 @@ import {
   useEffect,
 } from "react";
 
+import {
+  sleep,
+} from "@/utils";
+
 interface ModalOpenerProps {
     modalId: string;
     rootRoute?: string
@@ -22,21 +26,32 @@ const ModalRouter = ({
   const router = useRouter();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const setModalRouting = async () => {
+      await sleep(100);
       const button = document.querySelector<HTMLButtonElement>(`button[data-overlay="#${modalId}"]`);
       if (button) {
         button.click();
       }
 
+      if (!rootRoute) return;
       const overlay = document.querySelector<HTMLElement>(`#${modalId}-backdrop`);
-      if (overlay && rootRoute) {
+
+      if (overlay) {
         overlay.onclick = () => {
           router.push(rootRoute);
         };
       }
-    }, 0);
 
-    return () => clearTimeout(timer);
+      const closeButtons = document.querySelectorAll<HTMLButtonElement>(".close-overlay");
+      closeButtons.forEach((button) => {
+        button.onclick = () => {
+          router.push(rootRoute);
+          overlay?.remove();
+        };
+      });
+    };
+
+    setModalRouting();
   }, [modalId, rootRoute, router]);
 
   return (
