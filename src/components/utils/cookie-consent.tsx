@@ -61,6 +61,20 @@ const CookieConsent = () => {
     }
 
     VanillaCookieConsent.run({
+      guiOptions: {
+        consentModal: {
+          layout: "box",
+          position: "bottom right",
+          flipButtons: false,
+          equalWeightButtons: true,
+        },
+        preferencesModal: {
+          layout: "box",
+          flipButtons: false,
+          equalWeightButtons: true,
+        },
+      },
+
       categories: {
         authentication: {
           enabled: true,
