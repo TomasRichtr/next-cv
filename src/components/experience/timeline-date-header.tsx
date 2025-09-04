@@ -38,7 +38,7 @@ const TimelineDateHeader = ({
 
   return (
     <span
-      className="text-sm text-base-content/70 mt-2 first:mt-0"
+      className="text-sm text-base-content/70"
     >
       {formatDateRange(experience)}
     </span>

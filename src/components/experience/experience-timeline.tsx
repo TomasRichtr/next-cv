@@ -2,7 +2,6 @@ import React from "react";
 
 import ExperienceItem from "@/components/experience/experience-item";
 import TimelineBadge from "@/components/experience/timeline-badge";
-import TimelineDateHeader from "@/components/experience/timeline-date-header";
 import Card from "@/components/utils/card";
 import {
   EXPERIENCES,
@@ -26,17 +25,11 @@ const ExperienceTimeline = ({
           <React.Fragment
             key={index}
           >
-            <TimelineDateHeader
-              experience={experience}
-              t={t}
-            />
             <li>
               <div
                 className="timeline-middle"
               >
-                <TimelineBadge
-                  experience={experience}
-                />
+                <TimelineBadge />
               </div>
               <ExperienceItem
                 experience={experience}

@@ -1,3 +1,7 @@
+import React from "react";
+
+import SkillBadge from "@/components/experience/skill-badge";
+import TimelineDateHeader from "@/components/experience/timeline-date-header";
 import {
   Experience,
 } from "@/constants/cv";
@@ -15,8 +19,12 @@ const ExperienceItem = ({
     <div
       className="timeline-end ms-2 m-3 w-full rounded-lg"
     >
+      <TimelineDateHeader
+        experience={experience}
+        t={t}
+      />
       <div
-        className="text-base-content pt-0.5 mb-3 font-medium text-lg"
+        className="text-base-content font-medium text-lg"
       >
         {experience.position}
       </div>
@@ -40,27 +48,24 @@ const ExperienceItem = ({
         {experience.description}
       </p>
 
-      {experience.projects && experience.projects.length > 0 && (
+      {experience.projects?.length && (
         <div
-          className="mb-4"
+          className="mb-4 border-t border-primary pt-3"
         >
           <p
-            className="text-xs font-semibold text-base-content/90 mb-2 uppercase tracking-wide"
+            className="font-semibold text-base-content/90 mb-1 uppercase tracking-wide"
           >
             {t("experience.projects")}
             :
           </p>
           <ul
-            className="space-y-3"
+            className="space-y-3 "
           >
             {experience.projects.map((project, index) => (
               <li
                 key={index}
                 className="flex items-start gap-2"
               >
-                <span
-                  className="badge badge-secondary size-2 rounded-full p-0 mt-2 flex-shrink-0"
-                />
                 <div
                   className="flex-1"
                 >
@@ -69,19 +74,19 @@ const ExperienceItem = ({
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-primary-focus font-medium text-sm block mb-1"
+                      className="text-primary hover:text-primary-focus font-medium block"
                     >
                       {project.name}
                     </a>
                   ) : (
                     <span
-                      className="font-medium text-sm text-base-content block mb-1"
+                      className="font-medium text-base-content block"
                     >
                       {project.name}
                     </span>
                   )}
                   <p
-                    className="text-xs text-base-content/70 leading-relaxed"
+                    className="text-base-content/70 leading-relaxed"
                   >
                     {project.description}
                   </p>
@@ -93,26 +98,14 @@ const ExperienceItem = ({
       )}
 
       <div
-        className="flex flex-wrap gap-2"
+        className="flex flex-wrap gap-1.5! lg:gap-3! divider divider-primary"
       >
-        {experience.skills.slice(0, 6).map((skill, skillIndex) => (
-          <span
+        {experience.skills.map((skill, skillIndex) => (
+          <SkillBadge
             key={skillIndex}
-            className="badge badge-soft badge-secondary text-xs"
-          >
-            {skill}
-          </span>
+            skill={skill}
+          />
         ))}
-        {experience.skills.length > 6 && (
-          <span
-            className="badge badge-soft badge-neutral text-xs"
-          >
-            +
-            {experience.skills.length - 6}
-            {" "}
-            more
-          </span>
-        )}
       </div>
     </div>
   );

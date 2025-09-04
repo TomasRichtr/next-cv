@@ -20,7 +20,7 @@ const ExperiencePage = async ({
     <PageWrapper
       title={t("experience.title")}
       description={t("experience.description")}
-      className="py-8"
+      className="pt-30"
     >
       <ExperienceTimeline
         t={t}

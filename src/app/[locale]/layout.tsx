@@ -1,4 +1,8 @@
 import "../globals.css";
+import "devicon/devicon.min.css";
+import {
+  Ubuntu,
+} from "next/font/google";
 import React, {
   ReactNode,
 } from "react";
@@ -17,6 +21,10 @@ import ReduxProvider from "@/store/providers";
 import {
   AsyncParams,
 } from "@/types";
+
+const inter = Ubuntu({
+  weight: "500",
+});
 
 export const generateMetadata = async ({
   params,
@@ -54,7 +62,9 @@ const RootLayout = async ({
     <html
       lang={locale}
     >
-      <body>
+      <body
+        className={`${inter.className} font-sans`}
+      >
         <FlyonuiScript />
         <ReduxProvider>
           <CookieConsent />

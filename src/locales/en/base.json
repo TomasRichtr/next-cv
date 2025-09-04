@@ -88,6 +88,7 @@
     "errors": {
       "httpError": "HTTP error! status: {{status}}, message: {{message}}",
       "noQuote": "No quote received from API",
+      "noQuote": "No quote received from API",
       "fetchFailed": "Failed to fetch quote: {{message}}",
       "unknownError": "Unknown error occurred while fetching quote"
     }
@@ -117,6 +118,10 @@
     "current": "Current",
     "present": "Present",
     "projects": "Projects"
+  },
+  "skills": {
+    "title": "My Tech Stack",
+    "description": "A comprehensive overview of the technologies, programming languages, frameworks, and tools I use to build robust and scalable applications."
   },
   "references": {
     "label": "Leave your reference",
