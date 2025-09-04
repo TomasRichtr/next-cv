@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  usePathname, useRouter,
+  useParams, usePathname, useRouter,
 } from "next/navigation";
 import {
   useEffect, useState,
@@ -21,8 +21,12 @@ export const CvButton = () => {
   } = useTranslation();
 
   const pathname = usePathname();
+  const params = useParams();
   const router = useRouter();
   const [isAtBottom, setIsAtBottom] = useState(false);
+
+  const locale = params.locale as string;
+  const pathWithoutLocale = locale ? pathname.replace(`/${locale}`, "") || "/" : pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +45,7 @@ export const CvButton = () => {
   }, []);
 
   const getNextRoute = () => {
-    switch (pathname) {
+    switch (pathWithoutLocale) {
     case ROUTE.HOME:
       return {
         route: ROUTE.ABOUT,
@@ -68,7 +72,7 @@ export const CvButton = () => {
   };
 
   const getPreviousRoute = () => {
-    switch (pathname) {
+    switch (pathWithoutLocale) {
     case ROUTE.ABOUT:
       return {
         route: ROUTE.HOME,
