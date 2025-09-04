@@ -1,6 +1,7 @@
 import React from "react";
 
 import "devicon/devicon.min.css";
+import WithSkeleton from "@/components/layout/with-skeleton";
 import {
   DEV_ICONS_MAP,
 } from "@/constants/cv";
@@ -26,21 +27,23 @@ const SkillBadge = ({
           className={iconClass}
         />
         <span
-          className="hidden lg:inline"
+          className="hidden lg:inline capitalize"
         >
           {skill}
         </span>
       </span>
-      <span
-        className="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible lg:hidden"
-        role="tooltip"
-      >
+      <WithSkeleton>
         <span
-          className="tooltip-body"
+          className="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible lg:hidden"
+          role="tooltip"
         >
-          {skill}
+          <span
+            className="tooltip-body capitalize"
+          >
+            {skill}
+          </span>
         </span>
-      </span>
+      </WithSkeleton>
     </div>
   );
 };

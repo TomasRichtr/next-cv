@@ -147,3 +147,7 @@ h5 {
   --cc-cookie-category-block-bg: var(--color-base-200);
   --cc-cookie-category-block-hover-bg: var(--color-primary-content);
 }
+
+a.link, button.link {
+  @apply hover:text-primary!;
+}

@@ -20,7 +20,7 @@ const Card = ({
 
   return (
     <div
-      className={`card w-full p-4 max-w-xl bg-gradient-to-r from-base-200/35 to-secondary-content/35 backdrop-blur-md shadow-lg ${className}`.trim()}
+      className={`card w-full p-4 max-w-xl bg-base-200 rounded-xl hover:bg-base-300 transition-all duration-200 hover:shadow-lg ${className}`.trim()}
       style={style}
     >
       {children}

@@ -58,12 +58,6 @@ export const SKILLS: DeepReadonly<Record<string, string>> = {
   VUE: "vue",
 };
 
-export const SKILL_DEGREE: DeepReadonly<Record<string, number>> = {
-  FEW_TIME: 1,
-  OFTEN: 2,
-  DAILY: 3,
-};
-
 export const SORTS: DeepReadonly<Record<string, number>> = {
   ALPHABETICALLY: 0,
   FEW_TIME: 1,
@@ -73,7 +67,6 @@ export const SORTS: DeepReadonly<Record<string, number>> = {
 
 export type Skills = typeof SKILLS[keyof typeof SKILLS];
 
-export type SkillDegree = typeof SKILL_DEGREE[keyof typeof SKILL_DEGREE];
 
 export type Sorts = typeof SORTS[keyof typeof SORTS];
 
@@ -275,7 +268,6 @@ export const DEV_ICONS_MAP: Record<string, string> = Object.freeze({
   "Next.js": "devicon-nextjs-plain",
   "node.js": "devicon-nodejs-plain",
   nuxt: "devicon-nuxtjs-plain",
-  "Payload CMS": "devicon-payloadcms-plain",
   playwright: "devicon-playwright-plain",
   react: "devicon-react-original",
   "Rest Api": "devicon-postman-plain",
@@ -285,4 +277,39 @@ export const DEV_ICONS_MAP: Record<string, string> = Object.freeze({
   typescript: "devicon-typescript-plain",
   vitest: "devicon-vitest-plain",
   vue: "devicon-vuejs-plain",
+});
+
+export enum SkillDegree {
+  Junior,
+  Medior,
+  Senior,
+}
+
+export const SKILL_DEGREE_MAP: Record<string, SkillDegree> = Object.freeze({
+  CSS: SkillDegree.Medior,
+  cypress: SkillDegree.Medior,
+  Docker: SkillDegree.Junior,
+  "Elastic search": SkillDegree.Junior,
+  git: SkillDegree.Senior,
+  graphQL: SkillDegree.Medior,
+  HTML: SkillDegree.Senior,
+  JQuery: SkillDegree.Medior,
+  javascript: SkillDegree.Senior,
+  jest: SkillDegree.Senior,
+  knex: SkillDegree.Medior,
+  mocha: SkillDegree.Medior,
+  mySQL: SkillDegree.Junior,
+  "Netlify functions": SkillDegree.Medior,
+  "Next.js": SkillDegree.Medior,
+  "node.js": SkillDegree.Medior,
+  nuxt: SkillDegree.Junior,
+  playwright: SkillDegree.Senior,
+  react: SkillDegree.Medior,
+  "Rest Api": SkillDegree.Junior,
+  Sass: SkillDegree.Medior,
+  SQLite: SkillDegree.Junior,
+  tailwind: SkillDegree.Senior,
+  typescript: SkillDegree.Senior,
+  vitest: SkillDegree.Senior,
+  vue: SkillDegree.Senior,
 });

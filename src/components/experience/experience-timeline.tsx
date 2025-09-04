@@ -34,6 +34,7 @@ const ExperienceTimeline = ({
               <ExperienceItem
                 experience={experience}
                 t={t}
+                index={index}
               />
               {index < EXPERIENCES.length - 1 && (
                 <hr

@@ -121,7 +121,14 @@
   },
   "skills": {
     "title": "My Tech Stack",
-    "description": "A comprehensive overview of the technologies, programming languages, frameworks, and tools I use to build robust and scalable applications."
+    "description": "A overview of the technologies, programming languages, frameworks, and tools I use.",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "testing": "Testing",
+      "tools": "Tools"
+    }
   },
   "references": {
     "label": "Leave your reference",

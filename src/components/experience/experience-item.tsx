@@ -9,16 +9,21 @@ import {
 interface ExperienceItemProps {
   experience: Experience;
   t: (key: string) => string;
+  index: number;
 }
 
 const ExperienceItem = ({
   experience,
   t,
+  index,
 }: ExperienceItemProps) => {
   return (
     <div
-      className="timeline-end ms-2 m-3 w-full rounded-lg"
+      className="timeline-end ms-2 w-full rounded-lg"
     >
+      <div
+        className={`my-4 ${index !== 0 ? "border-t-2 border-primary" : ""}`}
+      />
       <TimelineDateHeader
         experience={experience}
         t={t}
@@ -98,7 +103,7 @@ const ExperienceItem = ({
       )}
 
       <div
-        className="flex flex-wrap gap-1.5! lg:gap-3! divider divider-primary"
+        className="flex flex-wrap gap-1.5! lg:gap-3! border-t border-primary pt-4"
       >
         {experience.skills.map((skill, skillIndex) => (
           <SkillBadge
