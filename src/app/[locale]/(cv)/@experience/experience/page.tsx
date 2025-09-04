@@ -1,10 +1,30 @@
+import ExperienceTimeline from "@/components/experience/experience-timeline";
 import PageWrapper from "@/components/layout/page-wrapper";
+import initTranslations from "@/locales/i18n";
+import {
+  AsyncParams,
+} from "@/types";
 
-const ExperiencePage = () => {
+const ExperiencePage = async ({
+  params,
+}: AsyncParams) => {
+  const {
+    locale,
+  } = await params;
+
+  const {
+    t,
+  } = await initTranslations(locale);
 
   return (
-    <PageWrapper>
-      Experience Page!
+    <PageWrapper
+      title={t("experience.title")}
+      description={t("experience.description")}
+      className="py-8"
+    >
+      <ExperienceTimeline
+        t={t}
+      />
     </PageWrapper>
   );
 };

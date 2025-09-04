@@ -1,3 +1,4 @@
+import AboutMeCard from "@/components/about/about-me-card";
 import MessageForm from "@/components/forms/message-form";
 import PageWrapper from "@/components/layout/page-wrapper";
 import Card from "@/components/utils/card";
@@ -37,14 +38,20 @@ const ContactPage = async ({
     <PageWrapper
       title={t("contact.title")}
       description={t("contact.description")}
-      className="pt-30"
+      className="pt-30 mx-0!"
     >
-      <Card>
-        <MessageForm
-          userEmail={userEmail}
-          userId={user ? +user.id : undefined}
-        />
-      </Card>
+      <div
+        className="flex items-center lg:items-start gap-10 w-full flex-col lg:flex-row"
+      >
+        <AboutMeCard />
+
+        <Card>
+          <MessageForm
+            userEmail={userEmail}
+            userId={user ? +user.id : undefined}
+          />
+        </Card>
+      </div>
     </PageWrapper>
   );
 };

@@ -102,7 +102,8 @@
   "modal": {
     "close": "Zavřít",
     "saveChanges": "Uložit změny",
-    "confirmDelete": "Jste si jisti, že chcete odstranit tohoto uživatele? Tato akce nelze vrátit zpět."
+    "confirmDelete": "Jste si jisti, že chcete odstranit tohoto uživatele? Tato akce nelze vrátit zpět.",
+    "manageCookiePreferences": "Spravovat předvolby cookies"
   },
   "loading": "Načítání...",
   "home": {

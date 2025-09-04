@@ -8,22 +8,8 @@ import {
 import {
   getUserById,
 } from "@/db/dao/user";
-import initTranslations from "@/locales/i18n";
-import {
-  AsyncParams,
-} from "@/types";
 
-const AboutPage = async ({
-  params,
-}: AsyncParams) => {
-  const {
-    locale,
-  } = await params;
-
-  const {
-    t,
-  } = await initTranslations(locale);
-
+const AboutPage = async () => {
   const {
     user,
   } = await verifyAuthSession();
@@ -35,27 +21,22 @@ const AboutPage = async ({
   }
 
   return (
-    <Card
-      className="bg-white border border-base-300 max-w-6xl mx-auto"
+    <PageWrapper
+      className="pt-30 mx-0!"
     >
-      <PageWrapper
-        title={t("pageSections.contacts")}
+      <div
+        className="flex items-center lg:items-start gap-10 w-full flex-col lg:flex-row"
       >
-        <div
-          className="flex"
-        >
-          <AboutMeCard />
-          <Card
-            className="bg-secondary"
-          >
-            <MessageForm
-              userEmail={userEmail}
-              userId={user ? +user.id : undefined}
-            />
-          </Card>
-        </div>
-      </PageWrapper>
-    </Card>
+        <AboutMeCard />
+
+        <Card>
+          <MessageForm
+            userEmail={userEmail}
+            userId={user ? +user.id : undefined}
+          />
+        </Card>
+      </div>
+    </PageWrapper>
   );
 };
 

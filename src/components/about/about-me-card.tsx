@@ -1,42 +1,12 @@
-import PageWrapper from "@/components/layout/page-wrapper";
 import Card from "@/components/utils/card";
-
-interface ContactInfoProps {
-  t: (key: string) => string;
-}
-
-const CONTACTS_INFO = Object.freeze([
-  {
-    text: "Tomáš Richtr",
-    icon: "icon-[tabler--user]",
-    size: "default",
-  },
-  {
-    icon: "icon-[tabler--phone]",
-    text: "00 420 778 540 970",
-    href: "tel:00420778540970",
-  },
-  {
-    icon: "icon-[tabler--brand-mailgun]",
-    text: "t.richtr@email.cz",
-    href: "mailto:t.richtr@email.cz",
-  },
-  {
-    icon: "icon-[tabler--brand-linkedin]",
-    text: "linkedin.com/in/trichtr",
-    href: "https://linkedin.com/in/trichtr",
-  },
-  {
-    icon: "icon-[tabler--user]",
-    text: "github.com/TomasRichtr",
-    href: "https://github.com/TomasRichtr",
-  },
-]);
+import {
+  CONTACTS_INFO,
+} from "@/constants/cv";
 
 const AboutMeCard = () => {
   return (
     <Card
-      className="max-w-md bg-info"
+      className="lg:max-w-sm p-8 h-fit lg:translate-x-1/4 lg:translate-y-1/5"
     >
       <div
         className="flex flex-col gap-10"
@@ -48,11 +18,11 @@ const AboutMeCard = () => {
           >
             <a
               href={contact.href}
-              className="btn btn-primary btn-circle"
+              className={`btn btn-primary btn-circle p-2 ${i === 0 ? "size-16" : "size-10 ml-3"}`}
               target={contact.href ? "_blank" : undefined}
             >
               <span
-                className={`${contact.icon}`}
+                className={`${contact.icon} ${i === 0 ? "size-16" : "size-10"}`}
               />
             </a>
             {i === 0 ? (
@@ -65,7 +35,7 @@ const AboutMeCard = () => {
               <a
                 href={contact.href}
                 target="_blank"
-                className="link px-0 ml-2"
+                className="link px-0 ml-5"
               >
                 {contact.text}
               </a>

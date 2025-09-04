@@ -1,16 +1,8 @@
 import AboutPage from "@/app/[locale]/(cv)/@about/about/page";
-import {
-  AsyncParams,
-} from "@/types";
 
-const AboutDefault = (
-  params: AsyncParams["params"],
-) => {
-
+const AboutDefault = () => {
   return (
-    <AboutPage
-      params={params}
-    />
+    <AboutPage />
   );
 };
 

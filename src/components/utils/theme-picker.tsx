@@ -9,8 +9,8 @@ import {
 import RadioButton from "@/components/forms/inputs/radio-button";
 import WithSkeleton from "@/components/layout/with-skeleton";
 import {
-  useLocalStorage,
-} from "@/utils/useLocaleStorage";
+  useCookieStorage,
+} from "@/hooks/useCookieStorage";
 
 const THEME_MODES = {
   auto: "auto",
@@ -25,8 +25,8 @@ const THEME = {
 type Theme = typeof THEME[keyof typeof THEME];
 
 const ThemePicker = () => {
-  const [currentTheme, setCurrentTheme] = useLocalStorage("theme", "auto");
-  const [manualTheme, setManualTheme] = useLocalStorage<Theme>("manualTheme", THEME.light);
+  const [currentTheme, setCurrentTheme] = useCookieStorage("theme", "auto", true);
+  const [manualTheme, setManualTheme] = useCookieStorage<Theme>("manualTheme", THEME.light, true);
   const [systemTheme, setSystemTheme] = useState<Theme>(THEME.light);
 
   useEffect(() => {

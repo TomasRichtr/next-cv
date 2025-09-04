@@ -103,12 +103,20 @@
   "modal": {
     "close": "Close",
     "saveChanges": "Save changes",
-    "confirmDelete": "Are you sure you want to delete this user? This action cannot be undone."
+    "confirmDelete": "Are you sure you want to delete this user? This action cannot be undone.",
+    "manageCookiePreferences": "Manage cookie preferences"
   },
   "loading": "Loading...",
   "home": {
     "role": "Web / iOS / Android Developer",
     "status": "Working on it...👷‍"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "description": "My journey through various roles and companies in web development.",
+    "current": "Current",
+    "present": "Present",
+    "projects": "Projects"
   },
   "references": {
     "label": "Leave your reference",

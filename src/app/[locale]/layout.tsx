@@ -3,10 +3,12 @@ import React, {
   ReactNode,
 } from "react";
 
+import MainFooter from "@/components/footer/main-footer";
 import HeaderDrawer from "@/components/header/header-drawer";
 import MainHeader from "@/components/header/main-header";
 import FlyonuiScript from "@/components/providers/flyonui-script";
 import TranslationsProvider from "@/components/providers/translationsProvider";
+import CookieConsent from "@/components/utils/cookie-consent";
 import {
   verifyAuthSession,
 } from "@/db/auth";
@@ -55,6 +57,7 @@ const RootLayout = async ({
       <body>
         <FlyonuiScript />
         <ReduxProvider>
+          <CookieConsent />
           <TranslationsProvider
             locale={locale}
             resources={resources}
@@ -75,6 +78,10 @@ const RootLayout = async ({
               >
                 {children}
               </main>
+
+              <MainFooter
+                t={t}
+              />
             </div>
           </TranslationsProvider>
         </ReduxProvider>
