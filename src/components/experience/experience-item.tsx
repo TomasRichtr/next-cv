@@ -32,7 +32,7 @@ const ExperienceItem = ({
       <div
         className="text-base-content font-medium text-lg"
       >
-        {experience.position}
+        {t(experience.position)}
       </div>
 
       <div
@@ -44,14 +44,14 @@ const ExperienceItem = ({
           rel="noopener noreferrer"
           className="text-primary hover:text-primary-focus font-medium"
         >
-          {experience.place}
+          {t(experience.place)}
         </a>
       </div>
 
       <p
         className="mb-3 text-base-content/80 leading-relaxed"
       >
-        {experience.description}
+        {t(experience.description)}
       </p>
 
       {experience.projects?.length && (
@@ -82,19 +82,19 @@ const ExperienceItem = ({
                       rel="noopener noreferrer"
                       className="text-primary hover:text-primary-focus font-medium block"
                     >
-                      {project.name}
+                      {t(project.name)}
                     </a>
                   ) : (
                     <span
                       className="font-medium text-base-content block"
                     >
-                      {project.name}
+                      {t(project.name)}
                     </span>
                   )}
                   <p
                     className="text-base-content/70 leading-relaxed"
                   >
-                    {project.description}
+                    {t(project.description)}
                   </p>
                 </div>
               </li>

@@ -16,9 +16,15 @@ import {
 } from "@/types/theme";
 
 const ThemePicker = () => {
-  const [currentTheme, setCurrentTheme] = useCookieStorage("theme", "auto", true);
-  const [manualTheme, setManualTheme] = useCookieStorage<Theme>("manualTheme", Theme.Light, true);
-  const [systemTheme, setSystemTheme] = useState<Theme>(Theme.Light);
+  const [
+    currentTheme, setCurrentTheme,
+  ] = useCookieStorage("theme", "auto", true);
+  const [
+    manualTheme, setManualTheme,
+  ] = useCookieStorage<Theme>("manualTheme", Theme.Light, true);
+  const [
+    systemTheme, setSystemTheme,
+  ] = useState<Theme>(Theme.Light);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");

@@ -24,7 +24,10 @@ export const UserControl = async ({
       >
         <NavLink
           href={ROUTE.LOGIN}
-          activeFor={[ROUTE.SIGNUP, ROUTE.LOGIN]}
+          activeFor={[
+            ROUTE.SIGNUP,
+            ROUTE.LOGIN,
+          ]}
           style={Styles.Soft}
           dataOverlay={dataOverlay}
         >

@@ -20,7 +20,8 @@
     "skills": "Dovednosti",
     "contact": "Kontakt",
     "references": "Reference",
-    "profile": "Uživatelský profil"
+    "profile": "Uživatelský profil",
+    "about": "Má cesta"
   },
   "profile": {
     "title": "Uživatelský profil",
@@ -132,6 +133,106 @@
     "actions": {
       "submit": "Odeslat zprávu"
     },
-    "success": "Zpráva byla úspěšně odeslána!"
+    "success": {
+      "title": "Úspěch!",
+      "description": "Zpráva byla úspěšně odeslána!"
+    }
+  },
+  "experience": {
+    "title": "Profesionální zkušenosti",
+    "description": "Má cesta různými rolemi a společnostmi ve webovém vývoji.",
+    "current": "Současné",
+    "present": "Současnost",
+    "projects": "Projekty"
+  },
+  "skills": {
+    "title": "Můj technologický stack",
+    "description": "Přehled technologií, programovacích jazyků, frameworků a nástrojů, které používám.",
+    "filters": {
+      "degree": "Úroveň"
+    },
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Databáze",
+      "testing": "Testování",
+      "tools": "Nástroje"
+    },
+    "degrees": {
+      "0": "Junior",
+      "1": "Medior",
+      "2": "Senior"
+    },
+    "descriptions": {
+      "0": "Začátečnické dovednosti",
+      "1": "Pokročilé dovednosti",
+      "2": "Expertní dovednosti"
+    },
+    "fallback": "Prosím vyberte úrovně pro filtrování dovedností."
+  },
+  "about": {
+    "title": "Má vývojářská cesta",
+    "description": "Jsem full-stack vývojář s více než {{years}} lety zkušeností, specializující se na frontend technologie s Vue.js a React ekosystémy. Vytvářel jsem webové aplikace pro různá odvětví včetně projektového managementu, e-commerce a mediálních platforem. Mé nejsilnější dovednosti jsou v <vue>Vue/Nuxt</vue>, <react>React/Next</react>, <typescript>TypeScript</typescript> a moderním CSS s <tailwind>Tailwind</tailwind>, ale pohodlně pracuji napříč celým stackem, když je to potřeba."
+  },
+  "cv": {
+    "experiences": {
+      "designeo": {
+        "position": "Front-end vývojář",
+        "place": "Designeo / Praha",
+        "description": "Webové aplikace na míru pro klienty (Retail, Sport, Business segmenty).",
+        "projects": {
+          "famicura": {
+            "description": "Platforma, která pomáhá uživatelům rychle najít ověřené sociální a zdravotní služby přizpůsobené jejich potřebám, nabízející vedení a podporu během náročných životních situací."
+          },
+          "eisking": {
+            "description": "Motorsportová platforma nabízející videa, podcasty, články a přístup k událostem pro fanoušky Formule 1, s veškerým obsahem spravovaným přes Payload CMS."
+          }
+        }
+      },
+      "easySoftware1": {
+        "position": "Front-end vývojář",
+        "place": "Easy Software / Praha",
+        "description": "Software pro projektový management: Easy Project.",
+        "projects": {
+          "easyproject": {
+            "description": "Nástroj, který pomáhá plánovat, řídit a dokončovat projekty plynuleji tím, že kombinuje vše, co potřebují, do jedné snadno použitelné platformy—s chytrými funkcemi, které šetří čas a udržují práci organizovanou."
+          }
+        }
+      },
+      "amio": {
+        "position": "Front-end a back-end vývojář",
+        "place": "Amio / Praha",
+        "description": "Vytváření chatbot řešení pro různé komunikační kanály.",
+        "projects": {
+          "chatwidget": {
+            "name": "Chatwidget & administrační aplikace pro chatboty",
+            "description": "Chatbot platforma vytvořená pro e-commerce, která umožňuje firmám vytvořit AI nákupní asistenty během minut—automatizuje zákaznickou podporu, zvyšuje objevování produktů a zvyšuje online konverze napříč webovým chatem, WhatsApp, Messenger a dalšími."
+          }
+        }
+      },
+      "equiradar": {
+        "position": "Front-end a back-end vývojář",
+        "place": "Equiradar / Praha",
+        "description": "Vývoj webových stránek pro milovníky koní.",
+        "projects": {
+          "equiradar": {
+            "description": "Webová aplikace, která pomáhá uživatelům objevovat a porovnávat tipy na koňské dostihy od ověřených tipérů, nabízející statistiky výkonu, žebříčky a transparentní výsledky pro lepší rozhodování při sázení."
+          }
+        }
+      },
+      "easySoftware2": {
+        "position": "Front-end vývojář",
+        "place": "Easy Software / Praha",
+        "description": "Software pro projektový management: Easy Project.",
+        "projects": {
+          "easyproject": {
+            "description": "Nástroj, který pomáhá plánovat, řídit a dokončovat projekty plynuleji tím, že kombinuje vše, co potřebují, do jedné snadno použitelné platformy—s chytrými funkcemi, které šetří čas a udržují práci organizovanou."
+          }
+        }
+      }
+    },
+    "contacts": {
+      "name": "Tomáš Richtr"
+    }
   }
 }

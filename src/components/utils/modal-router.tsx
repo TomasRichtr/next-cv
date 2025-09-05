@@ -45,7 +45,11 @@ const ModalRouter = ({
     };
 
     setModalRouting();
-  }, [modalId, rootRoute, router]);
+  }, [
+    modalId,
+    rootRoute,
+    router,
+  ]);
 
   return (
     <button

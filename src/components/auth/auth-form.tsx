@@ -29,7 +29,9 @@ import TextInput from "../forms/inputs/text-input";
 const AuthForm = ({
   mode,
 }: { mode: LoginMode }) => {
-  const [formState, formAction] = useActionState(auth.bind(null, mode), undefined);
+  const [
+    formState, formAction,
+  ] = useActionState(auth.bind(null, mode), undefined);
 
   const {
     t,

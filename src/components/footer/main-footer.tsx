@@ -16,67 +16,76 @@ const MainFooter = ({
   const contactLinks = CONTACTS_INFO.filter(contact => contact.href);
 
   return (
-    <div
-      className="w-full"
+    <footer
+      className="bg-base-20 border-t bg-base-200 border-base-content px-6 py-4 gap-2"
     >
-      <footer
-        className="footer bg-base-200/60 border-base-content/25 border-t px-6 py-4"
+      <div
+        className="flex justify-between items-center w-full md:w-auto"
       >
         <div
-          className="flex w-full items-center justify-between"
+          className="flex gap-1"
         >
-          <aside
-            className="grid-flow-col items-center text-sm md:text-base"
+          <span>
+            ©2025
+          </span>
+          <span
+            className="font-medium flex gap-1"
           >
-            <p>
-              ©2024
-              <span
-                className="font-medium"
-              >
-                {" "}
-                /
-                {" "}
-                <span
-                  className="hidden md:inline"
-                >
-                  {NAME}
-                </span>
-                <span
-                  className="inline md:hidden"
-                >
-                  {APP_TITLE_SHORT}
-                </span>
-              </span>
-            </p>
-          </aside>
-          <div
-            className="flex gap-2 md:gap-4 items-center"
-          >
-            {contactLinks.map((contact) => (
-              <a
-                key={contact.text}
-                href={contact.href}
-                className="link flex items-center"
-                aria-label={contact.text}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span
-                  className={`${contact.icon} size-5`}
-                />
-              </a>
-            ))}
-            <button
-              type="button"
-              data-cc="show-preferencesModal"
-              className="link text-sm"
+            <span>
+              /
+            </span>
+            <span
+              className="hidden md:inline"
             >
-              {t("modal.manageCookiePreferences")}
-            </button>
-          </div>
+              {NAME}
+            </span>
+            <span
+              className="inline md:hidden"
+            >
+              {APP_TITLE_SHORT}
+            </span>
+          </span>
         </div>
-      </footer>
-    </div>
+
+        <div
+          className="flex gap-2 md:gap-4 items-center justify-center sm:justify-end"
+        >
+          {contactLinks.map((contact) => (
+            <a
+              key={contact.text}
+              href={contact.href}
+              className="link flex items-center"
+              aria-label={contact.text}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span
+                className={`${contact.icon} size-5`}
+              />
+            </a>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          data-cc="show-preferencesModal"
+          className="link text-sm hidden md:inline"
+        >
+          {t("modal.manageCookiePreferences")}
+        </button>
+      </div>
+      <div
+        className="justify-end flex md:hidden mt-2"
+      >
+        <button
+          type="button"
+          data-cc="show-preferencesModal"
+          className="link text-sm"
+        >
+          {t("modal.manageCookiePreferences")}
+        </button>
+      </div>
+    </footer>
   );
 };
 

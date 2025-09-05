@@ -125,7 +125,11 @@ const CookieConsent = () => {
     }, 100);
 
     return () => {};
-  }, [dispatch, currentLocale, router]);
+  }, [
+    dispatch,
+    currentLocale,
+    router,
+  ]);
 
   return null;
 };

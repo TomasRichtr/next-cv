@@ -42,7 +42,9 @@ interface ReferenceFormProps {
 const ReferenceForm = ({
   className, reference, userId,
 }: ReferenceFormProps) => {
-  const [_, formAction] = useActionState(processReference.bind(null, userId, reference?.id), undefined);
+  const [
+    _, formAction,
+  ] = useActionState(processReference.bind(null, userId, reference?.id), undefined);
   const formRef = useRef<HTMLFormElement>(null);
   const dispatch = useAppDispatch();
   const hasUnsavedChanges = useAppSelector(state => state.reference.hasUnsavedChanges);
@@ -59,7 +61,10 @@ const ReferenceForm = ({
   useEffect(() => {
     const initialContent = reference?.reference || "";
     dispatch(setSavedContent(initialContent));
-  }, [reference?.reference, dispatch]);
+  }, [
+    reference?.reference,
+    dispatch,
+  ]);
 
   const debouncedSubmit = useCallback(
     debounce((content: string) => {
@@ -71,7 +76,10 @@ const ReferenceForm = ({
         });
       }
     }, 2000),
-    [formAction, dispatch],
+    [
+      formAction,
+      dispatch,
+    ],
   );
 
   const handleTextAreaChange = (value: string) => {

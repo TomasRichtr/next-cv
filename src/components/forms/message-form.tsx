@@ -43,9 +43,13 @@ const MessageForm = ({
   } = useTranslation();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [
+    showSuccess, setShowSuccess,
+  ] = useState(false);
 
-  const [formState, formAction] = useActionState(submitMessage.bind(null, i18n.language, userId), undefined);
+  const [
+    formState, formAction,
+  ] = useActionState(submitMessage.bind(null, i18n.language, userId), undefined);
 
   const {
     t,
@@ -60,7 +64,10 @@ const MessageForm = ({
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [searchParams, router]);
+  }, [
+    searchParams,
+    router,
+  ]);
 
   const handleNotificationClose = () => {
     setShowSuccess(false);

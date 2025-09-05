@@ -90,7 +90,11 @@ export const signUp = async (
   } | undefined,
   formData: FormData,
 ) => {
-  const signupFields = [FormFields.Email, FormFields.Password, FormFields.ConfirmPassword];
+  const signupFields = [
+    FormFields.Email,
+    FormFields.Password,
+    FormFields.ConfirmPassword,
+  ];
   const userData = extractFormData(formData, signupFields);
   const user: NewUser = userData as unknown as NewUser;
 
@@ -127,7 +131,10 @@ export const login = async (
     } | undefined,
   formData: FormData,
 ) => {
-  const loginFields = [FormFields.Email, FormFields.Password];
+  const loginFields = [
+    FormFields.Email,
+    FormFields.Password,
+  ];
   const userData = extractFormData(formData, loginFields);
   const user: Omit<User, "id"> = userData as unknown as Omit<User, "id">;
 

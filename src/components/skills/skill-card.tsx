@@ -1,3 +1,4 @@
+
 import StarRating from "./star-rating";
 
 interface SkillCardProps {
@@ -21,7 +22,7 @@ const SkillCard = ({
       className={`${icon} text-5xl mb-3 text-primary`}
     />
     <span
-      className="font-semibold text-left text-base-content mb-2 capitalize"
+      className="font-semibold text-left text-base-content mb-2 capitalize truncate"
     >
       {name}
     </span>

@@ -27,7 +27,9 @@ const UserDeleteButton = ({
     t,
   } = useTranslation();
 
-  const [_, formAction] = useActionState(removeUser.bind(null, userId), undefined);
+  const [
+    _, formAction,
+  ] = useActionState(removeUser.bind(null, userId), undefined);
 
   return (
     <form

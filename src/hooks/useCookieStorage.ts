@@ -12,7 +12,9 @@ import {
 } from "@/store/hooks";
 
 export const useCookieStorage = <T>(key: string, defaultValue: T, requiresConsent: boolean = true) => {
-  const [value, setValue] = useState<T>(defaultValue);
+  const [
+    value, setValue,
+  ] = useState<T>(defaultValue);
   const prefixedKey = `${APP_NAME}:${key}`;
   const {
     cookieConsent,
@@ -29,7 +31,10 @@ export const useCookieStorage = <T>(key: string, defaultValue: T, requiresConsen
     } catch (error) {
       console.warn(`Error reading cookie "${prefixedKey}":`, error);
     }
-  }, [prefixedKey, cookieConsent.isLoaded]);
+  }, [
+    prefixedKey,
+    cookieConsent.isLoaded,
+  ]);
 
   const setStoredValue = (newValue: T) => {
     try {
@@ -44,7 +49,10 @@ export const useCookieStorage = <T>(key: string, defaultValue: T, requiresConsen
     }
   };
 
-  return [value, setStoredValue] as const;
+  return [
+    value,
+    setStoredValue,
+  ] as const;
 };
 
 export const removeFromCookieStorage = (key: string) => {

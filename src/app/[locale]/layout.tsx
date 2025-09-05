@@ -30,9 +30,6 @@ import {
 import {
   Theme, ThemeMode,
 } from "@/types/theme";
-import {
-  sleep,
-} from "@/utils";
 
 const font = Ubuntu({
   weight: "500",
@@ -119,19 +116,16 @@ const RootLayout = async ({
               t={t}
               userId={user?.id}
             />
-            <div
-              className="min-h-screen"
-            >
+            <div>
               <MainHeader
                 t={t}
                 userId={user?.id}
               />
               <main
-                className="relative"
+                className="relative overflow-x-hidden"
               >
                 {children}
               </main>
-
               <MainFooter
                 t={t}
               />

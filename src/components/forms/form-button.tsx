@@ -34,7 +34,9 @@ const FormButton = ({
   } = useFormStatus();
 
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [buttonSize, setButtonSize] = useState<{ width: number; height: number } | null>(null);
+  const [
+    buttonSize, setButtonSize,
+  ] = useState<{ width: number; height: number } | null>(null);
 
   useEffect(() => {
     if (buttonRef.current && !pending) {
@@ -46,7 +48,12 @@ const FormButton = ({
         });
       }
     }
-  }, [pending, buttonSize, label, children]);
+  }, [
+    pending,
+    buttonSize,
+    label,
+    children,
+  ]);
 
   const getButtonStyles = () => {
     let baseStyles = "rounded-lg tooltip-toggle btn relative flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap";

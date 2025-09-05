@@ -11,7 +11,9 @@ const WithSkeleton = ({
     widthClass?: string,
     heightClass?: string,
 }) => {
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [
+    isHydrated, setIsHydrated,
+  ] = useState(false);
 
   useEffect(() => {
     setIsHydrated(true);

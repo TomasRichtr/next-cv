@@ -8,7 +8,9 @@ export const hashUserPassword = (password: string) => {
 };
 
 export const verifyPassword = (storedPassword: string, suppliedPassword: string) => {
-  const [hashedPassword, salt] = storedPassword.split(":");
+  const [
+    hashedPassword, salt,
+  ] = storedPassword.split(":");
   const hashedPasswordBuf = Buffer.from(hashedPassword, "hex");
   const suppliedPasswordBuf = crypto.scryptSync(suppliedPassword, salt, 64);
   return crypto.timingSafeEqual(hashedPasswordBuf, suppliedPasswordBuf);

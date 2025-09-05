@@ -7,6 +7,9 @@ import {
 
 
 import {
+  NAME,
+} from "@/constants/index";
+import {
   Colors,
 } from "@/types/theme";
 
@@ -58,24 +61,14 @@ export const SKILLS: DeepReadonly<Record<string, string>> = {
   VUE: "vue",
 };
 
-export const SORTS: DeepReadonly<Record<string, number>> = {
-  ALPHABETICALLY: 0,
-  FEW_TIME: 1,
-  OFTEN: 2,
-  DAILY: 3,
-};
-
 export type Skills = typeof SKILLS[keyof typeof SKILLS];
-
-
-export type Sorts = typeof SORTS[keyof typeof SORTS];
 
 export const EXPERIENCES: Experience[] = [
   {
-    position: "Front-end developer",
+    position: "cv.experiences.designeo.position",
     color: Colors.Primary,
-    place: "Designeo / Prague",
-    description: "Client tailored web applications (Retail, Sport, Business segments).",
+    place: "cv.experiences.designeo.place",
+    description: "cv.experiences.designeo.description",
     link: "https://www.designeo.cz/",
     startDate: dayjs("2024-11-01"),
     endDate: dayjs("2025-07-31"),
@@ -95,20 +88,20 @@ export const EXPERIENCES: Experience[] = [
       {
         name: "famicura.cz",
         url: "https://famicura.cz/",
-        description: "Platform that helps users quickly find verified social and healthcare services tailored to their needs, offering guidance and support during challenging life situations.",
+        description: "cv.experiences.designeo.projects.famicura.description",
       },
       {
         name: "eisking.tv",
         url: "https://eisking.tv/",
-        description: "Motorsport platform offering videos, podcasts, articles, and event access for Formula 1 fans, with all content managed via Payload CMS.",
+        description: "cv.experiences.designeo.projects.eisking.description",
       },
     ],
   },
   {
-    position: "Front-end developer",
+    position: "cv.experiences.easySoftware1.position",
     color: Colors.PrimaryContent,
-    place: "Easy Software / Prague",
-    description: "Project management software: Easy Project.",
+    place: "cv.experiences.easySoftware1.place",
+    description: "cv.experiences.easySoftware1.description",
     link: "https://www.easyproject.cz/",
     startDate: dayjs("2023-10-01"),
     endDate: dayjs("2025-04-30"),
@@ -129,15 +122,15 @@ export const EXPERIENCES: Experience[] = [
       {
         name: "easyproject.cz",
         url: "https://www.easyproject.cz/",
-        description: "Tool that helps plan, manage, and finish projects more smoothly by combining everything they need into one easy-to-use platform—with smart features that save time and keep work organized.",
+        description: "cv.experiences.easySoftware1.projects.easyproject.description",
       },
     ],
   },
   {
-    position: "Front-end and back-end developer",
+    position: "cv.experiences.amio.position",
     color: Colors.PrimaryContent,
-    place: "Amio / Prague",
-    description: "Creating chatbot solutions for various communication channels.",
+    place: "cv.experiences.amio.place",
+    description: "cv.experiences.amio.description",
     link: "https://www.amio.io/",
     startDate: dayjs("2022-04-01"),
     endDate: dayjs("2023-10-31"),
@@ -158,16 +151,16 @@ export const EXPERIENCES: Experience[] = [
     ],
     projects: [
       {
-        name: "Chatwidget & chatbot administration app",
-        description: "Chatbot platform built for e-commerce that lets businesses create AI shopping assistants in minutes—automating customer support, boosting product discovery, and increasing online conversions across web chat, WhatsApp, Messenger, and more.",
+        name: "cv.experiences.amio.projects.chatwidget.name",
+        description: "cv.experiences.amio.projects.chatwidget.description",
       },
     ],
   },
   {
-    position: "Front-end and back-end developer",
+    position: "cv.experiences.equiradar.position",
     color: Colors.PrimaryContent,
-    place: "Equiradar / Prague",
-    description: "Development of website for horse enthusiasts.",
+    place: "cv.experiences.equiradar.place",
+    description: "cv.experiences.equiradar.description",
     link: "https://equiradar.com/",
     startDate: dayjs("2021-05-01"),
     endDate: dayjs("2022-09-30"),
@@ -188,15 +181,15 @@ export const EXPERIENCES: Experience[] = [
       {
         name: "equiradar.com",
         url: "https://equiradar.com/",
-        description: "Web app that helps users discover and compare horse racing tips from verified tipsters, offering performance stats, rankings, and transparent results to guide smarter betting decisions.",
+        description: "cv.experiences.equiradar.projects.equiradar.description",
       },
     ],
   },
   {
-    position: "Front-end developer",
+    position: "cv.experiences.easySoftware2.position",
     color: Colors.PrimaryContent,
-    place: "Easy Software / Prague",
-    description: "Project management software: Easy Project.",
+    place: "cv.experiences.easySoftware2.place",
+    description: "cv.experiences.easySoftware2.description",
     link: "https://www.easyproject.cz/",
     startDate: dayjs("2020-10-01"),
     endDate: dayjs("2022-03-31"),
@@ -216,7 +209,7 @@ export const EXPERIENCES: Experience[] = [
       {
         name: "easyproject.cz",
         url: "https://www.easyproject.cz/",
-        description: "Tool that helps plan, manage, and finish projects more smoothly by combining everything they need into one easy-to-use platform—with smart features that save time and keep work organized.",
+        description: "cv.experiences.easySoftware2.projects.easyproject.description",
       },
     ],
   },
@@ -224,7 +217,7 @@ export const EXPERIENCES: Experience[] = [
 
 export const CONTACTS_INFO = Object.freeze([
   {
-    text: "Tomáš Richtr",
+    text: NAME,
     icon: "icon-[tabler--user]",
     size: "default",
   },

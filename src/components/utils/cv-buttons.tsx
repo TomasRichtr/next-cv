@@ -23,7 +23,9 @@ export const CvButtons = () => {
   const pathname = usePathname();
   const params = useParams();
   const router = useRouter();
-  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [
+    isAtBottom, setIsAtBottom,
+  ] = useState(false);
 
   const locale = params.locale as string;
   const pathWithoutLocale = locale ? pathname.replace(`/${locale}`, "") || "/" : pathname;
@@ -120,7 +122,7 @@ export const CvButtons = () => {
   return (
     <div
       className={`intersect:motion-delay-[3000ms] intersect:motion-preset-bounce fixed right-4 z-50 flex gap-2 transition-all duration-300 ease-in-out ${
-        isAtBottom ? "bottom-16" : "bottom-4"
+        isAtBottom ? "bottom-24 md:bottom-16" : "bottom-4"
       }`}
     >
       {previousRoute && (

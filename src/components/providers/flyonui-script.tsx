@@ -45,7 +45,13 @@ const FlyonuiScript = () => {
     };
 
     const initComponentsNow = () => {
-      const attempts = [0, 50, 100, 200, 500];
+      const attempts = [
+        0,
+        50,
+        100,
+        200,
+        500,
+      ];
 
       attempts.forEach((delay, index) => {
         setTimeout(() => {

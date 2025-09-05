@@ -19,7 +19,9 @@ const UserLogout = () => {
     t,
   } = useTranslation();
 
-  const [_, formAction] = useActionState(logout, undefined);
+  const [
+    _, formAction,
+  ] = useActionState(logout, undefined);
 
   return (
     <form

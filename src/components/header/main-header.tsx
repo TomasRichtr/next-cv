@@ -25,7 +25,7 @@ const MainHeader = async ({
 }: HeaderProps) => {
   return (
     <header
-      className="w-full z-10 fixed bg-base-200 border-b-4 border-base-content mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
+      className="w-full z-10 fixed bg-base-200 border-b border-base-content mx-auto px-8 py-4 flex items-center justify-end lg:justify-between"
     >
       <div
         className="flex items-center w-full gap-4"

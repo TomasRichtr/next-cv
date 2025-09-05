@@ -42,30 +42,38 @@ const FilteredSkills = ({
     },
     {
       title: t("skills.groups.backend"),
-      skills: [SKILLS.NODE_JS,
+      skills: [
+        SKILLS.NODE_JS,
         SKILLS.GRAPHQL,
-        SKILLS.REST_API],
+        SKILLS.REST_API,
+      ],
     },
     {
       title: t("skills.groups.database"),
-      skills: [SKILLS.MYSQL,
+      skills: [
+        SKILLS.MYSQL,
         SKILLS.SQLITE,
         SKILLS.ELASTIC_SEARCH,
-        SKILLS.KNEX],
+        SKILLS.KNEX,
+      ],
     },
     {
       title: t("skills.groups.testing"),
-      skills: [SKILLS.CYPRESS,
+      skills: [
+        SKILLS.CYPRESS,
         SKILLS.JEST,
         SKILLS.MOCHA,
         SKILLS.PLAYWRIGHT,
-        SKILLS.VITEST],
+        SKILLS.VITEST,
+      ],
     },
     {
       title: t("skills.groups.tools"),
-      skills: [SKILLS.GIT,
+      skills: [
+        SKILLS.GIT,
         SKILLS.DOCKER,
-        SKILLS.NETLIFY_FUNCTIONS],
+        SKILLS.NETLIFY_FUNCTIONS,
+      ],
     },
   ];
 

@@ -15,7 +15,10 @@ const Notification = ({
   useEffect(() => {
     const timer = setTimeout(onClose, duration);
     return () => clearTimeout(timer);
-  }, [onClose, duration]);
+  }, [
+    onClose,
+    duration,
+  ]);
 
   return (
     <div

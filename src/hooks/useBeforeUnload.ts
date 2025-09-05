@@ -17,5 +17,8 @@ export const useBeforeUnload = (shouldWarn: boolean, message?: string) => {
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [shouldWarn, message]);
+  }, [
+    shouldWarn,
+    message,
+  ]);
 };

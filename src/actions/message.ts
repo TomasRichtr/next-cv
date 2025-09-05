@@ -62,7 +62,13 @@ export const submitMessage = async (
   } | undefined,
   formData: FormData,
 ) => {
-  const messageFields = ["name", "email", "company_name", "phone", "message"];
+  const messageFields = [
+    "name",
+    "email",
+    "company_name",
+    "phone",
+    "message",
+  ];
   const messageData = extractFormData(formData, messageFields);
   const newMessage: NewMessage = {
     name: messageData.name,

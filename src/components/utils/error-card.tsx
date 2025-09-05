@@ -25,9 +25,15 @@ import {
 } from "@/utils/quote-helpers";
 
 const ErrorCard = () => {
-  const [quote, setQuote] = useState<Quote | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<QuoteError | null>(null);
+  const [
+    quote, setQuote,
+  ] = useState<Quote | null>(null);
+  const [
+    loading, setLoading,
+  ] = useState(true);
+  const [
+    error, setError,
+  ] = useState<QuoteError | null>(null);
   const {
     t,
   } = useTranslation();
@@ -79,7 +85,10 @@ const ErrorCard = () => {
         {errorMessage}
       </div>
     );
-  }, [error, t]);
+  }, [
+    error,
+    t,
+  ]);
 
   const renderQuote = useCallback(() => {
     if (!quote || isEmpty(quote)) return null;

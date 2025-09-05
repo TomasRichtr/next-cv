@@ -22,11 +22,14 @@ const eslintConfig = [
   ...tseslint.configs.recommended,
   {
     rules: {
-      "@typescript-eslint/no-unused-vars": ["error", {
-        varsIgnorePattern: "^[A-Z_]",
-        argsIgnorePattern: "^_",
-        ignoreRestSiblings: true,
-      }],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          varsIgnorePattern: "^[A-Z_]",
+          argsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
       "no-unused-vars": "off",
       "no-undef": "off",
       "prefer-const": "error",
@@ -40,9 +43,12 @@ const eslintConfig = [
       "prefer-template": "error",
       "object-shorthand": "error",
       "arrow-spacing": "error",
-      "object-property-newline": ["error", {
-        allowAllPropertiesOnSameLine: false,
-      }],
+      "object-property-newline": [
+        "error",
+        {
+          allowAllPropertiesOnSameLine: false,
+        },
+      ],
       "import/newline-after-import": "error",
 
       "react/prop-types": "off",
@@ -66,32 +72,56 @@ const eslintConfig = [
       "react/no-unknown-property": "error",
       "react/require-render-return": "error",
       "react/self-closing-comp": "error",
-      "react/jsx-max-props-per-line": ["error", {
-        maximum: 1,
-        when: "always",
-      }],
-      "react/jsx-first-prop-new-line": ["error", "always"],
-      "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
-      "react/jsx-tag-spacing": ["error", {
-        closingSlash: "never",
-        beforeSelfClosing: "always",
-        afterOpening: "never",
-        beforeClosing: "never",
-      }],
-      "react/jsx-indent-props": ["error", 2],
-      "react/jsx-indent": ["error", 2],
-      "react/jsx-wrap-multilines": ["error", {
-        declaration: "parens-new-line",
-        assignment: "parens-new-line",
-        return: "parens-new-line",
-        arrow: "parens-new-line",
-        condition: "parens-new-line",
-        logical: "parens-new-line",
-        prop: "parens-new-line",
-      }],
-      "react/jsx-one-expression-per-line": ["error", {
-        allow: "none",
-      }],
+      "react/jsx-max-props-per-line": [
+        "error",
+        {
+          maximum: 1,
+          when: "always",
+        },
+      ],
+      "react/jsx-first-prop-new-line": [
+        "error",
+        "always",
+      ],
+      "react/jsx-closing-bracket-location": [
+        "error",
+        "tag-aligned",
+      ],
+      "react/jsx-tag-spacing": [
+        "error",
+        {
+          closingSlash: "never",
+          beforeSelfClosing: "always",
+          afterOpening: "never",
+          beforeClosing: "never",
+        },
+      ],
+      "react/jsx-indent-props": [
+        "error",
+        2,
+      ],
+      "react/jsx-indent": [
+        "error",
+        2,
+      ],
+      "react/jsx-wrap-multilines": [
+        "error",
+        {
+          declaration: "parens-new-line",
+          assignment: "parens-new-line",
+          return: "parens-new-line",
+          arrow: "parens-new-line",
+          condition: "parens-new-line",
+          logical: "parens-new-line",
+          prop: "parens-new-line",
+        },
+      ],
+      "react/jsx-one-expression-per-line": [
+        "error",
+        {
+          allow: "none",
+        },
+      ],
       "react-hooks/rules-of-hooks": "off",
 
       "import/no-unresolved": "error",
@@ -101,57 +131,70 @@ const eslintConfig = [
       "import/no-self-import": "error",
       "import/no-cycle": "error",
       "import/no-useless-path-segments": "error",
-      "indent": ["error", 2, {
-        "ignoredNodes": [
-          "JSXElement",
-          "JSXElement > *",
-          "JSXAttribute",
-          "JSXIdentifier",
-          "JSXNamespacedName",
-          "JSXMemberExpression",
-          "JSXSpreadAttribute",
-          "JSXExpressionContainer",
-          "JSXOpeningElement",
-          "JSXClosingElement",
-          "JSXFragment",
-          "JSXOpeningFragment",
-          "JSXClosingFragment",
-          "JSXText",
-          "JSXEmptyExpression",
-          "JSXSpreadChild",
-        ],
-      }],
-      "semi": ["error", "always"],
-      "import/order": ["error", {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-        ],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true,
+      "indent": [
+        "error",
+        2,
+        {
+          "ignoredNodes": [
+            "JSXElement",
+            "JSXElement > *",
+            "JSXAttribute",
+            "JSXIdentifier",
+            "JSXNamespacedName",
+            "JSXMemberExpression",
+            "JSXSpreadAttribute",
+            "JSXExpressionContainer",
+            "JSXOpeningElement",
+            "JSXClosingElement",
+            "JSXFragment",
+            "JSXOpeningFragment",
+            "JSXClosingFragment",
+            "JSXText",
+            "JSXEmptyExpression",
+            "JSXSpreadChild",
+          ],
         },
-      }],
-      "object-curly-newline": ["error", {
-        ObjectExpression: {
-          multiline: true,
-          minProperties: 1,
+      ],
+      "semi": [
+        "error",
+        "always",
+      ],
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+          ],
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true,
+          },
         },
-        ObjectPattern: {
-          multiline: true,
-          minProperties: 1,
+      ],
+      "object-curly-newline": [
+        "error",
+        {
+          ObjectExpression: {
+            multiline: true,
+            minProperties: 1,
+          },
+          ObjectPattern: {
+            multiline: true,
+            minProperties: 1,
+          },
+          ImportDeclaration: "always",
+          ExportDeclaration: {
+            multiline: true,
+            minProperties: 1,
+          },
         },
-        ImportDeclaration: "always",
-        ExportDeclaration: {
-          multiline: true,
-          minProperties: 1,
-        },
-      }],
+      ],
 
       "jsx-a11y/alt-text": "error",
       "jsx-a11y/anchor-has-content": "error",
@@ -160,21 +203,40 @@ const eslintConfig = [
       "jsx-a11y/heading-has-content": "error",
       "jsx-a11y/img-redundant-alt": "error",
       "jsx-a11y/no-access-key": "error",
-      "quotes": ["error", "double"],
+      "quotes": [
+        "error",
+        "double",
+      ],
       "no-multi-spaces": "error",
-      "comma-dangle": ["error", "always-multiline"],
-      "max-len": ["error", {
-        "code": 120,
-        "tabWidth": 2,
-        "ignoreUrls": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreRegExpLiterals": true,
-      }],
-      "array-element-newline": ["error", {
-        "ArrayExpression": "always",
-        "ArrayPattern": "never",
-      }],
+      "comma-dangle": [
+        "error",
+        "always-multiline",
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "tabWidth": 2,
+          "ignoreUrls": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreRegExpLiterals": true,
+        },
+      ],
+      "array-element-newline": [
+        "error",
+        {
+          "ArrayExpression": "always",
+          "ArrayPattern": "never",
+        },
+      ],
+      "array-bracket-newline": [
+        "error",
+        {
+          "multiline": true,
+          "minItems": 2,
+        },
+      ],
     },
   },
 ];

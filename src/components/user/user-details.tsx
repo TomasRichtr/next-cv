@@ -14,13 +14,16 @@ const UserDetails = async ({
 }: UserDetailsProps) => {
   const user = getUserById(userId)!;
 
-  const userDetails = [{
-    label:t("profile.labels.email"),
-    value:user.email,
-  }, {
-    label:t("profile.labels.role"),
-    value:user.role,
-  }];
+  const userDetails = [
+    {
+      label:t("profile.labels.email"),
+      value:user.email,
+    },
+    {
+      label:t("profile.labels.role"),
+      value:user.role,
+    },
+  ];
 
   return (
     <div
