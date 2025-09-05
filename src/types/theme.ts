@@ -31,8 +31,8 @@ export enum Styles {
 }
 
 export enum Theme {
-    Light = "bumblebee",
-    Dark = "abyss",
+    Light = "light",
+    Dark = "dark",
 }
 
 export enum ThemeMode {
