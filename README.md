@@ -13,6 +13,11 @@ Install dependencies:
 npm i
 ```
 
+Execute database migrations:
+```bash
+npm run postbuild
+```
+
 First, run the development server:
 
 ```bash
