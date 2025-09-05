@@ -1,4 +1,4 @@
-import AboutMeCard from "@/components/about/about-me-card";
+import ContactsCard from "@/components/about/contacts-card";
 import MessageForm from "@/components/forms/message-form";
 import PageWrapper from "@/components/layout/page-wrapper";
 import Card from "@/components/utils/card";
@@ -41,9 +41,9 @@ const ContactPage = async ({
       className="pt-30 mx-0!"
     >
       <div
-        className="flex items-center lg:items-start gap-10 w-full flex-col lg:flex-row"
+        className="flex items-center justify-center gap-10 w-full flex-col lg:flex-row"
       >
-        <AboutMeCard />
+        <ContactsCard />
 
         <Card>
           <MessageForm

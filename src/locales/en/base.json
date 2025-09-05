@@ -21,7 +21,7 @@
     "contact": "Contact",
     "references": "References",
     "profile": "User profile",
-    "about": "About Me"
+    "about": "My journey"
   },
   "profile": {
     "title": "User Profile",
@@ -88,7 +88,6 @@
     "errors": {
       "httpError": "HTTP error! status: {{status}}, message: {{message}}",
       "noQuote": "No quote received from API",
-      "noQuote": "No quote received from API",
       "fetchFailed": "Failed to fetch quote: {{message}}",
       "unknownError": "Unknown error occurred while fetching quote"
     }
@@ -105,7 +104,7 @@
     "close": "Close",
     "saveChanges": "Save changes",
     "confirmDelete": "Are you sure you want to delete this user? This action cannot be undone.",
-    "manageCookiePreferences": "Manage cookie preferences"
+    "manageCookiePreferences": "Privacy settings"
   },
   "loading": "Loading...",
   "home": {
@@ -122,13 +121,27 @@
   "skills": {
     "title": "My Tech Stack",
     "description": "A overview of the technologies, programming languages, frameworks, and tools I use.",
+    "filters": {
+      "degree": "Degree"
+    },
     "groups": {
       "frontend": "Frontend",
       "backend": "Backend",
       "database": "Database",
       "testing": "Testing",
       "tools": "Tools"
-    }
+    },
+    "degrees": {
+      "0": "Junior",
+      "1": "Medior",
+      "2": "Senior"
+    },
+    "descriptions": {
+      "0": "Beginner level skills",
+      "1": "Intermediate level skills",
+      "2": "Advanced level skills"
+    },
+    "fallback": "Please select degrees to filter skills."
   },
   "references": {
     "label": "Leave your reference",
@@ -140,6 +153,10 @@
   "contact": {
     "title": "Get In Touch",
     "description": "Have a project in mind or want to discuss opportunities? I'd love to hear from you."
+  },
+  "about": {
+    "title": "My Developer Journey",
+    "description": "I'm a full-stack developer with over 5 years of experience, specializing in frontend technologies with Vue.js and React ecosystems. I've built web applications for various industries including project management, e-commerce, and media platforms. My strongest skills are in <vue>Vue/Nuxt</vue>, <react>React/Next</react>, <typescript>TypeScript</typescript>, and modern CSS with <tailwind>Tailwind</tailwind>, but I'm comfortable working across the stack when needed."
   },
   "message": {
     "labels": {

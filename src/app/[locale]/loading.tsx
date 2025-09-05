@@ -9,9 +9,14 @@ const Loading = async ({
   } = await initTranslations(locale);
 
   return (
-    <Loader
-      text={t("loading")}
-    />
+    <div
+      className="flex items-center justify-center h-screen"
+    >
+      <Loader
+        text={t("loading")}
+      />
+    </div>
+
   );
 };
 

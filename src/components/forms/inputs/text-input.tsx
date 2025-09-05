@@ -1,9 +1,6 @@
 "use client";
 
 import {
-  useState,
-} from "react";
-import {
   useTranslation,
 } from "react-i18next";
 
@@ -27,10 +24,8 @@ const TextInput = ({
     t,
   } = useTranslation();
 
-  const [showPassword, setShowPassword] = useState(false);
   const isPasswordWithMeter = meterPassword && type === "password";
   const isPasswordInput = type === "password";
-  const inputType = isPasswordInput && showPassword ? "text" : type;
 
   return (
     <div
@@ -44,15 +39,15 @@ const TextInput = ({
             className="input-floating grow"
           >
             <input
-              type={inputType}
+              type={type}
               name={name}
               id={id}
               defaultValue={defaultValue || ""}
               placeholder={label}
-              className={`input ${error ? "is-invalid" : ""}`.trim()}
+              className={error ? "is-invalid" : ""}
             />
             <label
-              className="input-floating-label ms-0 rounded-t-xl"
+              className="input-floating-label ms-0"
               htmlFor={id}
             >
               {label}
@@ -60,15 +55,15 @@ const TextInput = ({
           </div>
           <button
             type="button"
-            onClick={() => setShowPassword(!showPassword)}
+            data-toggle-password={`{ "target": "#${id}" }`}
             className="block cursor-pointer"
             aria-label="password toggle"
           >
             <span
-              className={`icon-[tabler--eye] text-base-content/80 size-5 shrink-0 ${showPassword ? "block" : "hidden"}`}
+              className="icon-[tabler--eye] text-base-content/80 password-active:block hidden size-5 shrink-0"
             />
             <span
-              className={`icon-[tabler--eye-off] text-base-content/80 size-5 shrink-0 ${showPassword ? "hidden" : "block"}`}
+              className="icon-[tabler--eye-off] text-base-content/80 password-active:hidden block size-5 shrink-0"
             />
           </button>
         </div>
@@ -82,7 +77,7 @@ const TextInput = ({
             id={id}
             defaultValue={defaultValue || ""}
             placeholder={label}
-            className={`input ${error ? "is-invalid" : ""}`.trim()}
+            className={`input outline-0! ${error ? "is-invalid" : ""}`.trim()}
           />
           <label
             className="input-floating-label rounded-t-xl"

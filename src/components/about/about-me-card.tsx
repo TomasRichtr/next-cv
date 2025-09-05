@@ -1,47 +1,63 @@
+import AboutMeDescription from "@/components/about/about-me-description";
+import SkillBadge from "@/components/experience/skill-badge";
 import Card from "@/components/utils/card";
 import {
-  CONTACTS_INFO,
+  SKILLS,
 } from "@/constants/cv";
+import {
+  Translate,
+} from "@/types";
 
-const AboutMeCard = () => {
+interface AboutMeCardProps {
+  t: Translate
+}
+
+const AboutMeCard = ({
+  t,
+}: AboutMeCardProps) => {
+  const skills = [
+    SKILLS.JAVASCRIPT,
+    SKILLS.TYPESCRIPT,
+    SKILLS.VUE,
+    SKILLS.NUXT,
+    SKILLS.REACT,
+    SKILLS.NEXT_JS,
+  ];
+
+
   return (
     <Card
-      className="lg:max-w-sm p-8 h-fit lg:translate-x-1/4 lg:translate-y-1/5"
+      className="w-full max-w-2xl"
     >
       <div
-        className="flex flex-col gap-10"
+        className="p-6 space-y-4"
       >
-        {CONTACTS_INFO.map((contact, i) => (
-          <div
-            key={contact.text}
-            className="flex gap-x-2 items-center"
-          >
-            <a
-              href={contact.href}
-              className={`btn btn-primary btn-circle p-2 ${i === 0 ? "size-16" : "size-10 ml-3"}`}
-              target={contact.href ? "_blank" : undefined}
-            >
-              <span
-                className={`${contact.icon} ${i === 0 ? "size-16" : "size-10"}`}
-              />
-            </a>
-            {i === 0 ? (
-              <span
-                className="px-0 ml-2"
-              >
-                {contact.text}
-              </span>
-            ) : (
-              <a
-                href={contact.href}
-                target="_blank"
-                className="link px-0 ml-5"
-              >
-                {contact.text}
-              </a>
-            )}
-          </div>
-        ))}
+        <h4
+          className="text-2xl font-bold text-primary"
+        >
+          {t("about.title")}
+        </h4>
+        <div
+          className="divider my-0"
+        />
+        <div
+          className="text-base-content/90 leading-relaxed space-y-4"
+        >
+          <AboutMeDescription />
+        </div>
+        <div
+          className="divider my-0"
+        />
+        <div
+          className="flex flex-wrap gap-2"
+        >
+          {skills.map((skill) => (
+            <SkillBadge
+              key={skill}
+              skill={skill}
+            />
+          ))}
+        </div>
       </div>
     </Card>
   );

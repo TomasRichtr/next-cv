@@ -1,4 +1,5 @@
 import {
+  APP_TITLE_SHORT,
   NAME,
 } from "@/constants";
 import {
@@ -25,7 +26,7 @@ const MainFooter = ({
           className="flex w-full items-center justify-between"
         >
           <aside
-            className="grid-flow-col items-center"
+            className="grid-flow-col items-center text-sm md:text-base"
           >
             <p>
               ©2024
@@ -35,18 +36,27 @@ const MainFooter = ({
                 {" "}
                 /
                 {" "}
-                {NAME}
+                <span
+                  className="hidden md:inline"
+                >
+                  {NAME}
+                </span>
+                <span
+                  className="inline md:hidden"
+                >
+                  {APP_TITLE_SHORT}
+                </span>
               </span>
             </p>
           </aside>
           <div
-            className="flex h-5 gap-4 items-center"
+            className="flex gap-2 md:gap-4 items-center"
           >
             {contactLinks.map((contact) => (
               <a
                 key={contact.text}
                 href={contact.href}
-                className="link"
+                className="link flex items-center"
                 aria-label={contact.text}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -56,9 +66,6 @@ const MainFooter = ({
                 />
               </a>
             ))}
-            <div
-              className="border-l border-base-content/25 h-full mx-2"
-            />
             <button
               type="button"
               data-cc="show-preferencesModal"

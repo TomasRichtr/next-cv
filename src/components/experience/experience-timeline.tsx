@@ -16,7 +16,7 @@ const ExperienceTimeline = ({
 }: ExperienceTimelineProps) => {
   return (
     <Card
-      className="w-full max-w-5xl! p-8"
+      className="w-full max-w-full! p-8"
     >
       <ul
         className="timeline timeline-snap-icon timeline-compact timeline-vertical w-full"

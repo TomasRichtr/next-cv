@@ -1,14 +1,15 @@
 import SkillsPage from "@/app/[locale]/(cv)/@skills/skills/[[...filter]]/page";
 import {
-  AsyncParams,
+  AsyncParams, AsyncSearchParams,
 } from "@/types";
 
 const SkillsDefault = ({
-  params,
-}: AsyncParams) => {
+  params, searchParams,
+}: AsyncParams & AsyncSearchParams<{degrees?: string}>) => {
   return (
     <SkillsPage
       params={params}
+      searchParams={searchParams}
     />
   );
 };

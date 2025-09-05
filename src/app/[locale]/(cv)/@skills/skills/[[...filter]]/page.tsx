@@ -1,5 +1,5 @@
 import {
-  isEmpty,
+  isEmpty, isNil,
 } from "lodash";
 import React from "react";
 
@@ -8,14 +8,13 @@ import FilteredSkills from "@/components/skills/filtered-skills";
 import SkillFilters from "@/components/skills/skill-filters";
 import {
   SkillDegree,
-  SKILLS,
 } from "@/constants/cv";
 import initTranslations from "@/locales/i18n";
 import {
   AsyncParams, AsyncSearchParams,
 } from "@/types";
 
-type SkillPageProps = AsyncParams<{ locale: string }> & AsyncSearchParams<{ degrees?: string }>;
+type SkillPageProps = AsyncParams & AsyncSearchParams<{ degrees?: string }>;
 
 const SkillsPage = async ({
   params, searchParams,
@@ -33,7 +32,7 @@ const SkillsPage = async ({
   } = await initTranslations(locale);
 
   const getSelectedDegrees = () => {
-    if(isEmpty(degrees)) return [];
+    if(!isNil(degrees) && isEmpty(degrees)) return [];
 
     return degrees ?
       degrees.split(",").map(Number) :
@@ -45,52 +44,6 @@ const SkillsPage = async ({
   };
 
   const selectedDegrees = getSelectedDegrees();
-
-  const groupedSkills = [
-    {
-      title: t("skills.groups.frontend"),
-      skills: [
-        SKILLS.CSS,
-        SKILLS.HTML,
-        SKILLS.JAVASCRIPT,
-        SKILLS.TYPESCRIPT,
-        SKILLS.REACT,
-        SKILLS.VUE,
-        SKILLS.NEXT_JS,
-        SKILLS.NUXT,
-        SKILLS.TAILWIND,
-        SKILLS.SASS,
-        SKILLS.JQUERY,
-      ],
-    },
-    {
-      title: t("skills.groups.backend"),
-      skills: [SKILLS.NODE_JS,
-        SKILLS.GRAPHQL,
-        SKILLS.REST_API],
-    },
-    {
-      title: t("skills.groups.database"),
-      skills: [SKILLS.MYSQL,
-        SKILLS.SQLITE,
-        SKILLS.ELASTIC_SEARCH,
-        SKILLS.KNEX],
-    },
-    {
-      title: t("skills.groups.testing"),
-      skills: [SKILLS.CYPRESS,
-        SKILLS.JEST,
-        SKILLS.MOCHA,
-        SKILLS.PLAYWRIGHT,
-        SKILLS.VITEST],
-    },
-    {
-      title: t("skills.groups.tools"),
-      skills: [SKILLS.GIT,
-        SKILLS.DOCKER,
-        SKILLS.NETLIFY_FUNCTIONS],
-    },
-  ];
 
 
   return (
@@ -104,8 +57,8 @@ const SkillsPage = async ({
         t={t}
       />
       <FilteredSkills
-        groupedSkills={groupedSkills}
         selectedDegrees={selectedDegrees}
+        t={t}
       />
     </PageWrapper>
   );

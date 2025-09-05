@@ -23,8 +23,7 @@ export const CvButtons = () => {
   const pathname = usePathname();
   const params = useParams();
   const router = useRouter();
-  const [isAtBottom,
-    setIsAtBottom] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
   const locale = params.locale as string;
   const pathWithoutLocale = locale ? pathname.replace(`/${locale}`, "") || "/" : pathname;

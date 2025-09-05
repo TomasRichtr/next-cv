@@ -10,7 +10,10 @@ const SkillCheckbox = ({
   checked,
 }: SkillCheckboxProps) => {
   return (
-    <WithSkeleton>
+    <WithSkeleton
+      heightClass="h-8"
+      widthClass="w-8"
+    >
       <input
         type="checkbox"
         className="checkbox checkbox-primary mt-2"

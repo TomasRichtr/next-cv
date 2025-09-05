@@ -1,30 +1,74 @@
 import {
-  includes,
+  includes, isEmpty,
   map,
   orderBy,
   reduce,
 } from "lodash";
 import React from "react";
 
-import AnimateItem from "@/components/animators/animate-item";
-import SkillCard from "@/components/skills/skill-card";
+import SkillsGroup from "@/components/skills/skills-group";
 import {
-  DEV_ICONS_MAP, SKILL_DEGREE_MAP, Skills,
+  DEV_ICONS_MAP, SKILL_DEGREE_MAP, SKILLS, Skills,
 } from "@/constants/cv";
-
-interface GroupedSkill {
-  title: string;
-  skills: string[];
-}
+import {
+  Translate,
+} from "@/types";
 
 interface FilteredSkillsProps {
-  groupedSkills: GroupedSkill[];
   selectedDegrees?: number[];
+  t: Translate;
 }
 
 const FilteredSkills = ({
-  groupedSkills, selectedDegrees = [],
+  selectedDegrees = [], t,
 }: FilteredSkillsProps) => {
+
+  const groupedSkills = [
+    {
+      title: t("skills.groups.frontend"),
+      skills: [
+        SKILLS.CSS,
+        SKILLS.HTML,
+        SKILLS.JAVASCRIPT,
+        SKILLS.TYPESCRIPT,
+        SKILLS.REACT,
+        SKILLS.VUE,
+        SKILLS.NEXT_JS,
+        SKILLS.NUXT,
+        SKILLS.TAILWIND,
+        SKILLS.SASS,
+        SKILLS.JQUERY,
+      ],
+    },
+    {
+      title: t("skills.groups.backend"),
+      skills: [SKILLS.NODE_JS,
+        SKILLS.GRAPHQL,
+        SKILLS.REST_API],
+    },
+    {
+      title: t("skills.groups.database"),
+      skills: [SKILLS.MYSQL,
+        SKILLS.SQLITE,
+        SKILLS.ELASTIC_SEARCH,
+        SKILLS.KNEX],
+    },
+    {
+      title: t("skills.groups.testing"),
+      skills: [SKILLS.CYPRESS,
+        SKILLS.JEST,
+        SKILLS.MOCHA,
+        SKILLS.PLAYWRIGHT,
+        SKILLS.VITEST],
+    },
+    {
+      title: t("skills.groups.tools"),
+      skills: [SKILLS.GIT,
+        SKILLS.DOCKER,
+        SKILLS.NETLIFY_FUNCTIONS],
+    },
+  ];
+
   const getFilteredSkills = (skills: string[]) => {
     const filteredSkills = reduce(skills, (acc, s) => {
       const skillKey = s as Skills;
@@ -42,49 +86,35 @@ const FilteredSkills = ({
     return orderBy(filteredSkills, ["degree"], ["desc"]);
   };
 
-  const filteredGroupedSkills = map(groupedSkills, (group) => ({
-    ...group,
-    skills: getFilteredSkills(group.skills),
-  }));
+  const getFilteredGroupedSkills = () => {
+    const filteredGroupedSkills = map(groupedSkills, (group) => ({
+      ...group,
+      skills: getFilteredSkills(group.skills),
+    }));
 
-  if (selectedDegrees.length === 0) {
+    return filteredGroupedSkills.filter(g => !isEmpty(g.skills));
+  };
+
+  const filteredGroupedSkills = getFilteredGroupedSkills();
+
+  if (isEmpty(selectedDegrees)) {
     return (
       <div>
-        Please select degrees to filter skills.
+        {t("skills.fallback")}
       </div>
     );
   }
 
   return (
     <div
-      className="flex flex-col gap-12"
+      className="flex flex-col gap-20 mt-16 w-full"
     >
       {map(filteredGroupedSkills, (g) => (
-        <div
+        <SkillsGroup
           key={g.title}
-        >
-          <h4
-            className="mb-6 pl-1.5"
-          >
-            {g.title}
-          </h4>
-          <div
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 w-full"
-          >
-            {map(g.skills, (skill, i) => (
-              <AnimateItem
-                key={skill.name}
-                i={i}
-              >
-                <SkillCard
-                  name={skill.name}
-                  icon={skill.icon}
-                  degree={skill.degree}
-                />
-              </AnimateItem>
-            ))}
-          </div>
-        </div>
+          title={g.title}
+          skills={g.skills}
+        />
       ))}
     </div>
   );

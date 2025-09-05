@@ -6,6 +6,7 @@ import {
 import Link from "next/link";
 
 import SkillCheckbox from "@/components/skills/skill-checkbox";
+import StarRating from "@/components/skills/star-rating";
 import {
   SkillDegree,
 } from "@/constants/cv";
@@ -28,11 +29,17 @@ const SkillFilters = ({
     t("skills.degrees.2"),
   ];
 
+  const degreeDescriptions = [
+    t("skills.descriptions.0"),
+    t("skills.descriptions.1"),
+    t("skills.descriptions.2"),
+  ];
+
   const degreeValues = filter(Object.values(SkillDegree), (v) => typeof v === "number") as number[];
 
   return (
     <div
-      className="mb-6"
+      className="mb-6 w-full"
     >
       <h5
         className="mb-4"
@@ -46,16 +53,19 @@ const SkillFilters = ({
           const isSelected = includes(selectedDegrees, degree);
           const newSelectedDegrees = isSelected
             ? filter(selectedDegrees, (d) => d !== degree)
-            : [...selectedDegrees,
-              degree];
+            : [
+              ...selectedDegrees,
+              degree,
+            ];
 
           return (
             <Link
               href={ROUTE.SKILLS(newSelectedDegrees)}
               key={degree}
+              className="w-full"
             >
               <label
-                className="custom-soft-option flex flex-row items-start gap-3 sm:w-1/2"
+                className="custom-soft-option flex flex-row items-start gap-3"
               >
                 <SkillCheckbox
                   checked={isSelected}
@@ -69,22 +79,16 @@ const SkillFilters = ({
                     <span
                       className="text-base font-medium"
                     >
-                      {degreeLabels[index] || `Degree ${degree}`}
+                      {degreeLabels[index]}
                     </span>
-                    <span
-                      className="text-base-content/50 text-base"
-                    >
-                      {degree === 0 ? "Junior" : degree === 1 ? "Medior" : "Senior"}
-                    </span>
+                    <StarRating
+                      degree={index}
+                    />
                   </span>
                   <span
                     className="text-base-content/80"
                   >
-                    {degree === 0
-                      ? "Beginner level skills"
-                      : degree === 1
-                        ? "Intermediate level skills"
-                        : "Advanced level skills"}
+                    {degreeDescriptions[index]}
                   </span>
                 </span>
               </label>

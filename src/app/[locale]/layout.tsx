@@ -30,6 +30,9 @@ import {
 import {
   Theme, ThemeMode,
 } from "@/types/theme";
+import {
+  sleep,
+} from "@/utils";
 
 const font = Ubuntu({
   weight: "500",

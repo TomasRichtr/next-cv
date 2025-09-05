@@ -302,7 +302,7 @@ export const SKILL_DEGREE_MAP: Record<string, SkillDegree> = Object.freeze({
   "Netlify functions": SkillDegree.Medior,
   "Next.js": SkillDegree.Medior,
   "node.js": SkillDegree.Medior,
-  nuxt: SkillDegree.Junior,
+  nuxt: SkillDegree.Medior,
   playwright: SkillDegree.Senior,
   react: SkillDegree.Medior,
   "Rest Api": SkillDegree.Junior,

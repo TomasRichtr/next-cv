@@ -8,7 +8,6 @@ import {
   AsyncParams,
 } from "@/types";
 import {
-  Colors,
   Sizes,
 } from "@/types/theme";
 
