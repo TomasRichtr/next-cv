@@ -8,7 +8,7 @@ import {
 } from "@/db/dao/reference";
 
 const ReferenceList = async () => {
-  const references = getReferencesWithUsers();
+  const references = await getReferencesWithUsers();
 
   const generateGridData = () => {
     return references.map(() => ({

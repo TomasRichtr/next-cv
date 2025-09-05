@@ -33,46 +33,53 @@ const sampleReferences: string[] = [
   "Burned-out tech lead who mentors junior developers by telling them 'good luck' and walking away.",
 ];
 
-function dropAllTables(): void {
+async function dropAllTables(): Promise<void> {
   console.log("Dropping all tables...");
 
-  // Disable foreign key constraints temporarily
-  db.prepare("PRAGMA foreign_keys = OFF").run();
+  // Get all table names from PostgreSQL system tables
+  const result = await db.query(`
+    SELECT tablename as name 
+    FROM pg_tables 
+    WHERE schemaname = 'public'
+  `);
+  const tables = result.rows as { name: string }[];
 
-  // Get all table names
-  const tables = db.prepare(`
-    SELECT name FROM sqlite_master 
-    WHERE type='table' AND name NOT LIKE 'sqlite_%'
-  `).all() as { name: string }[];
+  // Drop tables in order to handle foreign key constraints
+  const tableOrder = [
+    "sessions",
+    "references",
+    "messages",
+    "users",
+    "data",
+    "migrations",
+  ];
 
-  // Drop sessions table first (it has foreign keys to users)
-  const sessionsTable = tables.find(t => t.name === "sessions");
-  if (sessionsTable) {
-    console.log(`Dropping table: ${sessionsTable.name}`);
-    db.prepare(`DROP TABLE IF EXISTS ${sessionsTable.name}`).run();
-  }
-
-  // Drop remaining tables
-  for (const table of tables) {
-    if (table.name !== "sessions") {
+  for (const tableName of tableOrder) {
+    const table = tables.find(t => t.name === tableName);
+    if (table) {
       console.log(`Dropping table: ${table.name}`);
-      db.prepare(`DROP TABLE IF EXISTS \`${table.name}\``).run();
+      await db.query(`DROP TABLE IF EXISTS "${table.name}" CASCADE`);
     }
   }
 
-  // Re-enable foreign key constraints
-  db.prepare("PRAGMA foreign_keys = ON").run();
+  // Drop any remaining tables not in the predefined order
+  for (const table of tables) {
+    if (!tableOrder.includes(table.name)) {
+      console.log(`Dropping table: ${table.name}`);
+      await db.query(`DROP TABLE IF EXISTS "${table.name}" CASCADE`);
+    }
+  }
 
   console.log("All tables dropped successfully.");
 }
 
 async function seedData(): Promise<void> {
   // Drop all tables first
-  dropAllTables();
+  await dropAllTables();
 
   // Run migrations to recreate tables
   const migrationRunner = new MigrationRunner(db);
-  migrationRunner.runMigrations(allMigrations);
+  await migrationRunner.runMigrations(allMigrations);
 
   console.log("Starting to seed users...");
 
@@ -85,12 +92,12 @@ async function seedData(): Promise<void> {
         role: UserRole.User,
       };
 
-      const userId = createUser(user);
+      const userId = await createUser(user);
       console.log(`Created user ${i}: ${user.email} (ID: ${userId})`);
 
-      // Create reference for the user
+      // Create a reference for the user
       const reference = sampleReferences[i - 1];
-      const referenceId = createOrUpdateReference(reference, userId, 1);
+      const referenceId = await createOrUpdateReference(reference, userId, 1);
       console.log(`Created reference for user ${i} (Reference ID: ${referenceId})`);
     }
 

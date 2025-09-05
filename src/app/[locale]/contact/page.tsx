@@ -30,7 +30,7 @@ const ContactPage = async ({
 
   let userEmail;
   if (user) {
-    const dbUser = getUserById(+user.id);
+    const dbUser = await getUserById(+user.id);
     userEmail = dbUser?.email;
   }
 

@@ -3,22 +3,29 @@ import {
   NewUser, User, UserRole,
 } from "@/types/user";
 
-export const createUser = (user: Omit<NewUser, "confirmPassword">) => {
-  const result = db
-    .prepare("INSERT INTO users (email, password, role) VALUES (?, ?, ?)")
-    .run(user.email, user.password, UserRole.User);
+export const createUser = async (user: Omit<NewUser, "confirmPassword">): Promise<number> => {
+  const result = await db.query(
+    "INSERT INTO users (email, password, role) VALUES ($1, $2, $3) RETURNING id",
+    [
+      user.email,
+      user.password,
+      UserRole.User,
+    ],
+  );
 
-  return result.lastInsertRowid as number;
+  return result.rows[0].id;
 };
 
-export const getUserByEmail = (email: string): User | undefined => {
-  return db.prepare("SELECT * FROM users WHERE email = ?").get(email) as User | undefined;
+export const getUserByEmail = async (email: string): Promise<User | undefined> => {
+  const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+  return result.rows[0];
 };
 
-export const getUserById = (id: number): User | undefined => {
-  return db.prepare("SELECT * FROM users WHERE id = ?").get(id) as User | undefined;
+export const getUserById = async (id: number): Promise<User | undefined> => {
+  const result = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+  return result.rows[0];
 };
 
-export const deleteUser = (id: number) => {
-  return db.prepare("DELETE FROM users WHERE id = ?").run(id);
+export const deleteUser = async (id: number) => {
+  return await db.query("DELETE FROM users WHERE id = $1", [id]);
 };

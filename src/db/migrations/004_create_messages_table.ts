@@ -1,4 +1,6 @@
-import sql from "better-sqlite3";
+import {
+  Pool,
+} from "pg";
 
 import {
   Migration,
@@ -7,10 +9,10 @@ import {
 export const createMessagesTableMigration: Migration = {
   id: "004_create_messages_table",
   name: "create_messages_table",
-  up: (db: sql.Database) => {
-    db.exec(`
+  up: async (db: Pool) => {
+    await db.query(`
       CREATE TABLE messages (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         user_id INTEGER,
@@ -22,7 +24,7 @@ export const createMessagesTableMigration: Migration = {
       )
     `);
   },
-  down: (db: sql.Database) => {
-    db.exec("DROP TABLE IF EXISTS messages");
+  down: async (db: Pool) => {
+    await db.query("DROP TABLE IF EXISTS messages");
   },
 };

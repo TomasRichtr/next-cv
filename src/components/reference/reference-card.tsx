@@ -8,10 +8,10 @@ interface ReferenceCardProps {
     userId: number;
 }
 
-const ReferenceCard = ({
+const ReferenceCard = async ({
   userId,
 }: ReferenceCardProps) => {
-  const reference = getReferenceByUserId(userId);
+  const reference = await getReferenceByUserId(userId);
 
   return (
     <Card

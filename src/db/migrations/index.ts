@@ -1,4 +1,8 @@
 import {
+  createSessionsTableMigration,
+} from "@/db/migrations/005_create_sessions_table";
+
+import {
   Migration,
 } from "../migrations";
 
@@ -18,10 +22,12 @@ import {
   createMessagesTableMigration,
 } from "./004_create_messages_table";
 
+
 export const allMigrations: Migration[] = [
   createInitialTablesMigration,
   addUserRoleMigration,
   dropAppStateMigration,
   createReferencesTableMigration,
   createMessagesTableMigration,
+  createSessionsTableMigration,
 ];

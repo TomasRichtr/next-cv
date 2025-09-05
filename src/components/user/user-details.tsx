@@ -12,16 +12,16 @@ interface UserDetailsProps {
 const UserDetails = async ({
   userId, t,
 }: UserDetailsProps) => {
-  const user = getUserById(userId)!;
+  const user = (await getUserById(userId))!;
 
   const userDetails = [
     {
-      label:t("profile.labels.email"),
-      value:user.email,
+      label: t("profile.labels.email"),
+      value: user.email,
     },
     {
       label:t("profile.labels.role"),
-      value:user.role,
+      value: user.role,
     },
   ];
 

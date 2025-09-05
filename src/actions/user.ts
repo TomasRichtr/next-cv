@@ -1,11 +1,11 @@
 "use server";
 
 import {
-  SqliteError,
-} from "better-sqlite3";
-import {
   redirect,
 } from "next/navigation";
+import {
+  DatabaseError,
+} from "pg";
 
 import {
   ROUTE,
@@ -102,7 +102,7 @@ export const signUp = async (
     async () => {
       await validateNew(user);
       const hashedPassword = hashUserPassword(user.password);
-      const userId = createUser({
+      const userId = await createUser({
         email: user.email,
         password: hashedPassword,
       });
@@ -110,7 +110,7 @@ export const signUp = async (
     },
     userData,
     (err) => {
-      if (err instanceof SqliteError && err.code === DbErrorCode.UNIQUE) {
+      if (err instanceof DatabaseError && err.code === DbErrorCode.UNIQUE) {
         return {
           message: "validation.email.exists",
           field: FormFields.Email,
@@ -140,7 +140,7 @@ export const login = async (
 
   return handleAuthFlow(
     async () => {
-      const existingUser = getUserByEmail(user.email);
+      const existingUser = await getUserByEmail(user.email);
       if (!existingUser) {
         const error = new Error("validation.email.notFound") as Error & { field: string };
         error.field = FormFields.Email;

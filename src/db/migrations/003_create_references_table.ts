@@ -1,4 +1,6 @@
-import sql from "better-sqlite3";
+import {
+  Pool,
+} from "pg";
 
 import {
   Migration,
@@ -7,10 +9,10 @@ import {
 export const createReferencesTableMigration: Migration = {
   id: "003_create_references_table",
   name: "Create references table",
-  up: (db: sql.Database) => {
-    db.exec(`
-      CREATE TABLE IF NOT EXISTS [references] (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+  up: async (db: Pool) => {
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS "references" (
+        id SERIAL PRIMARY KEY,
         reference TEXT NOT NULL,
         user_id INTEGER NOT NULL UNIQUE,
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -18,7 +20,7 @@ export const createReferencesTableMigration: Migration = {
       );
     `);
   },
-  down: (db: sql.Database) => {
-    db.exec("DROP TABLE IF EXISTS [references];");
+  down: async (db: Pool) => {
+    await db.query("DROP TABLE IF EXISTS \"references\";");
   },
 };

@@ -1,4 +1,6 @@
-import sql from "better-sqlite3";
+import {
+  Pool,
+} from "pg";
 
 import {
   Migration,
@@ -7,35 +9,35 @@ import {
 export const createInitialTablesMigration: Migration = {
   id: "000_create_initial_tables",
   name: "Create initial tables",
-  up: (db: sql.Database) => {
-    db.exec(`
+  up: async (db: Pool) => {
+    await db.query(`
       CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         email TEXT UNIQUE,
         password TEXT
       );
     `);
 
-    db.exec(`
+    await db.query(`
       CREATE TABLE IF NOT EXISTS sessions (
         id TEXT NOT NULL PRIMARY KEY,
-        expires_at INTEGER NOT NULL,
-        user_id TEXT NOT NULL,
+        expires_at BIGINT NOT NULL,
+        user_id INTEGER NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users(id)
       );
     `);
 
-    db.exec(`
+    await db.query(`
       CREATE TABLE IF NOT EXISTS data (
-        id INTEGER PRIMARY KEY
+        id SERIAL PRIMARY KEY
       );
     `);
 
     console.log("Created initial tables: users, sessions, data");
   },
-  down: (db: sql.Database) => {
-    db.exec("DROP TABLE IF EXISTS sessions;");
-    db.exec("DROP TABLE IF EXISTS users;");
-    db.exec("DROP TABLE IF EXISTS data;");
+  down: async (db: Pool) => {
+    await db.query("DROP TABLE IF EXISTS sessions;");
+    await db.query("DROP TABLE IF EXISTS users;");
+    await db.query("DROP TABLE IF EXISTS data;");
   },
 };

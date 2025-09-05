@@ -1,5 +1,5 @@
 export enum DbErrorCode {
-  UNIQUE = "SQLITE_CONSTRAINT_UNIQUE",
+  UNIQUE = "23505",
 }
 
 export interface Quote {

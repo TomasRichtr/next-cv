@@ -1,11 +1,11 @@
 "use server";
 
 import {
-  SqliteError,
-} from "better-sqlite3";
-import {
   redirect,
 } from "next/navigation";
+import {
+  DatabaseError,
+} from "pg";
 
 import {
   ROUTE,
@@ -82,7 +82,7 @@ export const submitMessage = async (
   let redirectPath;
   try {
     await validateNewMessage(newMessage);
-    const messageId = createMessage(newMessage);
+    const messageId = await createMessage(newMessage);
 
     const adminEmail = buildAdminEmail(locale, messageId, newMessage);
     const adminMailOptions = {
@@ -110,7 +110,7 @@ export const submitMessage = async (
       throw err;
     }
 
-    if (err instanceof SqliteError && err.code === DbErrorCode.UNIQUE) {
+    if (err instanceof DatabaseError && err.code === DbErrorCode.UNIQUE) {
       return createErrorResponse(
         "validation.message.duplicate",
         undefined,

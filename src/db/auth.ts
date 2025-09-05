@@ -1,32 +1,48 @@
 import {
-  BetterSqlite3Adapter,
-} from "@lucia-auth/adapter-sqlite";
-import {
   isNil,
 } from "lodash";
 import {
   Lucia,
+  TimeSpan,
 } from "lucia";
 import {
   cookies,
 } from "next/headers";
 
-import db from "./db";
+import {
+  authDao,
+} from "./dao/auth";
 
-const adapter = new BetterSqlite3Adapter(db, {
-  user: "users",
-  session: "sessions",
-});
-
-const lucia = new Lucia(adapter, {
-  sessionCookie: {
-    expires: false,
-    attributes: {
-      secure: process.env.NODE_ENV === "production",
+const lucia = new Lucia(
+  authDao,
+  {
+    sessionCookie: {
+      expires: false,
+      attributes: {
+        secure: process.env.NODE_ENV === "production",
+      },
+    },
+    sessionExpiresIn: new TimeSpan(30, "d"), // 30 days
+    getUserAttributes: (attributes) => {
+      return {
+        email: attributes.email,
+        role: attributes.role,
+      };
     },
   },
-});
+);
 
+declare module "lucia" {
+  interface Register {
+    Lucia: typeof lucia;
+    DatabaseUserAttributes: {
+      email: string;
+      role: string;
+    };
+  }
+}
+
+// ... rest of your auth functions remain the same ...
 type SessionCookie = ReturnType<typeof lucia.createSessionCookie> | ReturnType<typeof lucia.createBlankSessionCookie>
 
 const setSessionCookie = async (

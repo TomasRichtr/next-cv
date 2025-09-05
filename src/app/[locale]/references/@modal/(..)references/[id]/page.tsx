@@ -44,7 +44,7 @@ const ReferencesModal = async ({
     user,
   } = await verifyAuthSession();
 
-  const reference = getReferenceById(+id);
+  const reference = await getReferenceById(+id);
 
   if (!reference) {
     notFound();

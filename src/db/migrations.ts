@@ -1,50 +1,59 @@
-import sql from "better-sqlite3";
+import {
+  Pool, 
+} from "pg";
 
 export interface Migration {
-  id: string;
-  name: string;
-  up: (db: sql.Database) => void;
-  down?: (db: sql.Database) => void;
+    id: string;
+    name: string;
+    up: (db: Pool) => Promise<void>;
+    down?: (db: Pool) => Promise<void>;
 }
 
 export class MigrationRunner {
-  private db: sql.Database;
+  private db: Pool;
 
-  constructor(db: sql.Database) {
+  constructor(db: Pool) {
     this.db = db;
-    this.initializeMigrationsTable();
   }
 
-  private initializeMigrationsTable(): void {
-    this.db.exec(`
+  private async initializeMigrationsTable(): Promise<void> {
+    await this.db.query(`
       CREATE TABLE IF NOT EXISTS migrations (
         id TEXT PRIMARY KEY,
         name TEXT NOT NULL,
-        executed_at INTEGER NOT NULL
+        executed_at BIGINT NOT NULL
       );
     `);
   }
 
-  private hasBeenExecuted(migrationId: string): boolean {
-    const result = this.db.prepare("SELECT id FROM migrations WHERE id = ?").get(migrationId);
-    return !!result;
+  private async hasBeenExecuted(migrationId: string): Promise<boolean> {
+    const result = await this.db.query("SELECT id FROM migrations WHERE id = $1", [migrationId]);
+    return result.rows.length > 0;
   }
 
-  private markAsExecuted(migration: Migration): void {
-    this.db.prepare("INSERT INTO migrations (id, name, executed_at) VALUES (?, ?, ?)")
-      .run(migration.id, migration.name, Date.now());
+  private async markAsExecuted(migration: Migration): Promise<void> {
+    await this.db.query(
+      "INSERT INTO migrations (id, name, executed_at) VALUES ($1, $2, $3)",
+      [
+        migration.id,
+        migration.name,
+        Date.now(),
+      ],
+    );
   }
 
-  public runMigrations(migrations: Migration[]): void {
+  public async runMigrations(migrations: Migration[]): Promise<void> {
     console.log("Running database migrations...");
-    
+
+    await this.initializeMigrationsTable();
+
     for (const migration of migrations) {
-      if (!this.hasBeenExecuted(migration.id)) {
+      if (!(await this.hasBeenExecuted(migration.id))) {
         console.log(`Executing migration: ${migration.name}`);
-        
+
         try {
-          migration.up(this.db);
-          this.markAsExecuted(migration);
+          await migration.up(this.db);
+          await this.markAsExecuted(migration);
           console.log(`✓ Migration ${migration.name} completed successfully`);
         } catch (error) {
           console.error(`✗ Migration ${migration.name} failed:`, error);
@@ -54,15 +63,12 @@ export class MigrationRunner {
         console.log(`⊘ Migration ${migration.name} already executed, skipping`);
       }
     }
-    
+
     console.log("All migrations completed.");
   }
 
-  public getExecutedMigrations(): Array<{ id: string; name: string; executed_at: number }> {
-    return this.db.prepare("SELECT * FROM migrations ORDER BY executed_at ASC").all() as Array<{
-      id: string;
-      name: string;
-      executed_at: number;
-    }>;
+  public async getExecutedMigrations(): Promise<Array<{ id: string; name: string; executed_at: number }>> {
+    const result = await this.db.query("SELECT * FROM migrations ORDER BY executed_at ASC");
+    return result.rows;
   }
 }
