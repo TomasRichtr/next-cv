@@ -1,7 +1,22 @@
 import db from "../db";
 
+interface DatabaseSession {
+  id: string;
+  userId: string;
+  expiresAt: Date;
+  attributes: Record<string, never>;
+}
+
+interface DatabaseUser {
+  id: string;
+  attributes: {
+    email: string;
+    role: string;
+  };
+}
+
 export const authDao = {
-  async getSessionAndUser(sessionId: string): Promise<[session: any | null, user: any | null]> {
+  async getSessionAndUser(sessionId: string): Promise<[session: DatabaseSession | null, user: DatabaseUser | null]> {
     const result = await db.query(
       `SELECT s.id, s.expires_at, s.user_id, u.id as user_id, u.email, u.role 
        FROM sessions s 
@@ -11,7 +26,10 @@ export const authDao = {
     );
 
     if (result.rows.length === 0) {
-      return [null, null];
+      return [
+        null,
+        null,
+      ];
     }
 
     const row = result.rows[0];
@@ -30,7 +48,10 @@ export const authDao = {
       },
     };
 
-    return [session, user];
+    return [
+      session,
+      user,
+    ];
   },
 
   async getUserSessions(userId: string) {
