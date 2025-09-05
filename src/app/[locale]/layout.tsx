@@ -1,3 +1,6 @@
+import type {
+  Metadata,
+} from "next";
 import "../globals.css";
 import "devicon/devicon.min.css";
 import {
@@ -18,7 +21,7 @@ import ReduxProvider from "@/components/providers/redux-provider";
 import TranslationProvider from "@/components/providers/translation-provider";
 import CookieConsent from "@/components/utils/cookie-consent";
 import {
-  APP_NAME,
+  APP_NAME, APP_TITLE,
 } from "@/constants";
 import {
   verifyAuthSession,
@@ -36,20 +39,9 @@ const font = Ubuntu({
   subsets: ["latin-ext"],
 });
 
-export const generateMetadata = async ({
-  params,
-}: AsyncParams) => {
-  const {
-    locale,
-  } = await params;
-
-  const {
-    t,
-  } = await initTranslations(locale);
-
+export const metadata = async () => {
   return {
-    title: t("seoTitle"),
-    description: t("seoDescription"),
+    title: APP_TITLE,
   };
 };
 
@@ -100,7 +92,7 @@ const RootLayout = async ({
   return (
     <html
       lang={locale}
-      data-theme={initialTheme || "bumblebee"}
+      data-theme={initialTheme}
     >
       <body
         className={`${font.className} font-sans`}

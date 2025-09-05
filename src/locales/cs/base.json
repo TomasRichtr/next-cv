@@ -1,8 +1,4 @@
 {
-  "title": "bla bla bla",
-  "description": "bla bla bla bla",
-  "seoTitle": "next.js Boilerplate",
-  "seoDescription": "version of next.js is 15",
   "notFound": {
     "title": "Nenalezeno",
     "description": "Požadovaná stránka neexistuje nebo chybí požadovaná oprávnění."

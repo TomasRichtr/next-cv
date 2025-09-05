@@ -38,7 +38,7 @@ const AboutMeCard = ({
           {t("about.title")}
         </h4>
         <div
-          className="divider my-0"
+          className="divider divider-primary"
         />
         <div
           className="text-base-content/90 leading-relaxed space-y-4"
@@ -46,7 +46,7 @@ const AboutMeCard = ({
           <AboutMeDescription />
         </div>
         <div
-          className="divider my-0"
+          className="divider divider-primary"
         />
         <div
           className="flex flex-wrap gap-2"
