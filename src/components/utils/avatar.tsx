@@ -72,6 +72,7 @@ const Avatar = ({
             }}
             priority={priority}
             fill
+            sizes="(max-width: 768px) 128px, 224px"
           />
         )}
         {!image && (

@@ -1,4 +1,3 @@
-import myPhoto from "@/assets/my-photo.png";
 import CenteredAvatar from "@/components/home/centered-avatar";
 import HomeContent from "@/components/home/home-content";
 import HeroBackground from "@/components/layout/hero-background";
@@ -7,9 +6,6 @@ import initTranslations from "@/locales/i18n";
 import {
   AsyncParams,
 } from "@/types";
-import {
-  Sizes,
-} from "@/types/theme";
 
 
 const HomePage = async ({
@@ -34,14 +30,7 @@ const HomePage = async ({
           className="absolute bottom-0 border-t-4 border-base-content w-full"
         />
       </HeroBackground>
-      <CenteredAvatar
-        image={myPhoto}
-        size={Sizes.XL}
-        offset={{
-          x: 0,
-          y: 15,
-        }}
-      />
+      <CenteredAvatar />
       <HomeContent
         roleText={t("home.role")}
         statusText={t("home.status")}
