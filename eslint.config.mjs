@@ -171,6 +171,7 @@ const eslintConfig = [
         "ignoreTemplateLiterals": true,
         "ignoreRegExpLiterals": true,
       }],
+      "array-element-newline": ["error", "always"],
     },
   },
 ];

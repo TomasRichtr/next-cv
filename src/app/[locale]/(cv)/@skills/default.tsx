@@ -1,4 +1,4 @@
-import SkillsPage from "@/app/[locale]/(cv)/@skills/skills/page";
+import SkillsPage from "@/app/[locale]/(cv)/@skills/skills/[[...filter]]/page";
 import {
   AsyncParams,
 } from "@/types";

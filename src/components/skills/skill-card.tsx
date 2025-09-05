@@ -1,4 +1,4 @@
-import StarRating from "./StarRating";
+import StarRating from "./star-rating";
 
 interface SkillCardProps {
   name: string;

@@ -23,7 +23,8 @@ export const CvButtons = () => {
   const pathname = usePathname();
   const params = useParams();
   const router = useRouter();
-  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [isAtBottom,
+    setIsAtBottom] = useState(false);
 
   const locale = params.locale as string;
   const pathWithoutLocale = locale ? pathname.replace(`/${locale}`, "") || "/" : pathname;
@@ -58,10 +59,10 @@ export const CvButtons = () => {
       };
     case ROUTE.EXPERIENCE:
       return {
-        route: ROUTE.SKILLS,
+        route: ROUTE.SKILLS(),
         label: t("navigation.skills"),
       };
-    case ROUTE.SKILLS:
+    case ROUTE.SKILLS():
       return {
         route: ROUTE.CONTACT,
         label: t("navigation.contact"),
@@ -83,14 +84,14 @@ export const CvButtons = () => {
         route: ROUTE.ABOUT,
         label: t("navigation.about"),
       };
-    case ROUTE.SKILLS:
+    case ROUTE.SKILLS():
       return {
         route: ROUTE.EXPERIENCE,
         label: t("navigation.experience"),
       };
     case ROUTE.CONTACT:
       return {
-        route: ROUTE.SKILLS,
+        route: ROUTE.SKILLS(),
         label: t("navigation.skills"),
       };
     default:

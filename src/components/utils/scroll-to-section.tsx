@@ -1,6 +1,9 @@
 "use client";
 
 import {
+  compact, isEmpty, last, startsWith,
+} from "lodash";
+import {
   usePathname,
 } from "next/navigation";
 import {
@@ -24,9 +27,17 @@ const ScrollToSection = () => {
         return;
       }
 
-      const pathParts = pathName.split("/").filter(Boolean);
-      if (!!pathParts.length) {
-        const id = pathParts[pathParts.length - 1];
+      let id;
+      if (startsWith(pathName, "/skills/")) {
+        id = "skills";
+      } else {
+        const pathParts = compact(pathName.split("/"));
+        if (!isEmpty(pathParts)) {
+          id = last(pathParts);
+        }
+      }
+
+      if (id) {
         const section = document.querySelector(`#${id}`);
         section?.scrollIntoView({
           behavior: "smooth",
