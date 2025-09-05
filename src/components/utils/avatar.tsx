@@ -43,11 +43,13 @@ const Avatar = ({
     x: 0,
     y: 0,
   },
+  priority = false,
 }: {
   image?: string | StaticImageData;
   size?: Sizes;
   backgroundColor?: Colors;
   offset?: { x: number; y: number };
+  priority?: boolean;
 }) => {
   const sizeClass = sizeClasses[size] ?? "size-22 md:size-44 border-14";
   const iconSizeClass = iconSizeClasses[size] ?? "size-16 md:size-38";
@@ -58,7 +60,7 @@ const Avatar = ({
       className="avatar avatar-placeholder"
     >
       <div
-        className={`${backgroundClass} ${sizeClass} rounded-full border-base-content`}
+        className={`${backgroundClass} ${sizeClass} rounded-full border-base-content relative overflow-hidden`}
       >
         {image && (
           <Image
@@ -68,6 +70,8 @@ const Avatar = ({
             style={{
               objectPosition: `${offset.x}px ${offset.y}px`,
             }}
+            priority={priority}
+            fill
           />
         )}
         {!image && (

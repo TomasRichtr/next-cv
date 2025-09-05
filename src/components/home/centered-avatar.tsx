@@ -1,7 +1,4 @@
-import {
-  StaticImageData,
-} from "next/image";
-
+import myPhoto from "@/assets/my-photo.png";
 import AnimateCard from "@/components/animators/animate-card";
 import Avatar from "@/components/utils/avatar";
 import {
@@ -9,22 +6,7 @@ import {
   Sizes,
 } from "@/types/theme";
 
-interface CenteredAvatarProps {
-  image: StaticImageData;
-  size?: Sizes;
-  backgroundColor?: Colors;
-  offset?: { x: number; y: number };
-}
-
-const CenteredAvatar = ({
-  image,
-  size = Sizes.XL,
-  backgroundColor = Colors.Secondary,
-  offset = {
-    x: 0,
-    y: 15,
-  },
-}: CenteredAvatarProps) => {
+const CenteredAvatar = () => {
   return (
     <AnimateCard
       className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -33,10 +15,14 @@ const CenteredAvatar = ({
         className="absolute"
       >
         <Avatar
-          image={image}
-          size={size}
-          backgroundColor={backgroundColor}
-          offset={offset}
+          image={myPhoto}
+          size={Sizes.XL}
+          backgroundColor={Colors.Secondary}
+          offset={{
+            x: 0,
+            y: 15,
+          }}
+          priority
         />
       </div>
     </AnimateCard>
