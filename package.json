@@ -10,7 +10,8 @@
     "lint:style": "stylelint \"src/**/*.css\"",
     "tsc": "tsc --noEmit",
     "seed:data": "tsx src/db/scripts/seed-data.ts",
-    "postbuild": "tsx src/db/scripts/run-migrations.ts"
+    "db:migrate": "tsx src/db/scripts/run-migrations.ts",
+    "db:migrate:prod": "NODE_ENV=production tsx src/db/scripts/run-migrations.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.863.0",
