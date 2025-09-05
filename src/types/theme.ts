@@ -29,3 +29,13 @@ export enum Styles {
     Outline = "outline",
     Gradient = "gradient",
 }
+
+export enum Theme {
+    Light = "bumblebee",
+    Dark = "abyss",
+}
+
+export enum ThemeMode {
+    Auto = "auto",
+    Manual = "manual",
+}

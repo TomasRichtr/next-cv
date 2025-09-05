@@ -11,28 +11,19 @@ import WithSkeleton from "@/components/layout/with-skeleton";
 import {
   useCookieStorage,
 } from "@/hooks/useCookieStorage";
-
-const THEME_MODES = {
-  auto: "auto",
-  manual: "manual",
-} as const;
-
-const THEME = {
-  light: "bumblebee",
-  dark: "abyss",
-} as const;
-
-type Theme = typeof THEME[keyof typeof THEME];
+import {
+  Theme, ThemeMode,
+} from "@/types/theme";
 
 const ThemePicker = () => {
   const [currentTheme, setCurrentTheme] = useCookieStorage("theme", "auto", true);
-  const [manualTheme, setManualTheme] = useCookieStorage<Theme>("manualTheme", THEME.light, true);
-  const [systemTheme, setSystemTheme] = useState<Theme>(THEME.light);
+  const [manualTheme, setManualTheme] = useCookieStorage<Theme>("manualTheme", Theme.Light, true);
+  const [systemTheme, setSystemTheme] = useState<Theme>(Theme.Light);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const updateSystemTheme = () => {
-      setSystemTheme(mediaQuery.matches ? THEME.dark : THEME.light);
+      setSystemTheme(mediaQuery.matches ? Theme.Dark : Theme.Light);
     };
 
     updateSystemTheme();
@@ -44,55 +35,47 @@ const ThemePicker = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (currentTheme === "auto") {
-      document.documentElement.setAttribute("data-theme", systemTheme);
-    } else {
-      document.documentElement.setAttribute("data-theme", manualTheme);
-    }
-  }, [currentTheme, manualTheme, systemTheme]);
-
   const handleThemeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newTheme = e.target.value;
     if (currentTheme === newTheme) return;
 
-    if (newTheme === THEME_MODES.auto) {
-      setCurrentTheme(THEME_MODES.auto);
+    if (newTheme === ThemeMode.Auto) {
+      setCurrentTheme(ThemeMode.Auto);
       document.documentElement.setAttribute("data-theme", systemTheme);
     } else {
-      setCurrentTheme(THEME_MODES.manual);
+      setCurrentTheme(ThemeMode.Manual);
       document.documentElement.setAttribute("data-theme", manualTheme);
     }
   };
 
   const handleManualToggle = () => {
-    if (currentTheme === THEME_MODES.auto) {
-      const oppositeTheme = systemTheme === THEME.dark ? THEME.light : THEME.dark;
+    if (currentTheme === ThemeMode.Auto) {
+      const oppositeTheme = systemTheme === Theme.Dark ? Theme.Light : Theme.Dark;
       setManualTheme(oppositeTheme);
-      setCurrentTheme(THEME_MODES.manual);
+      setCurrentTheme(ThemeMode.Manual);
       document.documentElement.setAttribute("data-theme", oppositeTheme);
     } else {
-      const newManualTheme = manualTheme === THEME.light ? THEME.dark : THEME.light;
+      const newManualTheme = manualTheme === Theme.Light ? Theme.Dark : Theme.Light;
       setManualTheme(newManualTheme);
       document.documentElement.setAttribute("data-theme", newManualTheme);
     }
   };
 
   const getIcon = (theme: string) => {
-    if (theme === THEME_MODES.auto) {
+    if (theme === ThemeMode.Auto) {
       return "icon-[tabler--brightness-auto]";
     }
 
-    const themeToShow = currentTheme === THEME_MODES.auto
-      ? (systemTheme === THEME.dark ? THEME.light : THEME.dark)
+    const themeToShow = currentTheme === ThemeMode.Auto
+      ? (systemTheme === Theme.Dark ? Theme.Light : Theme.Dark)
       : manualTheme;
 
-    return themeToShow === THEME.dark ? "icon-[tabler--moon]" : "icon-[tabler--sun]";
+    return themeToShow === Theme.Dark ? "icon-[tabler--moon]" : "icon-[tabler--sun]";
   };
 
   const buildManualButtonClass = () => {
     const baseClasses = "join-item btn btn-square w-14";
-    const activeClasses = currentTheme === THEME_MODES.manual ? "btn-primary text-primary-content" : "btn-soft text-primary";
+    const activeClasses = currentTheme === ThemeMode.Manual ? "btn-primary text-primary-content" : "btn-soft text-primary";
     return `${activeClasses} ${baseClasses}`;
   };
 
@@ -106,12 +89,12 @@ const ThemePicker = () => {
         <RadioButton
           name="theme-picker"
           selectedValue={currentTheme}
-          value={THEME_MODES.auto}
+          value={ThemeMode.Auto}
           label="auto theme"
           radioChangeHandler={handleThemeChange}
         >
           <span
-            className={`${getIcon(THEME_MODES.auto)} size-6`}
+            className={`${getIcon(ThemeMode.Auto)} size-6`}
           />
         </RadioButton>
         <button
@@ -121,7 +104,7 @@ const ThemePicker = () => {
           type="button"
         >
           <span
-            className={`${getIcon(THEME_MODES.manual)} size-6`}
+            className={`${getIcon(ThemeMode.Manual)} size-6`}
           />
         </button>
       </div>

@@ -2,6 +2,7 @@ import {
   StaticImageData,
 } from "next/image";
 
+import AnimateCard from "@/components/animators/animate-card";
 import Avatar from "@/components/utils/avatar";
 import {
   Colors,
@@ -25,7 +26,7 @@ const CenteredAvatar = ({
   },
 }: CenteredAvatarProps) => {
   return (
-    <div
+    <AnimateCard
       className="absolute inset-0 flex items-center justify-center pointer-events-none"
     >
       <div
@@ -38,7 +39,7 @@ const CenteredAvatar = ({
           offset={offset}
         />
       </div>
-    </div>
+    </AnimateCard>
   );
 };
 

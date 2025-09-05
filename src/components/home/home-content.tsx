@@ -1,3 +1,5 @@
+import AnimateText from "@/components/animators/animate-text";
+
 interface HomeContentProps {
   roleText: string;
   statusText: string;
@@ -12,12 +14,16 @@ const HomeContent = ({
       className="text-center h-[50vh] absolute bottom-0 flex flex-col justify-center items-center"
     >
       <h2>
-        {roleText}
+        <AnimateText>
+          {roleText}
+        </AnimateText>
       </h2>
       <p
         className="text-secondary mt-2"
       >
-        {statusText}
+        <AnimateText>
+          {statusText}
+        </AnimateText>
       </p>
     </div>
   );

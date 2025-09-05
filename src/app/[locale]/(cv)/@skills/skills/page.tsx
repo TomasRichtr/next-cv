@@ -3,6 +3,7 @@ import {
 } from "lodash";
 import React from "react";
 
+import AnimateItem from "@/components/animators/animate-item";
 import PageWrapper from "@/components/layout/page-wrapper";
 import SkillCard from "@/components/skills/SkillCard";
 import {
@@ -69,6 +70,7 @@ const SkillsPage = async ({
     },
   ];
 
+
   return (
     <PageWrapper
       title={t("skills.title")}
@@ -91,13 +93,17 @@ const SkillsPage = async ({
               <div
                 className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 w-full"
               >
-                {g.skills.map((skill) => (
-                  <SkillCard
+                {g.skills.map((skill, i) => (
+                  <AnimateItem
                     key={skill.name}
-                    name={skill.name}
-                    icon={skill.icon}
-                    degree={skill.degree}
-                  />
+                    i={i}
+                  >
+                    <SkillCard
+                      name={skill.name}
+                      icon={skill.icon}
+                      degree={skill.degree}
+                    />
+                  </AnimateItem>
                 ))}
               </div>
             </div>

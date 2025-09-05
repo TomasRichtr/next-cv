@@ -2,7 +2,7 @@ import React, {
   ReactNode,
 } from "react";
 
-import CvButton from "@/components/utils/cv-button";
+import CvButtons from "@/components/utils/cv-buttons";
 import ScrollToSection from "@/components/utils/scroll-to-section";
 
 interface CvLayoutProps {
@@ -18,7 +18,7 @@ const CvLayout = ({
   return (
     <>
       <ScrollToSection />
-      <CvButton />
+      <CvButtons />
       <section
         id="home"
       >

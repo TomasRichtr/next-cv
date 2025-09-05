@@ -1,5 +1,6 @@
 import React from "react";
 
+import AnimateItem from "@/components/animators/animate-item";
 import SkillBadge from "@/components/experience/skill-badge";
 import TimelineDateHeader from "@/components/experience/timeline-date-header";
 import {
@@ -106,10 +107,15 @@ const ExperienceItem = ({
         className="flex flex-wrap gap-1.5! lg:gap-3! border-t border-primary pt-4"
       >
         {experience.skills.map((skill, skillIndex) => (
-          <SkillBadge
+          <AnimateItem
             key={skillIndex}
-            skill={skill}
-          />
+            i={skillIndex}
+          >
+            <SkillBadge
+              key={skillIndex}
+              skill={skill}
+            />
+          </AnimateItem>
         ))}
       </div>
     </div>

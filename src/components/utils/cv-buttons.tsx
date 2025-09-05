@@ -15,7 +15,7 @@ import {
   ROUTE,
 } from "@/constants/route";
 
-export const CvButton = () => {
+export const CvButtons = () => {
   const {
     t,
   } = useTranslation();
@@ -119,7 +119,7 @@ export const CvButton = () => {
 
   return (
     <div
-      className={`fixed right-4 z-50 flex gap-2 transition-all duration-300 ease-in-out ${
+      className={`intersect:motion-delay-[3000ms] intersect:motion-preset-bounce fixed right-4 z-50 flex gap-2 transition-all duration-300 ease-in-out ${
         isAtBottom ? "bottom-16" : "bottom-4"
       }`}
     >
@@ -151,4 +151,4 @@ export const CvButton = () => {
   );
 };
 
-export default CvButton;
+export default CvButtons;

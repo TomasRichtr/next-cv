@@ -12,7 +12,7 @@ import {
 
 import initTranslations from "@/locales/i18n";
 
-const TranslationsProvider = (
+const TranslationProvider = (
   {
     children, locale, namespaces, resources,
   } : {
@@ -34,4 +34,4 @@ const TranslationsProvider = (
   );
 };
 
-export default TranslationsProvider;
+export default TranslationProvider;

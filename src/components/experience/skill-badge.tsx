@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import "devicon/devicon.min.css";
@@ -32,7 +34,10 @@ const SkillBadge = ({
           {skill}
         </span>
       </span>
-      <WithSkeleton>
+      <WithSkeleton
+        widthClass="w-0"
+        heightClass="h-0"
+      >
         <span
           className="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible lg:hidden"
           role="tooltip"

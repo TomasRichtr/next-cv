@@ -14,7 +14,7 @@ import {
 } from "@/types/theme";
 import {
   getBtnColor, getBtnStyle,
-} from "@/utils/theme";
+} from "@/utils/styles";
 
 const FormButton = ({
   label,

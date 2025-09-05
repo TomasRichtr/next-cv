@@ -19,7 +19,7 @@ import {
 } from "@/types/theme";
 import {
   getBtnColor, getBtnStyle,
-} from "@/utils/theme";
+} from "@/utils/styles";
 
 interface NavLinkProps {
   href: string;

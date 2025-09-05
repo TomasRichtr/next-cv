@@ -1,3 +1,4 @@
+import AnimateItem from "@/components/animators/animate-item";
 import ReferenceItem from "@/components/reference/reference-item";
 import {
   verifyAuthSession,
@@ -27,12 +28,16 @@ const ReferenceList = async () => {
     >
       {references.map((r, i) => {
         return (
-          <ReferenceItem
-            reference={r}
+          <AnimateItem
+            i={i}
             key={r.id}
-            gridData={gridData[i]}
-            userId={user ? +user?.id : undefined}
-          />
+          >
+            <ReferenceItem
+              reference={r}
+              gridData={gridData[i]}
+              userId={user ? +user?.id : undefined}
+            />
+          </AnimateItem>
         );
       })}
     </div>

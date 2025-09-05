@@ -2,7 +2,7 @@ import {
   Colors, Styles,
 } from "@/types/theme";
 
-const getBtnColor = (color: Colors): string => {
+export const getBtnColor = (color: Colors): string => {
   switch (color) {
   case Colors.Primary:
     return "btn-primary";
@@ -23,7 +23,7 @@ const getBtnColor = (color: Colors): string => {
   }
 };
 
-const getBtnStyle = (style: Styles): string => {
+export const getBtnStyle = (style: Styles): string => {
   switch (style) {
   case Styles.Soft:
     return "btn-soft";
@@ -36,8 +36,4 @@ const getBtnStyle = (style: Styles): string => {
   default:
     return "";
   }
-};
-
-export {
-  getBtnColor, getBtnStyle,
 };

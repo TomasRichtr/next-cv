@@ -2,6 +2,8 @@ import {
   ReactNode,
 } from "react";
 
+import AnimateText from "@/components/animators/animate-text";
+
 interface PageWrapperProps {
   children: ReactNode;
   title?: string;
@@ -14,6 +16,12 @@ const PageWrapper = ({
   description,
   className = "",
 }: PageWrapperProps) => {
+  const animatedTitle = (
+    <AnimateText>
+      {title}
+    </AnimateText>
+  );
+
   return (
     <>
       <div
@@ -31,12 +39,12 @@ const PageWrapper = ({
                 <h2
                   className="hidden lg:inline-block text-primary"
                 >
-                  {title}
+                  {animatedTitle}
                 </h2>
                 <h3
                   className="inline-block lg:hidden text-primary"
                 >
-                  {title}
+                  {animatedTitle}
                 </h3>
               </>
               )}
@@ -44,7 +52,9 @@ const PageWrapper = ({
               <p
                 className="text-secondary mt-2"
               >
-                {description}
+                <AnimateText>
+                  {description}
+                </AnimateText>
               </p>
               )}
             </div>

@@ -7,11 +7,16 @@ import {
   useEffect,
 } from "react";
 
+import {
+  sleep,
+} from "@/utils";
+
 const ScrollToSection = () => {
   const pathName = usePathname();
 
   useEffect(() => {
-    const scrollToSection = () => {
+    const scrollToSection = async () => {
+      await sleep(1000);
       if (pathName === "/") {
         const section = document.querySelector("#home");
 

@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ReactNode,
   useEffect,
 } from "react";
 import {
@@ -8,20 +9,20 @@ import {
 } from "react-redux";
 
 import {
+  store,
+} from "@/store";
+import {
   useAppDispatch,
-} from "./hooks";
+} from "@/store/hooks";
 import {
   setCurrentPath,
-} from "./slices/appSlice";
+} from "@/store/slices/appSlice";
 
-import {
-  store,
-} from "./index";
 
 const ReduxInitializer = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const dispatch = useAppDispatch();
 
@@ -44,7 +45,7 @@ const ReduxInitializer = ({
 export const ReduxProvider = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   return (
     <Provider

@@ -16,12 +16,12 @@ const StarRating = ({
       <i
         key={i}
         className={
-          `size-5 ${
+          `size-5
+          ${
             i < degree + 1
               ? "icon-[tabler--star-filled] text-yellow-500"
               : "icon-[tabler--star] text-gray-400"
           }`
-
         }
       />
     ))}

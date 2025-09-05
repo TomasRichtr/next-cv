@@ -9,6 +9,10 @@ import {
 import {
   useEffect,
 } from "react";
+import {
+  Observer,
+} from "tailwindcss-intersect";
+
 
 async function loadFlyonUI() {
   return import("flyonui/flyonui");
@@ -31,16 +35,16 @@ const FlyonuiScript = () => {
 
   useEffect(() => {
     const initComponents = async () => {
-      // Wait for DOM to be ready
       if (document.readyState !== "loading") {
         initComponentsNow();
       } else {
         document.addEventListener("DOMContentLoaded", initComponentsNow);
       }
+
+      Observer.start();
     };
 
     const initComponentsNow = () => {
-      // Try multiple times with increasing delays to ensure components are initialized
       const attempts = [0, 50, 100, 200, 500];
 
       attempts.forEach((delay, index) => {
