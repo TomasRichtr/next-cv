@@ -1,5 +1,5 @@
 import {
-  Pool, 
+  Pool,
 } from "pg";
 
 import {
@@ -12,11 +12,11 @@ import {
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === "production" ? {
-    rejectUnauthorized: false, 
+    rejectUnauthorized: false,
   } : false,
 });
 
-async function runMigrations() {
+const runMigrations= async () => {
   try {
     console.log("Running database migrations...");
     const migrationRunner = new MigrationRunner(pool);
@@ -28,6 +28,6 @@ async function runMigrations() {
   } finally {
     await pool.end();
   }
-}
+};
 
 runMigrations();

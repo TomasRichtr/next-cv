@@ -33,7 +33,7 @@ const sampleReferences: string[] = [
   "Burned-out tech lead who mentors junior developers by telling them 'good luck' and walking away.",
 ];
 
-async function dropAllTables(): Promise<void> {
+const dropAllTables = async (): Promise<void> => {
   console.log("Dropping all tables...");
 
   // Get all table names from PostgreSQL system tables
@@ -71,9 +71,9 @@ async function dropAllTables(): Promise<void> {
   }
 
   console.log("All tables dropped successfully.");
-}
+};
 
-async function seedData(): Promise<void> {
+const seedData = async (): Promise<void> => {
   // Drop all tables first
   await dropAllTables();
 
@@ -106,6 +106,6 @@ async function seedData(): Promise<void> {
     console.error("Error seeding users:", error);
     process.exit(1);
   }
-}
+};
 
 seedData();

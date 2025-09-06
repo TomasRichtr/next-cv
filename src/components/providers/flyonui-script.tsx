@@ -14,9 +14,9 @@ import {
 } from "tailwindcss-intersect";
 
 
-async function loadFlyonUI() {
+const loadFlyonUI = async () => {
   return import("flyonui/flyonui");
-}
+};
 
 const FlyonuiScript = () => {
   const path = usePathname();

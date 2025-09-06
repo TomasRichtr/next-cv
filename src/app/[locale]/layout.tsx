@@ -1,6 +1,3 @@
-import type {
-  Metadata,
-} from "next";
 import "../globals.css";
 import "devicon/devicon.min.css";
 import {
@@ -39,10 +36,8 @@ const font = Ubuntu({
   subsets: ["latin-ext"],
 });
 
-export const metadata = async () => {
-  return {
-    title: APP_TITLE,
-  };
+export const metadata = {
+  title: APP_TITLE,
 };
 
 const RootLayout = async ({

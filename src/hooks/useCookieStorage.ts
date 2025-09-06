@@ -75,7 +75,6 @@ export const getFromCookieStorage = <T>(key: string, defaultValue: T): T => {
   }
 };
 
-// Helper functions for cookie operations
 const setCookie = (name: string, value: string, days: number = 21) => {
   const expires = new Date();
   expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
