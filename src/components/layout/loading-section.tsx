@@ -5,8 +5,8 @@ import {
 import Loader from "@/components/utils/loader";
 
 interface LoadingSectionProps {
-    children: ReactNode;
-    loadingText?: string;
+  children: ReactNode;
+  loadingText?: string;
 }
 
 export const LoadingSection = ({

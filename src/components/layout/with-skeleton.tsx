@@ -7,9 +7,9 @@ import {
 const WithSkeleton = ({
   children, widthClass = "w-28", heightClass = "h-10",
 }: {
-    children: ReactNode,
-    widthClass?: string,
-    heightClass?: string,
+  children: ReactNode,
+  widthClass?: string,
+  heightClass?: string,
 }) => {
   const [
     isHydrated, setIsHydrated,

@@ -12,8 +12,8 @@ import {
 } from "@/utils";
 
 interface ModalOpenerProps {
-    modalId: string;
-    rootRoute?: string
+  modalId: string;
+  rootRoute?: string
 }
 
 const ModalRouter = ({

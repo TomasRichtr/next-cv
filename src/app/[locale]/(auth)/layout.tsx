@@ -7,11 +7,13 @@ import {
   protectPage,
 } from "@/utils/protectPage";
 
+interface AuthLayoutProps {
+  children: ReactNode;
+}
+
 const AuthLayout = async ({
   children,
-}: {
-    children: ReactNode;
-}) => {
+}: AuthLayoutProps) => {
   await protectPage([Shield.AUTH]);
 
   return (

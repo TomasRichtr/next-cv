@@ -4,11 +4,11 @@ import {
 } from "react";
 
 interface FormProps {
-    id: string;
-    className?: string;
-    children: ReactNode;
-    formAction: (payload: FormData) => void
-    ref?: RefObject<HTMLFormElement | null>;
+  id: string;
+  className?: string;
+  children: ReactNode;
+  formAction: (payload: FormData) => void
+  ref?: RefObject<HTMLFormElement | null>;
 }
 
 const Form = ({

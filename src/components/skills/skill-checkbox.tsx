@@ -3,7 +3,7 @@
 import WithSkeleton from "@/components/layout/with-skeleton";
 
 interface SkillCheckboxProps {
-    checked: boolean;
+  checked: boolean;
 }
 
 const SkillCheckbox = ({

@@ -17,7 +17,7 @@ import {
 
 interface UserDeleteButtonProps {
   userId: number,
-    modalId: string,
+  modalId: string,
 }
 
 const UserDeleteButton = ({

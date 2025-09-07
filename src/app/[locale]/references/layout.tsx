@@ -3,8 +3,8 @@ import {
 } from "react";
 
 interface ReferenceLayoutProps {
-    children: ReactNode;
-    modal: ReactNode;
+  children: ReactNode;
+  modal: ReactNode;
 }
 
 const ReferencesLayout = async ({

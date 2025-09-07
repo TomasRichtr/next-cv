@@ -4,12 +4,15 @@ import React, {
 
 import CvButtons from "@/components/utils/cv-buttons";
 import ScrollToSection from "@/components/utils/scroll-to-section";
+import {
+  Sections,
+} from "@/constants/cv";
 
 interface CvLayoutProps {
-    about: ReactNode;
-    skills: ReactNode;
-    experience: ReactNode;
-    children: ReactNode;
+  about: ReactNode;
+  skills: ReactNode;
+  experience: ReactNode;
+  children: ReactNode;
 }
 
 const CvLayout = ({
@@ -20,25 +23,25 @@ const CvLayout = ({
       <ScrollToSection />
       <CvButtons />
       <section
-        id="home"
+        id={Sections.Home}
       >
         {children}
       </section>
 
       <section
-        id="about"
+        id={Sections.About}
       >
         {about}
       </section>
 
       <section
-        id="experience"
+        id={Sections.Experiences}
       >
         {experience}
       </section>
 
       <section
-        id="skills"
+        id={Sections.Skills}
       >
         {skills}
       </section>

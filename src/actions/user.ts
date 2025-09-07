@@ -123,12 +123,12 @@ export const signUp = async (
 
 export const login = async (
   prevState: {
-      message?: string;
-      data?: {
-        email?: string;
-        password?: string;
-      };
-    } | undefined,
+    message?: string;
+    data?: {
+      email?: string;
+      password?: string;
+    };
+  } | undefined,
   formData: FormData,
 ) => {
   const loginFields = [
@@ -163,11 +163,11 @@ export const login = async (
 export const auth = async (
   mode: LoginMode,
   prevState: {
-  message?: string;
-  data?: {
-    email?: string;
-    password?: string;
-  }} | undefined,
+    message?: string;
+    data?: {
+      email?: string;
+      password?: string;
+    }} | undefined,
   formData: FormData,
 ) => {
   if (mode === LoginMode.Signup) {

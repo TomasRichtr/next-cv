@@ -24,8 +24,8 @@ import {
 
 
 interface ReferenceModalProps {
-    locale: string;
-    id?: string;
+  locale: string;
+  id?: string;
 }
 
 const ReferencesModal = async ({

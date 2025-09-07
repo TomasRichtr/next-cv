@@ -3,11 +3,11 @@ import {
 } from "i18next";
 
 export interface AsyncParams<T = { locale: string; }> {
-    params: Promise<T>;
+  params: Promise<T>;
 }
 
 export interface AsyncSearchParams<T> {
-    searchParams: Promise<T>;
+  searchParams: Promise<T>;
 }
 
-export type Translate = TFunction<"translation", undefined>
+export type Translate = TFunction<"translation", undefined>;

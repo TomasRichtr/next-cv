@@ -5,8 +5,8 @@ import {
 } from "@/db/dao/user";
 
 interface UserDetailsProps {
-    userId: number;
-    t: (key: string) => string;
+  userId: number;
+  t: (key: string) => string;
 }
 
 const UserDetails = async ({

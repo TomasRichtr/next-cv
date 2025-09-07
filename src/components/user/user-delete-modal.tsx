@@ -2,9 +2,9 @@ import UserDeleteButton from "@/components/user/user-delete-button";
 import Modal from "@/components/utils/modal";
 
 interface UserDeleteModalProps {
-    modalId: string,
-    userId: number,
-    t: (key: string) => string,
+  modalId: string,
+  userId: number,
+  t: (key: string) => string,
 }
 
 const UserDeleteModal = ({

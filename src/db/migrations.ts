@@ -3,10 +3,10 @@ import {
 } from "pg";
 
 export interface Migration {
-    id: string;
-    name: string;
-    up: (db: Pool) => Promise<void>;
-    down?: (db: Pool) => Promise<void>;
+  id: string;
+  name: string;
+  up: (db: Pool) => Promise<void>;
+  down?: (db: Pool) => Promise<void>;
 }
 
 export class MigrationRunner {

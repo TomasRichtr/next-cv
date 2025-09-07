@@ -5,7 +5,6 @@ import {
   DeepReadonly,
 } from "next/dist/shared/lib/deep-readonly";
 
-
 import {
   NAME,
 } from "@/constants/index";
@@ -14,22 +13,22 @@ import {
 } from "@/types/theme";
 
 export interface Experience {
-    position: string;
-    color: Colors;
-    place: string;
-    description: string;
-    link: string;
-    startDate: Dayjs;
-    endDate?: Dayjs;
-    size: number;
-    skills: Skills[];
-    projects?: Project[];
+  position: string
+  color: Colors
+  place: string
+  description: string
+  link: string
+  startDate: Dayjs
+  endDate?: Dayjs
+  size: number
+  skills: Skills[]
+  projects?: Project[]
 }
 
 export interface Project {
-    name: string;
-    url?: string;
-    description: string;
+  name: string
+  url?: string
+  description: string
 }
 
 export const SKILLS: DeepReadonly<Record<string, string>> = {
@@ -63,6 +62,7 @@ export const SKILLS: DeepReadonly<Record<string, string>> = {
 
 export type Skills = typeof SKILLS[keyof typeof SKILLS];
 
+// TODO, removes dates, build around projects, update linked
 export const EXPERIENCES: Experience[] = [
   {
     position: "cv.experiences.designeo.position",
@@ -223,7 +223,7 @@ export const CONTACTS_INFO = Object.freeze([
   },
   {
     icon: "icon-[tabler--phone]",
-    text: "00 420 778 540 970",
+    text: "+420 778 540 970",
     href: "tel:00420778540970",
   },
   {
@@ -244,32 +244,32 @@ export const CONTACTS_INFO = Object.freeze([
 ]);
 
 export const DEV_ICONS_MAP: Record<string, string> = Object.freeze({
-  CSS: "devicon-css3-plain",
-  cypress: "devicon-cypressio-plain",
-  Docker: "devicon-docker-plain",
+  "CSS": "devicon-css3-plain",
+  "cypress": "devicon-cypressio-plain",
+  "Docker": "devicon-docker-plain",
   "Elastic search": "devicon-elasticsearch-plain",
-  git: "devicon-git-plain",
-  graphQL: "devicon-graphql-plain",
-  HTML: "devicon-html5-plain",
-  JQuery: "devicon-jquery-plain",
-  javascript: "devicon-javascript-plain",
-  jest: "devicon-jest-plain",
-  knex: "devicon-knexjs-plain",
-  mocha: "devicon-mocha-plain",
-  mySQL: "devicon-mysql-plain",
+  "git": "devicon-git-plain",
+  "graphQL": "devicon-graphql-plain",
+  "HTML": "devicon-html5-plain",
+  "JQuery": "devicon-jquery-plain",
+  "javascript": "devicon-javascript-plain",
+  "jest": "devicon-jest-plain",
+  "knex": "devicon-knexjs-plain",
+  "mocha": "devicon-mocha-plain",
+  "mySQL": "devicon-mysql-plain",
   "Netlify functions": "devicon-netlify-plain",
   "Next.js": "devicon-nextjs-plain",
   "node.js": "devicon-nodejs-plain",
-  nuxt: "devicon-nuxtjs-plain",
-  playwright: "devicon-playwright-plain",
-  react: "devicon-react-original",
+  "nuxt": "devicon-nuxtjs-plain",
+  "playwright": "devicon-playwright-plain",
+  "react": "devicon-react-original",
   "Rest Api": "devicon-postman-plain",
-  Sass: "devicon-sass-original",
-  SQLite: "devicon-sqlite-plain",
-  tailwind: "devicon-tailwindcss-plain",
-  typescript: "devicon-typescript-plain",
-  vitest: "devicon-vitest-plain",
-  vue: "devicon-vuejs-plain",
+  "Sass": "devicon-sass-original",
+  "SQLite": "devicon-sqlite-plain",
+  "tailwind": "devicon-tailwindcss-plain",
+  "typescript": "devicon-typescript-plain",
+  "vitest": "devicon-vitest-plain",
+  "vue": "devicon-vuejs-plain",
 });
 
 export enum SkillDegree {
@@ -279,30 +279,37 @@ export enum SkillDegree {
 }
 
 export const SKILL_DEGREE_MAP: Record<string, SkillDegree> = Object.freeze({
-  CSS: SkillDegree.Medior,
-  cypress: SkillDegree.Medior,
-  Docker: SkillDegree.Junior,
+  "CSS": SkillDegree.Medior,
+  "cypress": SkillDegree.Medior,
+  "Docker": SkillDegree.Junior,
   "Elastic search": SkillDegree.Junior,
-  git: SkillDegree.Senior,
-  graphQL: SkillDegree.Medior,
-  HTML: SkillDegree.Senior,
-  JQuery: SkillDegree.Medior,
-  javascript: SkillDegree.Senior,
-  jest: SkillDegree.Senior,
-  knex: SkillDegree.Medior,
-  mocha: SkillDegree.Medior,
-  mySQL: SkillDegree.Junior,
+  "git": SkillDegree.Senior,
+  "graphQL": SkillDegree.Medior,
+  "HTML": SkillDegree.Senior,
+  "JQuery": SkillDegree.Medior,
+  "javascript": SkillDegree.Senior,
+  "jest": SkillDegree.Senior,
+  "knex": SkillDegree.Medior,
+  "mocha": SkillDegree.Medior,
+  "mySQL": SkillDegree.Junior,
   "Netlify functions": SkillDegree.Medior,
   "Next.js": SkillDegree.Medior,
   "node.js": SkillDegree.Medior,
-  nuxt: SkillDegree.Medior,
-  playwright: SkillDegree.Senior,
-  react: SkillDegree.Medior,
+  "nuxt": SkillDegree.Medior,
+  "playwright": SkillDegree.Senior,
+  "react": SkillDegree.Medior,
   "Rest Api": SkillDegree.Junior,
-  Sass: SkillDegree.Medior,
-  SQLite: SkillDegree.Junior,
-  tailwind: SkillDegree.Senior,
-  typescript: SkillDegree.Senior,
-  vitest: SkillDegree.Senior,
-  vue: SkillDegree.Senior,
+  "Sass": SkillDegree.Medior,
+  "SQLite": SkillDegree.Junior,
+  "tailwind": SkillDegree.Senior,
+  "typescript": SkillDegree.Senior,
+  "vitest": SkillDegree.Senior,
+  "vue": SkillDegree.Senior,
 });
+
+export enum Sections {
+  Home = "home",
+  About = "about",
+  Skills = "skills",
+  Experiences = "experiences",
+}

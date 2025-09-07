@@ -43,7 +43,7 @@ declare module "lucia" {
 }
 
 // ... rest of your auth functions remain the same ...
-type SessionCookie = ReturnType<typeof lucia.createSessionCookie> | ReturnType<typeof lucia.createBlankSessionCookie>
+type SessionCookie = ReturnType<typeof lucia.createSessionCookie> | ReturnType<typeof lucia.createBlankSessionCookie>;
 
 const setSessionCookie = async (
   sessionCookie: SessionCookie,
@@ -66,7 +66,7 @@ export const createAuthSession = async (userId: number) => {
   await setSessionCookie(sessionCookie);
 };
 
-export const verifyAuthSession = async () => {
+export const verifyAuthSession = async (canSetCookies: boolean = false) => {
   const sessionId = await getCurrentSessionId();
 
   if (isNil(sessionId)) {
@@ -78,14 +78,16 @@ export const verifyAuthSession = async () => {
 
   const result = await lucia.validateSession(sessionId);
 
-  if (result.session?.fresh) {
-    const sessionCookie = lucia.createSessionCookie(result.session.id);
-    await setSessionCookie(sessionCookie);
-  }
+  if (canSetCookies) {
+    if (result.session?.fresh) {
+      const sessionCookie = lucia.createSessionCookie(result.session.id);
+      await setSessionCookie(sessionCookie);
+    }
 
-  if (isNil(result.session)) {
-    const sessionCookie = lucia.createBlankSessionCookie();
-    await setSessionCookie(sessionCookie);
+    if (isNil(result.session)) {
+      const sessionCookie = lucia.createBlankSessionCookie();
+      await setSessionCookie(sessionCookie);
+    }
   }
 
   return result;
@@ -94,7 +96,7 @@ export const verifyAuthSession = async () => {
 export const destroyAuthSession = async () => {
   const {
     session,
-  } = await verifyAuthSession();
+  } = await verifyAuthSession(true);
 
   if (isNil(session)) {
     return {

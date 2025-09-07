@@ -10,10 +10,10 @@ import {
 } from "@/utils/animation";
 
 interface ListItemProps {
-    i?: number;
-    className?: string;
-    children: ReactNode;
-    style?: Properties<string | number>;
+  i?: number;
+  className?: string;
+  children: ReactNode;
+  style?: Properties<string | number>;
 }
 
 const SlideIn = ({

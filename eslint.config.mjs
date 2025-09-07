@@ -8,6 +8,7 @@ import {
 import {
   FlatCompat,
 } from "@eslint/eslintrc";
+import stylistic from "@stylistic/eslint-plugin";
 import tseslint from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +22,20 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   ...tseslint.configs.recommended,
   {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      "@stylistic": stylistic,
+    },
     rules: {
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -42,7 +57,6 @@ const eslintConfig = [
       "no-unused-expressions": "error",
       "prefer-template": "error",
       "object-shorthand": "error",
-      "arrow-spacing": "error",
       "object-property-newline": [
         "error",
         {
@@ -131,34 +145,9 @@ const eslintConfig = [
       "import/no-self-import": "error",
       "import/no-cycle": "error",
       "import/no-useless-path-segments": "error",
-      "indent": [
-        "error",
-        2,
-        {
-          "ignoredNodes": [
-            "JSXElement",
-            "JSXElement > *",
-            "JSXAttribute",
-            "JSXIdentifier",
-            "JSXNamespacedName",
-            "JSXMemberExpression",
-            "JSXSpreadAttribute",
-            "JSXExpressionContainer",
-            "JSXOpeningElement",
-            "JSXClosingElement",
-            "JSXFragment",
-            "JSXOpeningFragment",
-            "JSXClosingFragment",
-            "JSXText",
-            "JSXEmptyExpression",
-            "JSXSpreadChild",
-          ],
-        },
-      ],
-      "semi": [
-        "error",
-        "always",
-      ],
+      "indent": "off",
+      "quotes": "off",
+      "semi": "off",
       "import/order": [
         "error",
         {
@@ -203,15 +192,6 @@ const eslintConfig = [
       "jsx-a11y/heading-has-content": "error",
       "jsx-a11y/img-redundant-alt": "error",
       "jsx-a11y/no-access-key": "error",
-      "quotes": [
-        "error",
-        "double",
-      ],
-      "no-multi-spaces": "error",
-      "comma-dangle": [
-        "error",
-        "always-multiline",
-      ],
       "max-len": [
         "error",
         {
@@ -237,6 +217,62 @@ const eslintConfig = [
           "minItems": 2,
         },
       ],
+      "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+      "@typescript-eslint/member-ordering": [
+        "error",
+        {
+          "default": [
+            "signature",
+            "field",
+            "constructor",
+            "method"
+          ]
+        }
+      ],
+      "@typescript-eslint/prefer-literal-enum-member": "error",
+      "@stylistic/indent": [
+        "error",
+        2,
+        {
+          "ignoredNodes": [
+            "JSXElement",
+            "JSXElement > *",
+            "JSXAttribute",
+            "JSXIdentifier",
+            "JSXNamespacedName",
+            "JSXMemberExpression",
+            "JSXSpreadAttribute",
+            "JSXExpressionContainer",
+            "JSXOpeningElement",
+            "JSXClosingElement",
+            "JSXFragment",
+            "JSXOpeningFragment",
+            "JSXClosingFragment",
+            "JSXText",
+            "JSXEmptyExpression",
+            "JSXSpreadChild",
+            "TSTypeParameterInstantiation",
+            "TSTypeReference",
+            "TSUnionType",
+            "TSIntersectionType",
+            "TSTypeAnnotation"
+          ]
+        }
+      ],
+      "@stylistic/quotes": [
+        "error",
+        "double"
+      ],
+      "@stylistic/semi": [
+        "error",
+        "always"
+      ],
+      "@stylistic/arrow-spacing": "error",
+      "@stylistic/comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "@stylistic/no-multi-spaces": "error",
     },
   },
 ];

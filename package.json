@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "lint:style": "stylelint \"src/**/*.css\"",
     "tsc": "tsc --noEmit",
     "seed:data": "tsx src/db/scripts/seed-data.ts",
@@ -35,14 +36,15 @@
     "slugify": "^1.6.6",
     "tailwindcss-intersect": "^2.2.0",
     "tailwindcss-motion": "^1.1.1",
+    "tsx": "^4.20.5",
     "vanilla-cookieconsent": "^3.1.0",
-    "xss": "^1.0.15",
-    "tsx": "^4.20.5"
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@iconify/json": "^2.2.381",
     "@iconify/tailwind4": "^1.0.6",
+    "@stylistic/eslint-plugin": "^2.13.0",
     "@stylistic/stylelint-plugin": "^4.0.0",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/better-sqlite3": "^7.6.13",

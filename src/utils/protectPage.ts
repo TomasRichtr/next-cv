@@ -10,8 +10,8 @@ import {
 } from "@/db/auth";
 
 export enum Shield {
-    AUTH = "auth",
-    SIGN_UP = "signUp"
+  AUTH = "auth",
+  SIGN_UP = "signUp",
 }
 
 export const protectPage = async (shields: Shield[]) => {

@@ -7,7 +7,7 @@ import {
 } from "@/constants/cv";
 
 interface MainFooterProps {
-    t: (key: string) => string;
+  t: (key: string) => string;
 }
 
 const MainFooter = ({

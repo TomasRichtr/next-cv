@@ -11,6 +11,9 @@ import {
 } from "react";
 
 import {
+  Sections,
+} from "@/constants/cv";
+import {
   sleep,
 } from "@/utils";
 
@@ -21,15 +24,15 @@ const ScrollToSection = () => {
     const scrollToSection = async () => {
       await sleep(500);
       if (pathName === "/") {
-        const section = document.querySelector("#home");
+        const section = document.querySelector(`#${Sections.Home}`);
 
         section?.scrollIntoView();
         return;
       }
 
       let id;
-      if (startsWith(pathName, "/skills/")) {
-        id = "skills";
+      if (startsWith(pathName, `/${Sections.Skills}/`)) {
+        id = Sections.Skills;
       } else {
         const pathParts = compact(pathName.split("/"));
         if (!isEmpty(pathParts)) {
