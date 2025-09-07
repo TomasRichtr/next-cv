@@ -1,4 +1,4 @@
-import AnimateText from "@/components/animators/animate-text";
+import SlideIn from "@/components/animators/slide-in";
 
 interface HomeContentProps {
   roleText: string;
@@ -14,16 +14,16 @@ const HomeContent = ({
       className="text-center h-[50vh] absolute bottom-0 flex flex-col justify-center items-center"
     >
       <h2>
-        <AnimateText>
+        <SlideIn>
           {roleText}
-        </AnimateText>
+        </SlideIn>
       </h2>
       <p
         className="text-secondary mt-2"
       >
-        <AnimateText>
+        <SlideIn>
           {statusText}
-        </AnimateText>
+        </SlideIn>
       </p>
     </div>
   );

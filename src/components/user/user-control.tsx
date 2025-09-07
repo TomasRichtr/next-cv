@@ -9,12 +9,11 @@ import {
 
 interface UserControlProps {
   t: (key: string) => string,
-  dataOverlay?: string
   userId?: string;
 }
 
 export const UserControl = async ({
-  dataOverlay, t, userId,
+  t, userId,
 }: UserControlProps) => {
   return (
     <>
@@ -29,7 +28,6 @@ export const UserControl = async ({
             ROUTE.LOGIN,
           ]}
           style={Styles.Soft}
-          dataOverlay={dataOverlay}
         >
           <span
             className="icon-[tabler--login] size-6 text-primary"

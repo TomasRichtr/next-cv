@@ -1,5 +1,5 @@
 import myPhoto from "@/assets/my-photo.png";
-import AnimateCard from "@/components/animators/animate-card";
+import SlideIn from "@/components/animators/slide-in";
 import Avatar from "@/components/utils/avatar";
 import {
   Colors,
@@ -8,7 +8,7 @@ import {
 
 const CenteredAvatar = () => {
   return (
-    <AnimateCard
+    <SlideIn
       className="absolute inset-0 flex items-center justify-center pointer-events-none"
     >
       <div
@@ -25,7 +25,7 @@ const CenteredAvatar = () => {
           priority
         />
       </div>
-    </AnimateCard>
+    </SlideIn>
   );
 };
 

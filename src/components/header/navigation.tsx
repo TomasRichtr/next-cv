@@ -6,7 +6,6 @@ import {
 interface NavigationProps {
   t: (key: string) => string
   userId?: string;
-  dataOverlay?: string;
 }
 
 const NAVIGATION_ITEMS = [
@@ -18,7 +17,7 @@ const NAVIGATION_ITEMS = [
 ];
 
 const Navigation = async ({
-  dataOverlay, t, userId,
+  t, userId,
 }: NavigationProps) => {
   const getNavItems = () => {
     if (userId) {
@@ -40,7 +39,6 @@ const Navigation = async ({
             key={route}
             href={route}
             activeFor={[route]}
-            dataOverlay={dataOverlay}
           >
             {t(`navigation.${route.replace("/", "")}`)}
           </NavLink>

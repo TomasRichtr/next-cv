@@ -3,7 +3,7 @@ import {
 } from "lodash";
 import React from "react";
 
-import AnimateItem from "@/components/animators/animate-item";
+import SlideIn from "@/components/animators/slide-in";
 import SkillCard from "@/components/skills/skill-card";
 
 interface Skill {
@@ -31,7 +31,7 @@ const SkillsGroup: React.FC<SkillsGroupProps> = ({
         className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 w-full"
       >
         {map(skills, (skill, i) => (
-          <AnimateItem
+          <SlideIn
             key={skill.name}
             i={i}
           >
@@ -40,7 +40,7 @@ const SkillsGroup: React.FC<SkillsGroupProps> = ({
               icon={skill.icon}
               degree={skill.degree}
             />
-          </AnimateItem>
+          </SlideIn>
         ))}
       </div>
     </div>

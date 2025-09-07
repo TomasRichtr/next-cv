@@ -1,4 +1,7 @@
 import {
+  Properties,
+} from "csstype";
+import {
   ReactNode,
 } from "react";
 
@@ -7,22 +10,24 @@ import {
 } from "@/utils/animation";
 
 interface ListItemProps {
-    i: number;
+    i?: number;
     className?: string;
-    children: ReactNode
+    children: ReactNode;
+    style?: Properties<string | number>;
 }
 
-const AnimateItem = ({
-  i, className = "", children,
+const SlideIn = ({
+  i = 0, className = "", children, style = {},
 }: ListItemProps) => {
   return (
-    <div
+    <span
       className={`${className} ${getListItemAnimationClass(i)}`}
+      style={style}
       suppressHydrationWarning
     >
       {children}
-    </div>
+    </span>
   );
 };
 
-export default AnimateItem;
+export default SlideIn;

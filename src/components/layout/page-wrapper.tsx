@@ -2,7 +2,7 @@ import {
   ReactNode,
 } from "react";
 
-import AnimateText from "@/components/animators/animate-text";
+import SlideIn from "@/components/animators/slide-in";
 
 interface PageWrapperProps {
   children: ReactNode;
@@ -17,9 +17,9 @@ const PageWrapper = ({
   className = "",
 }: PageWrapperProps) => {
   const animatedTitle = (
-    <AnimateText>
+    <SlideIn>
       {title}
-    </AnimateText>
+    </SlideIn>
   );
 
   return (
@@ -52,9 +52,9 @@ const PageWrapper = ({
               <p
                 className="text-secondary mt-2"
               >
-                <AnimateText>
+                <SlideIn>
                   {description}
-                </AnimateText>
+                </SlideIn>
               </p>
               )}
             </div>

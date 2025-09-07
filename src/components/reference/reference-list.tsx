@@ -1,4 +1,4 @@
-import AnimateItem from "@/components/animators/animate-item";
+import SlideIn from "@/components/animators/slide-in";
 import ReferenceItem from "@/components/reference/reference-item";
 import {
   verifyAuthSession,
@@ -28,7 +28,7 @@ const ReferenceList = async () => {
     >
       {references.map((r, i) => {
         return (
-          <AnimateItem
+          <SlideIn
             i={i}
             key={r.id}
           >
@@ -37,7 +37,7 @@ const ReferenceList = async () => {
               gridData={gridData[i]}
               userId={user ? +user?.id : undefined}
             />
-          </AnimateItem>
+          </SlideIn>
         );
       })}
     </div>

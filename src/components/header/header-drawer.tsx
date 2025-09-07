@@ -50,9 +50,9 @@ const HeaderDrawer = ({
         </div>
         <div
           className="drawer-body flex-1 overflow-y-auto"
+          data-overlay={`#${HEADER_DRAWER_ID}`}
         >
           <Navigation
-            dataOverlay={`#${HEADER_DRAWER_ID}`}
             t={t}
             userId={userId}
           />
@@ -63,13 +63,20 @@ const HeaderDrawer = ({
           <div
             className="flex justify-start gap-3 w-full"
           >
-            <LocalePicker />
+            <div
+              data-overlay={`#${HEADER_DRAWER_ID}`}
+            >
+              <LocalePicker />
+            </div>
             <ThemePicker />
-            <UserControl
-              t={t}
-              dataOverlay={`#${HEADER_DRAWER_ID}`}
-              userId={userId}
-            />
+            <div
+              data-overlay={`#${HEADER_DRAWER_ID}`}
+            >
+              <UserControl
+                t={t}
+                userId={userId}
+              />
+            </div>
           </div>
         </div>
       </div>
