@@ -182,6 +182,9 @@
           },
           "eisking": {
             "description": "Motorsportová platforma nabízející videa, podcasty, články a přístup k událostem pro fanoušky Formule 1, s veškerým obsahem spravovaným přes Payload CMS."
+          },
+          "phc": {
+            "description": "Pražský házenkářský klub, aplikace pro organizaci velkého mezinárodního mládežnického turnaje, poskytující týmům a fanouškům základní informace, rozpisy, registraci a živé výsledky."
           }
         }
       },

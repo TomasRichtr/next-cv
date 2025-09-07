@@ -182,6 +182,9 @@
           },
           "eisking": {
             "description": "Motorsport platform offering videos, podcasts, articles, and event access for Formula 1 fans, with all content managed via Payload CMS."
+          },
+          "phc": {
+            "description": "A prague handbal club, app for organization of major international youth tournament, providing teams and fans with essential information, schedules, registration, and live results."
           }
         }
       },

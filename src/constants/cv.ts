@@ -95,6 +95,11 @@ export const EXPERIENCES: Experience[] = [
         url: "https://eisking.tv/",
         description: "cv.experiences.designeo.projects.eisking.description",
       },
+      {
+        name: "phc.cz",
+        url: "https://phc.cz/",
+        description: "cv.experiences.designeo.projects.phc.description",
+      },
     ],
   },
   {
