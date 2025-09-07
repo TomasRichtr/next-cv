@@ -14,9 +14,8 @@ export const size = {
 export const contentType = "image/png";
 
 const ICON_CONTAINER_STYLES = {
-  fontSize: 18,
+  fontSize: 22,
   background: "#000611FF",
-  borderRadius: 999999999,
   width: "100%",
   height: "100%",
   display: "flex",
