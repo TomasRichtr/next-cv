@@ -1,4 +1,5 @@
 import AboutMeDescription from "@/components/about/about-me-description";
+import SlideIn from "@/components/animators/slide-in";
 import SkillBadge from "@/components/experience/skill-badge";
 import Card from "@/components/utils/card";
 import {
@@ -51,11 +52,16 @@ const AboutMeCard = ({
         <div
           className="flex flex-wrap gap-2"
         >
-          {skills.map((skill) => (
-            <SkillBadge
+          {skills.map((skill, i) => (
+            <SlideIn
+              i={i}
               key={skill}
-              skill={skill}
-            />
+            >
+              <SkillBadge
+                skill={skill}
+              />
+            </SlideIn>
+
           ))}
         </div>
       </div>
