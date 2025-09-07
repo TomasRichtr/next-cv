@@ -1,4 +1,4 @@
-import ExperiencePage from "@/app/[locale]/(cv)/@experience/experience/page";
+import ExperiencePage from "@/app/[locale]/(cv)/@experiences/experiences/page";
 import {
   AsyncParams,
 } from "@/types";

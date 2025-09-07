@@ -12,7 +12,7 @@
     "home": "Home",
     "login": "Login",
     "user": "User",
-    "experience": "Experience",
+    "experiences": "Experiences",
     "skills": "Skills",
     "contact": "Contact",
     "references": "References",
@@ -107,8 +107,8 @@
     "role": "Web / iOS / Android Developer",
     "status": "Working on it...👷‍"
   },
-  "experience": {
-    "title": "Professional Experience",
+  "experiences": {
+    "title": "Professional Experiences",
     "description": "My journey through various roles and companies in web development.",
     "current": "Current",
     "present": "Present",
@@ -142,7 +142,7 @@
   "references": {
     "label": "Leave your reference",
     "title": "Professional References",
-    "description": "Read what employers and colleagues have to say about my work and professional experience.",
+    "description": "Read what employers and colleagues have to say about my work and professional experiences.",
     "unsavedChangesWarning": "You have unsaved changes to your reference. Are you sure you want to leave?",
     "unsavedChanges": "Unsaved changes"
   },

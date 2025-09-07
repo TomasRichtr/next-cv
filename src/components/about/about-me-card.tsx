@@ -1,6 +1,6 @@
 import AboutMeDescription from "@/components/about/about-me-description";
 import SlideIn from "@/components/animators/slide-in";
-import SkillBadge from "@/components/experience/skill-badge";
+import SkillBadge from "@/components/experiences/skill-badge";
 import Card from "@/components/utils/card";
 import {
   SKILLS,

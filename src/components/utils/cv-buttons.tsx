@@ -47,57 +47,59 @@ export const CvButtons = () => {
   }, []);
 
   const getNextRoute = () => {
-    switch (pathWithoutLocale) {
-    case ROUTE.HOME:
+    if (pathWithoutLocale === ROUTE.HOME) {
       return {
         route: ROUTE.ABOUT,
         label: t("navigation.about"),
       };
-    case ROUTE.ABOUT:
+    }
+    if (pathWithoutLocale === ROUTE.ABOUT) {
       return {
-        route: ROUTE.EXPERIENCE,
-        label: t("navigation.experience"),
+        route: ROUTE.EXPERIENCES,
+        label: t("navigation.experiences"),
       };
-    case ROUTE.EXPERIENCE:
+    }
+    if (pathWithoutLocale === ROUTE.EXPERIENCES) {
       return {
         route: ROUTE.SKILLS(),
         label: t("navigation.skills"),
       };
-    case ROUTE.SKILLS():
+    }
+    if (pathWithoutLocale.startsWith("/skills")) {
       return {
         route: ROUTE.CONTACT,
         label: t("navigation.contact"),
       };
-    default:
-      return null;
     }
+    return null;
   };
 
   const getPreviousRoute = () => {
-    switch (pathWithoutLocale) {
-    case ROUTE.ABOUT:
+    if (pathWithoutLocale === ROUTE.ABOUT) {
       return {
         route: ROUTE.HOME,
         label: t("navigation.home"),
       };
-    case ROUTE.EXPERIENCE:
+    }
+    if (pathWithoutLocale === ROUTE.EXPERIENCES) {
       return {
         route: ROUTE.ABOUT,
         label: t("navigation.about"),
       };
-    case ROUTE.SKILLS():
+    }
+    if (pathWithoutLocale.startsWith("/skills")) {
       return {
-        route: ROUTE.EXPERIENCE,
-        label: t("navigation.experience"),
+        route: ROUTE.EXPERIENCES,
+        label: t("navigation.experiences"),
       };
-    case ROUTE.CONTACT:
+    }
+    if (pathWithoutLocale === ROUTE.CONTACT) {
       return {
         route: ROUTE.SKILLS(),
         label: t("navigation.skills"),
       };
-    default:
-      return null;
     }
+    return null;
   };
 
   const nextRoute = getNextRoute();
@@ -112,7 +114,6 @@ export const CvButtons = () => {
       router.push(nextRoute.route);
     }
   };
-
   const handlePreviousClick = () => {
     if (previousRoute) {
       router.push(previousRoute.route);
@@ -121,7 +122,7 @@ export const CvButtons = () => {
 
   return (
     <div
-      className={`intersect:motion-delay-[3000ms] intersect:motion-preset-bounce fixed right-4 z-50 flex gap-2 transition-all duration-300 ease-in-out ${
+      className={`intersect:motion-delay-[1500ms] intersect:motion-preset-bounce fixed right-4 z-50 flex gap-2 transition-all duration-300 ease-in-out ${
         isAtBottom ? "bottom-24 md:bottom-16" : "bottom-4"
       }`}
     >

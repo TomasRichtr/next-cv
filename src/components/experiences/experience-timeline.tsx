@@ -1,7 +1,7 @@
 import React from "react";
 
-import ExperienceItem from "@/components/experience/experience-item";
-import TimelineBadge from "@/components/experience/timeline-badge";
+import ExperienceItem from "@/components/experiences/experience-item";
+import TimelineBadge from "@/components/experiences/timeline-badge";
 import Card from "@/components/utils/card";
 import {
   EXPERIENCES,

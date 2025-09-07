@@ -15,7 +15,7 @@ const TimelineDateHeader = ({
 }: TimelineDateHeaderProps) => {
   const formatDateRange = (experience: Experience) => {
     const start = experience.startDate.format("MMM YYYY");
-    const end = experience.endDate ? experience.endDate.format("MMM YYYY") : t("experience.present");
+    const end = experience.endDate ? experience.endDate.format("MMM YYYY") : t("experiences.present");
 
     const startMoment = experience.startDate;
     const endMoment = experience.endDate || dayjs();

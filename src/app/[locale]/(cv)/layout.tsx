@@ -11,12 +11,12 @@ import {
 interface CvLayoutProps {
   about: ReactNode;
   skills: ReactNode;
-  experience: ReactNode;
+  experiences: ReactNode;
   children: ReactNode;
 }
 
 const CvLayout = ({
-  about, skills, experience, children,
+  about, skills, experiences, children,
 }: CvLayoutProps) => {
   return (
     <>
@@ -37,7 +37,7 @@ const CvLayout = ({
       <section
         id={Sections.Experiences}
       >
-        {experience}
+        {experiences}
       </section>
 
       <section

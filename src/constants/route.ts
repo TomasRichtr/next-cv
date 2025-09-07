@@ -2,7 +2,7 @@ export const ROUTE = Object.freeze({
   HOME: "/",
   LOGIN: "/login",
   SIGNUP: "/signup",
-  EXPERIENCE: "/experience",
+  EXPERIENCES: "/experiences",
   SKILLS: (filter?: number[]) => `/skills${filter ? `?degrees=${ filter.join(",")}` : ""}`,
   CONTACT: "/contact",
   REFERENCES: "/references",

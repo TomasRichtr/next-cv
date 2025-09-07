@@ -1,4 +1,4 @@
-import ExperienceTimeline from "@/components/experience/experience-timeline";
+import ExperienceTimeline from "@/components/experiences/experience-timeline";
 import PageWrapper from "@/components/layout/page-wrapper";
 import initTranslations from "@/locales/i18n";
 import {
@@ -18,8 +18,8 @@ const ExperiencePage = async ({
 
   return (
     <PageWrapper
-      title={t("experience.title")}
-      description={t("experience.description")}
+      title={t("experiences.title")}
+      description={t("experiences.description")}
       className="pt-30"
     >
       <ExperienceTimeline

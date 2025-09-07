@@ -1,8 +1,8 @@
 import React from "react";
 
 import SlideIn from "@/components/animators/slide-in";
-import SkillBadge from "@/components/experience/skill-badge";
-import TimelineDateHeader from "@/components/experience/timeline-date-header";
+import SkillBadge from "@/components/experiences/skill-badge";
+import TimelineDateHeader from "@/components/experiences/timeline-date-header";
 import {
   Experience,
 } from "@/constants/cv";
@@ -61,7 +61,7 @@ const ExperienceItem = ({
           <p
             className="font-semibold text-base-content/90 mb-1 uppercase tracking-wide"
           >
-            {t("experience.projects")}
+            {t("experiences.projects")}
             :
           </p>
           <ul
