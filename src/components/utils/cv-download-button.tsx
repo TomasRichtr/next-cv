@@ -1,9 +1,6 @@
 "use client";
 
 import WithSkeleton from "@/components/layout/with-skeleton";
-import {
-  getAWSUrl,
-} from "@/utils/file";
 
 interface CvDownloadButtonProps {
   className?: string;
@@ -17,7 +14,7 @@ export const CvDownloadButton = ({
       widthClass="w-20"
     >
       <a
-        href={getAWSUrl("cv-tomas-richtr.pdf")}
+        href="https://docs.google.com/document/d/1jRGmHYF0PjFB-f_qe_xoX6RIKeB5Qz2HX8lCZqnvddk/edit?usp=sharing"
         download="CV-Tomas-Richtr.pdf"
         className={`btn btn-accent shadow-lg rounded-lg flex items-center gap-2 transition-transform duration-200 hover:scale-105 ${className}`}
         target="_blank"
