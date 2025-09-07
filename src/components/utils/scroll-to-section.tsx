@@ -19,7 +19,7 @@ const ScrollToSection = () => {
 
   useEffect(() => {
     const scrollToSection = async () => {
-      await sleep(1000);
+      await sleep(500);
       if (pathName === "/") {
         const section = document.querySelector("#home");
 
