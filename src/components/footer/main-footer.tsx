@@ -5,6 +5,9 @@ import {
 import {
   CONTACTS_INFO,
 } from "@/constants/cv";
+import {
+  APP_VERSION,
+} from "@/version";
 
 interface MainFooterProps {
   t: (key: string) => string;
@@ -43,6 +46,12 @@ const MainFooter = ({
               className="inline md:hidden"
             >
               {APP_TITLE_SHORT}
+            </span>
+            <span
+              className="text-xs opacity-70 self-baseline"
+            >
+              v
+              {APP_VERSION}
             </span>
           </span>
         </div>
