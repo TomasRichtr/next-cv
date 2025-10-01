@@ -246,6 +246,11 @@ export const CONTACTS_INFO = Object.freeze([
     text: "github.com/TomasRichtr",
     href: "https://github.com/TomasRichtr",
   },
+  {
+    icon: "icon-[tabler--certificate]",
+    text: "IČO - 09560173",
+    href: "https://rzp.gov.cz/verejne-udaje/cs/udaje/vyber-subjektu;ico=09560173;roleSubjektu=P/subjekt;ssarzp=Afb4c81202cf73a29d2b5c78534f1dc42d6cb1aa7e1f6b19f233c282c9158dc4d1a70",
+  },
 ]);
 
 export const DEV_ICONS_MAP: Record<string, string> = Object.freeze({
