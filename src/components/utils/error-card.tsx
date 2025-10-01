@@ -10,6 +10,7 @@ import {
   useTranslation,
 } from "react-i18next";
 
+import Card from "@/components/utils/card";
 import Loader from "@/components/utils/loader";
 import {
   Quote,
@@ -94,7 +95,7 @@ const ErrorCard = () => {
     if (!quote || isEmpty(quote)) return null;
 
     return (
-      <div
+      <Card
         className="space-y-2"
       >
         <blockquote
@@ -111,7 +112,7 @@ const ErrorCard = () => {
           {" "}
           {quote.a}
         </cite>
-      </div>
+      </Card>
     );
   }, [quote]);
 
