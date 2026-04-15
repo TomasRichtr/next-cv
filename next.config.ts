@@ -2,16 +2,22 @@ import type {
   NextConfig,
 } from "next";
 
+const awsHostname = process.env.AWS_BUCKET_URL
+  ? process.env.AWS_BUCKET_URL.replace(/^https?:\/\//, "").split("/")[0]
+  : "";
+
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: process.env.AWS_BUCKET_URL!,
-        port: "",
-        pathname: "/**",
-      },
-    ],
+    remotePatterns: awsHostname
+      ? [
+          {
+            protocol: "https",
+            hostname: awsHostname,
+            port: "",
+            pathname: "/**",
+          },
+        ]
+      : [],
   },
 };
 
