@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  useEffect, useState,
+  startTransition, useEffect, useState,
 } from "react";
 
 import {
@@ -26,7 +26,7 @@ export const useCookieStorage = <T>(key: string, defaultValue: T, requiresConsen
     try {
       const cookieValue = getCookie(prefixedKey);
       if (cookieValue !== null) {
-        setValue(JSON.parse(cookieValue));
+        startTransition(() => setValue(JSON.parse(cookieValue)));
       }
     } catch (error) {
       console.warn(`Error reading cookie "${prefixedKey}":`, error);

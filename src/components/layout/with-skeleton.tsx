@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  ReactNode, useEffect, useState,
+  ReactNode, useSyncExternalStore,
 } from "react";
 
 const WithSkeleton = ({
@@ -11,13 +11,11 @@ const WithSkeleton = ({
   widthClass?: string,
   heightClass?: string,
 }) => {
-  const [
-    isHydrated, setIsHydrated,
-  ] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
+  const isHydrated = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   return (
     <>

@@ -4,10 +4,9 @@ import {
 } from "lodash";
 import {
   useActionState,
-  useCallback,
+  useEffect,
   useRef,
   startTransition,
-  useEffect,
 } from "react";
 import {
   useTranslation,
@@ -66,25 +65,29 @@ const ReferenceForm = ({
     dispatch,
   ]);
 
-  const debouncedSubmit = useCallback(
-    debounce((content: string) => {
-      if (formRef.current) {
-        const formData = new FormData(formRef.current);
-        startTransition(() => {
-          formAction(formData);
-          dispatch(setSavedContent(content));
-        });
-      }
-    }, 2000),
-    [
-      formAction,
-      dispatch,
-    ],
-  );
+  type DebouncedFn = (formElement: HTMLFormElement, content: string) => void;
+  const debouncedSubmitRef = useRef<DebouncedFn | null>(null);
+
+  useEffect(() => {
+    const fn = debounce((formElement: HTMLFormElement, content: string) => {
+      const formData = new FormData(formElement);
+      startTransition(() => {
+        formAction(formData);
+        dispatch(setSavedContent(content));
+      });
+    }, 2000);
+    debouncedSubmitRef.current = fn;
+    return () => fn.cancel();
+  }, [
+    formAction,
+    dispatch,
+  ]);
 
   const handleTextAreaChange = (value: string) => {
     dispatch(setCurrentContent(value));
-    debouncedSubmit(value);
+    if (formRef.current && debouncedSubmitRef.current) {
+      debouncedSubmitRef.current(formRef.current, value);
+    }
   };
 
   return (

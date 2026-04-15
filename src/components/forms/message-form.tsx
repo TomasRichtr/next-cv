@@ -45,7 +45,7 @@ const MessageForm = ({
   const searchParams = useSearchParams();
   const [
     showSuccess, setShowSuccess,
-  ] = useState(false);
+  ] = useState(searchParams.get("success") === "true");
 
   const [
     formState, formAction,
@@ -56,16 +56,14 @@ const MessageForm = ({
   } = useTranslation();
 
   useEffect(() => {
-    if (searchParams.get("success") === "true") {
-      setShowSuccess(true);
-      const timer = setTimeout(() => {
-        setShowSuccess(false);
-        router.replace(ROUTE.CONTACT);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
+    if (!showSuccess) return;
+    const timer = setTimeout(() => {
+      setShowSuccess(false);
+      router.replace(ROUTE.CONTACT);
+    }, 5000);
+    return () => clearTimeout(timer);
   }, [
-    searchParams,
+    showSuccess,
     router,
   ]);
 
