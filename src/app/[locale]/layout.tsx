@@ -1,6 +1,9 @@
 import "../globals.css";
 import "devicon/devicon.min.css";
 import {
+  Analytics,
+} from "@vercel/analytics/next";
+import {
   Ubuntu,
 } from "next/font/google";
 import {
@@ -92,6 +95,7 @@ const RootLayout = async ({
       <body
         className={`${font.className} font-sans`}
       >
+        <Analytics />
         <FlyonuiScript />
         <ReduxProvider>
           <CookieConsent />
