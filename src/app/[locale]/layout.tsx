@@ -4,6 +4,9 @@ import {
   Analytics,
 } from "@vercel/analytics/next";
 import {
+  SpeedInsights,
+} from "@vercel/speed-insights/next";
+import {
   Ubuntu,
 } from "next/font/google";
 import {
@@ -96,6 +99,7 @@ const RootLayout = async ({
         className={`${font.className} font-sans`}
       >
         <Analytics />
+        <SpeedInsights />
         <FlyonuiScript />
         <ReduxProvider>
           <CookieConsent />
